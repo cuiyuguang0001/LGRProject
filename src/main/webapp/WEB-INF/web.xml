@@ -77,7 +77,7 @@
 
   <!--
     - Declare Spring context listener which sets up the Spring Application Context
-    - containing all Cocoon components (and user defined beans as well).
+    - containing all Cocoon components (and User defined beans as well).
     -->
 <!--  <listener>-->
 <!--    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
