@@ -104,7 +104,6 @@
 <!--    <servlet-class>org.apache.cocoon.servletservice.DispatcherServlet</servlet-class>-->
 <!--    <load-on-startup>1</load-on-startup>-->
 <!--  </servlet>-->
-
   <!-- URL space mappings ============================================= -->
 
   <!--
