@@ -1,15 +1,22 @@
 document.write("<script language=javascript src='static/jQuery/jquery-3.4.1.min.js'></script>");
+document.write("<script language=javascript src='static/layui/layui.js'></script>");
 
 var user = {
-    url:'http://localhost:9001',
-    sid:''
+    defaultUrl:'http://localhost:9001'
+}
+
+var myurl = {
+    //显示所有用户
+    userList: '/user/userList',
+    //登陆
+    login:'/user/login'
 }
 
 var req = {
     post: function (url,data,async) {
         r = null;
         $.ajax({
-            url: user.url + url,
+            url: user.defaultUrl + url,
             type: 'POST',
             data: data,
             async: async == null ? false : async,
@@ -23,5 +30,4 @@ var req = {
         }
         return r;
     }
-
 }
