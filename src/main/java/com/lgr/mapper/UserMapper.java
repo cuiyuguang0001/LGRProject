@@ -3,6 +3,7 @@ package com.lgr.mapper;
 import com.lgr.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 

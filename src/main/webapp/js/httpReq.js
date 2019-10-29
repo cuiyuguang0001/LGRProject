@@ -9,7 +9,13 @@ var myurl = {
     //显示所有用户
     userList: '/user/userList',
     //登陆
-    login:'/user/login'
+    login: '/user/login',
+    //显示所有船只
+    boatList: '/boat/boatList',
+    //显示所有订单
+    dingdanList: '/dingdan/dingdanList',
+    //显示所有库存
+    kucunList: '/kucun/kucunList',
 }
 
 var req = {
