@@ -51,7 +51,7 @@
 							</dl>
 						</li>
 <!--==========================================================================================-->						
-						<li class="layui-nav-item">
+						<li class="layui-nav-item layui-nav-itemed">
 							<a href="javascript:void(0);">材料库存</a>
 							<dl class="layui-nav-child">
 								<dd><a href="库存统计.html">库存统计</a></dd>
@@ -102,22 +102,21 @@
 		layui.use('table', function() {
 			var table = layui.table;
 			table.render({
-				// method: 'post',
+				method: 'post',
 				elem: '#test',
-				url: user.defaultUrl + myurl.userList ,
+				contentType: 'application/json',
+				dataType: 'json',
+				url: user.defaultUrl + myurl.kucunList ,
 				toolbar: '#toolbarDemo',
 				title: '用户数据表',
 				totalRow: true,
 			    cols: [[
 			      {field:'id', width:80, title: 'ID', sort: true}
-			      ,{field:'name', width:80, title: '姓名'}
-			      ,{field:'age', width:80, title: '年龄', sort: true}
-			      ,{field:'sex', width:80, title: '性别'}
-			      ,{field:'sal', title: '工资', width: 80, minWidth: 100}
-			      ,{field:'status', title: '有无任务', sort: true}
-			      ,{field:'dataline', title: '入职时间', sort: true}
-			      ,{field:'post', title: '职业'}
-			      ,{field:'list', width:137, title: '职位优先级', sort: true}
+			      ,{field:'type', width:80, title: '库存状态'}
+			      ,{field:'name', width:80, title: '货物名', sort: true}
+			      ,{field:'num', width:80, title: '数量'}
+			      ,{field:'util', title: '单位', width: 80, minWidth: 100}
+			      ,{field:'dataline', title: '存储时间', sort: true}
 			    ]],
 				page: true,
 				limit: 15,
