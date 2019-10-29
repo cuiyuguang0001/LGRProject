@@ -19,6 +19,9 @@ public class UserService {
 
     public Map<String ,Object> userList(User user)
     {
+        System.out.println(user.getName());
+        System.out.println(user.getPage());
+        System.out.println(user.getLimit());
         return MapUtil.requestMap(userMapper.userList(user),
                 userMapper.userListCount(user),
                 Constant.SUCCESS_REQUEST,

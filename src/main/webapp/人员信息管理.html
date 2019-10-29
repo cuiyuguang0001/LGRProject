@@ -102,10 +102,9 @@
 		layui.use('table', function() {
 			var table = layui.table;
 			table.render({
-				method: 'post',
+				// method: 'post',
 				elem: '#test',
-				contentType: 'application/json',
-				url: user.defaultUrl + myurl.userList +  ,
+				url: user.defaultUrl + myurl.userList ,
 				toolbar: '#toolbarDemo',
 				title: '用户数据表',
 				totalRow: true,
