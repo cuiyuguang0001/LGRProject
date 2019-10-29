@@ -102,20 +102,22 @@
 		layui.use('table', function() {
 			var table = layui.table;
 			table.render({
-				// method: 'post',
+				method: 'post',
 				elem: '#test',
+				contentType: 'application/json',
+				dataType: 'json',
 				url: user.defaultUrl + myurl.userList ,
 				toolbar: '#toolbarDemo',
 				title: '用户数据表',
 				totalRow: true,
 			    cols: [[
 			      {field:'id', width:80, title: 'ID', sort: true}
-			      ,{field:'name', width:80, title: '姓名'}
-			      ,{field:'age', width:80, title: '年龄', sort: true}
-			      ,{field:'sex', width:80, title: '性别'}
-			      ,{field:'sal', title: '工资', width: 80, minWidth: 100}
-			      ,{field:'status', title: '有无任务', sort: true}
-			      ,{field:'dataline', title: '入职时间', sort: true}
+			      ,{field:'type', width:80, title: '是否出航'}
+			      ,{field:'dataline', width:80, title: '出航时间', sort: true}
+			      ,{field:'people', width:80, title: '申请人'}
+			      ,{field:'boat', title: '申请船只', width: 80,}
+			      ,{field:'oil', title: '所需燃油', sort: true}
+			      ,{field:'status', title: '是否通过', sort: true}
 			      ,{field:'post', title: '职业'}
 			      ,{field:'list', width:137, title: '职位优先级', sort: true}
 			    ]],
