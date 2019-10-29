@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>layout 后台大布局 - Layui</title>
+		<link rel="stylesheet" href="static/layui/css/layui.css">
+		<script src="static/jQuery/jquery-3.4.1.min.js"></script>
+		<script src="static/layui/layui.js"></script>
+		<script src="js/httpReq.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body class="layui-layout-body">
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<div class="layui-logo">港轮驳公司管理系统</div>
+				<ul class="layui-nav layui-layout-right">
+<!--=======================================《用户名》 ===================================================-->
+					<li class="layui-nav-item">
+						<a href="javascript:void(0);">欢迎您 贤心</a>
+					</li>
+					<li class="layui-nav-item"><a href="Login.html">注销</a></li>
+<!--========================================《用户名》===================================================-->				
+				</ul>
+			</div>
+			<div class="layui-side layui-bg-black">
+				<div class="layui-side-scroll">
+					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+					<ul class="layui-nav layui-nav-tree" lay-filter="test">
+<!--==========================================================================================-->						
+						<li class="layui-nav-item layui-nav-itemed">
+							<a class="" href="javascript:void(0);">船舶管理</a>
+							<dl class="layui-nav-child">
+								<dd><a href="进出港信息.html">进出港信息</a></dd>
+								<dd><a href="进出航审查.html">进出港审查</a></dd>
+							</dl>
+						</li>
+<!--==========================================================================================-->						
+						<li class="layui-nav-item">
+							<a href="javascript:void(0);">船员管理</a>
+							<dl class="layui-nav-child">
+								<dd><a href="部门管理.html">部门管理</a></dd>
+								<dd><a href="人员信息管理.html">人员信息管理</a></dd>
+							</dl>
+						</li>
+<!--==========================================================================================-->						
+						<li class="layui-nav-item">
+							<a href="javascript:void(0);">拖轮信息</a>
+							<dl class="layui-nav-child">
+								<dd><a href="拖轮状态.html">拖轮状态</a></dd>
+								<dd><a href="保养管理.html">保养管理</a></dd>
+							</dl>
+						</li>
+<!--==========================================================================================-->						
+						<li class="layui-nav-item">
+							<a href="javascript:void(0);">材料库存</a>
+							<dl class="layui-nav-child">
+								<dd><a href="库存统计.html">库存统计</a></dd>
+								<dd><a href="入库与出库.html">入库与出库</a></dd>
+							</dl>
+						</li>
+<!--==========================================================================================-->						
+						<li class="layui-nav-item">
+							<a href="拖轮调度.html">拖轮调度</a>
+						</li>
+<!--==========================================================================================-->						
+						<li class="layui-nav-item">
+							<a href="船舶维修.html">船舶维修</a>
+						</li>
+<!--==========================================================================================-->						
+						<li class="layui-nav-item">
+							<a href="javascript:void(0);">计费</a>
+							<dl class="layui-nav-child">
+								<dd><a href="船舶维修计费.html">船舶维修计费</a></dd>
+								<dd><a href="拖轮引航计费.html">拖轮引航计费</a></dd>
+								<dd><a href="材料采购计费.html">材料采购计费</a></dd>
+							</dl>
+						</li>
+<!--==========================================================================================-->						
+					</ul>
+				</div>
+			</div>
+<!--==========================================================================================-->				
+			<div class="layui-body">
+				<!-- 内容主体区域 -->
+				<!-- 数据表格 -->
+				<table class="layui-hide" id="test"></table>
+			</div>
+<!--==========================================================================================-->			
+		</div>
+		<script>
+			//JavaScript代码区域
+			layui.use('element', function() {
+				var element = layui.element;
+
+			});
+		</script>
+		<script type="text/javascript">
+		//人员信息
+		var table = layui.table,
+			layer = layui.layer,
+			form = layui.form
+		layui.use('table', function() {
+			var table = layui.table;
+			table.render({
+				// method: 'post',
+				elem: '#test',
+				url: user.defaultUrl + myurl.userList ,
+				toolbar: '#toolbarDemo',
+				title: '用户数据表',
+				totalRow: true,
+			    cols: [[
+			      {field:'id', width:80, title: 'ID', sort: true}
+			      ,{field:'name', width:80, title: '姓名'}
+			      ,{field:'age', width:80, title: '年龄', sort: true}
+			      ,{field:'sex', width:80, title: '性别'}
+			      ,{field:'sal', title: '工资', width: 80, minWidth: 100}
+			      ,{field:'status', title: '有无任务', sort: true}
+			      ,{field:'dataline', title: '入职时间', sort: true}
+			      ,{field:'post', title: '职业'}
+			      ,{field:'list', width:137, title: '职位优先级', sort: true}
+			    ]],
+				page: true,
+				limit: 15,
+				limits: [5, 10, 15],
+			  });
+			});
+		</script>
+	</body>
+</html>
