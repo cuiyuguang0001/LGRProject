@@ -2,7 +2,7 @@ document.write("<script language=javascript src='static/jQuery/jquery-3.4.1.min.
 document.write("<script language=javascript src='static/layui/layui.js'></script>");
 
 var user = {
-    defaultUrl:'http://localhost:9001'
+    defaultUrl:'http://localhost:9010'
 }
 
 var myurl = {
