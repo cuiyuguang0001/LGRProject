@@ -16,12 +16,12 @@ public class UserController {
     UserService userService;
 
     @PostMapping("userList")
-    public Map<String,Object> userList(User user){
+    public Map<String,Object> userList(@RequestBody User user){
         return userService.userList(user);
     }
 
     @PostMapping("login")
-    public Map<String,Object> login(User user){
+    public Map<String,Object> login(@RequestBody User user){
         return userService.login(user);
     }
 

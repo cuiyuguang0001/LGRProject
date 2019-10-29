@@ -3,10 +3,7 @@ package com.lgr.controller;
 import com.lgr.pojo.KuCun;
 import com.lgr.service.KuCunService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -19,7 +16,7 @@ public class KuCunController {
     KuCunService kuCunService;
 
     @PostMapping("kucunList")
-    public Map<String, Object> kucunList(KuCun kuCun)
+    public Map<String, Object> kucunList(@RequestBody KuCun kuCun)
     {
         return kuCunService.kucunList(kuCun);
     }
