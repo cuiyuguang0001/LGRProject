@@ -1,5 +1,6 @@
 package com.lgr.confog;
 
+import com.lgr.commitUtil.PageUtil;
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.plugin.*;
@@ -44,24 +45,11 @@ public class MyPagePlugin implements Interceptor {
         MetaObject metaObject = MetaObject.forObject(
                 statementHandler, SystemMetaObject.DEFAULT_OBJECT_FACTORY,SystemMetaObject.DEFAULT_OBJECT_WRAPPER_FACTORY,new DefaultReflectorFactory());
         String sqlId = (String)metaObject.getValue("delegate.mappedStatement.id");
-        //判断一下是否是分页
-//        <!--第一步 执行一条couunt语句-->
-        //1.1拿到连接
-        //1.2 预编译SQL语句 拿到绑定的sql语句
-        //1.3 执行 count语句   怎么返回你执行count的结果
-
-//    <!--第二部 重写sql  select * from luban_product  limit start,limit -->
-        //2.1 ？ 怎么知道 start 和limit
-        //2.2拼接start 和limit
-        //2.3 替换原来绑定sql
-        //拿到原来应该执行的sql
+        //判断一下是否需要分页
         if (sqlId.matches(pageSqlId)){
             ParameterHandler parameterHandler = statementHandler.getParameterHandler();
-            //原来应该执行的sql
+            //原来的sql
             String sql = statementHandler.getBoundSql().getSql();
-            //sql= select * from  product    select count(0) from (select * from  product) as a
-            //select * from luban_product where name = #{name}
-            //执行一条count语句
             //拿到数据库连接对象
             Connection connection = (Connection) invocation.getArgs()[0];
             String countSql = "select count(0) from ("+sql+") a";
@@ -69,6 +57,7 @@ public class MyPagePlugin implements Interceptor {
             PreparedStatement preparedStatement = connection.prepareStatement(countSql);
             //条件交给mybatis
             parameterHandler.setParameters(preparedStatement);
+            //执行sql
             ResultSet resultSet = preparedStatement.executeQuery();
             int count =0;
             if (resultSet.next()) {
@@ -76,11 +65,10 @@ public class MyPagePlugin implements Interceptor {
             }
             resultSet.close();
             preparedStatement.close();
-            //获得你传进来的参数对象
+            //获得传进来的参数对象
             Map<String, Object> parameterObject = (Map<String, Object>) parameterHandler.getParameterObject();
-            //limit  page
             PageUtil pageUtil = (PageUtil) parameterObject.get("page");
-            //limit 1 ,10  十条数据   总共可能有100   count 要的是 后面的100
+            //赋值总个数
             pageUtil.setCount(count);
 
             //拼接分页语句(limit) 并且修改mysql本该执行的语句

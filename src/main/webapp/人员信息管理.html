@@ -100,66 +100,68 @@
 				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
 					<legend>部门信息</legend>
 				</fieldset>
-				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="formm">
-					<div class="layui-form-item" style="display: none">
-						<label class="layui-form-label">ID</label>
-						<div class="layui-input-inline ">
-							<input type="text" id="id" name="id" value="" disabled="" lay-verify="required" autocomplete="off"
-								   class="layui-input ">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">姓名</label>
-						<div class="layui-input-inline">
-							<input type="text" id="name" name="name"  lay-verify="required" placeholder="请输入部门名称"
-								   autocomplete="off" class="layui-input layui-btn-disabled">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">年龄</label>
-						<div class="layui-input-inline">
-							<input type="text" id="age" name="age" lay-verify="required" placeholder="请输入部门人数"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">性别</label>
-						<div class="layui-input-inline">
-							<input type="text" id="sex" name="sex" lay-verify="required" placeholder="请输入部门人数"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">工资</label>
-						<div class="layui-input-inline">
-							<input type="text" id="sal" name="sal" lay-verify="required" placeholder="部门负责人"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">状态</label>
-						<div class="layui-input-inline">
-							<input type="text" id="status" name="status" lay-verify="required" placeholder="部门负责人"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">入职时间</label>
-						<div class="layui-input-inline">
-							<input type="text" id="dataline" name="dataline"disabled="" lay-verify="required" placeholder="部门负责人"
-								   autocomplete="off" class="layui-input layui-btn-disabled">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">职业</label>
-						<div class="layui-input-inline">
-							<input type="text" id="post" name="post" lay-verify="required" placeholder="部门负责人"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<button style="position: absolute; margin-left:80px; margin-bottom: 15px;" class="layui-btn" lay-submit=""
-							lay-filter="demo1" onclick="update_bumen()">立即修改</button>
-					<button style="position: absolute; margin-left:360px; margin-bottom: 15px; background:red" class="layui-btn" onclick="endinsert()">取消</button>
+				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="myForm">
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">ID</label>-->
+<!--						<div class="layui-input-inline ">-->
+<!--							<input type="text" id="id" name="id" value="" disabled="" lay-verify="required" autocomplete="off"-->
+<!--								   class="layui-input layui-btn-disabled">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">姓名</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="name" name="name" disabled="" lay-verify="required" placeholder="请输入部门名称"-->
+<!--								   autocomplete="off" class="layui-input layui-btn-disabled">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">年龄</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="age" name="age" lay-verify="required" placeholder="请输入部门人数"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">性别</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="sex" name="sex" lay-verify="required" placeholder="请输入部门人数"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">工资</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="sal" name="sal" lay-verify="required" placeholder="部门负责人"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">状态</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="dataline" name="dataline" lay-verify="required" placeholder="部门负责人"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">入职时间</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="dataline" name="dataline" lay-verify="required" placeholder="部门负责人"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">职业</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="post" name="post" lay-verify="required" placeholder="部门负责人"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--                    <div class="layui-form-item">-->
+<!--                        <button style="position: absolute; margin-left:80px; margin-bottom: 15px;" class="layui-btn" lay-submit=""-->
+<!--                                lay-filter="demo1" onclick="update_bumen()">立即修改</button>-->
+<!--                        <button style="position: absolute; margin-left:360px; margin-bottom: 15px; background:red" class="layui-btn" onclick="endinsert()">取消</button>-->
+<!--                    </div>-->
 				</form>
 			</div>
 		</div>
@@ -214,6 +216,18 @@
 			      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
 			    ]],
                 done: function(res, curr, count){
+				    common.myForm({
+                        id:{
+                            type:'text',
+                            verify:'required',
+                            title:'ID'
+                        },
+                        name:{
+                            type:'text',
+                            verify:'required',
+                            title:'姓名'
+                        },
+                    })
 				    console.log(res);
                     console.log(res.data[0].status);
                 },
@@ -241,11 +255,11 @@
 						'age': data.age,
 						'sex': data.sex,
 						'sal': data.sal,
-						'status': data.status,
-						'dataline': data.dataline,
 						'post': data.post,
+						'list': data.list,
 					});
 					update();
+
 				}
 			})
 		});

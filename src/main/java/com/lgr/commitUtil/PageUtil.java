@@ -1,4 +1,4 @@
-package com.lgr.confog;
+package com.lgr.commitUtil;
 
 public class PageUtil {
 
