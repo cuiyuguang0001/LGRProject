@@ -6,16 +6,30 @@ var user = {
 }
 
 var myurl = {
-    //显示所有用户
-    userList: '/user/userList',
+    //user表操作
+    userList: '/user/userList',//模糊查询参数 name(传不传都行)
+    userAdd: '/user/userAdd',//添加 参数 name,age,sex,sal,post
+    userEdit: '/user/userEdit',//修改 参数 id name age sex sal post
+    userDel: '/user/userDel',//删除 参数 id
+    userListName: '/user/userListName',//查询所有员工名字
     //登陆
-    login: '/user/login',
-    //显示所有船只
+    login: '/user/login', //参数 username pwd
+    //boat表操作
     boatList: '/boat/boatList',
-    //显示所有订单
+    boatAdd: '/boat/boatAdd',//添加 参数 name money people(int)
+    boatEdit: '/boat/boatEdit',//修改 参数 name money people(int)
+    boatDel: '/boat/boatDel',//删除 参数 id
+    //dingdan表操作
     dingdanList: '/dingdan/dingdanList',
-    //显示所有库存
+    dingdanAdd: '/dingdan/dingdanAdd',//添加 参数 type name num util
+    dingdanDel: '/dingdan/dingdanDel',//删除 参数 id
+    //kucun表操作
     kucunList: '/kucun/kucunList',
+    //plan表操作
+    planList: '/plan/planList',
+    planAdd: '/plan/planAdd',//添加 参数 type people(int) boat(int) oil
+    planEditStatus: '/plan/planEditStatus',//修改状态 参数 status id
+    planDel: '/plan/planDel'//删除 参数 id
 }
 
 var req = {

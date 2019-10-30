@@ -21,4 +21,16 @@ public class DingDanController {
         return dingDanService.dingDanList(dingDan);
     }
 
+    @PostMapping("dingdanAdd")
+    public Map<String ,Object> dingDanAdd(@RequestBody DingDan dingDan)
+    {
+        return dingDanService.dingdanAdd(dingDan);
+    }
+
+    @PostMapping("dingdanDel")
+    public Map<String ,Object> dingDanDel(@RequestBody DingDan dingDan)
+    {
+        return dingDanService.dingdanDel(dingDan);
+    }
+
 }

@@ -25,4 +25,24 @@ public class UserController {
         return userService.login(user);
     }
 
+    @PostMapping("userAdd")
+    public Map<String,Object> userAdd(@RequestBody User user){
+        return userService.userAdd(user);
+    }
+
+    @PostMapping("userEdit")
+    public Map<String,Object> userEdit(@RequestBody User user){
+        return userService.userEdit(user);
+    }
+
+    @PostMapping("userDel")
+    public Map<String,Object> userDel(@RequestBody User user){
+        return userService.userDel(user);
+    }
+
+    @PostMapping("userListName")
+    public Map<String,Object> userListName(@RequestBody User user){
+        return userService.userListName();
+    }
+
 }

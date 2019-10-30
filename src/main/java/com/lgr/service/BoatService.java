@@ -34,4 +34,26 @@ public class BoatService {
                 Constant.SUCCESS);
     }
 
+    public Map<String, Object> boatAdd(Boat boat)
+    {
+        boat.setDataline(CommitUtil.getTineLine());
+        if (boatMapper.boatAdd(boat))
+            return MapUtil.requestMap(null, true);
+        return MapUtil.requestMap(null, false);
+    }
+
+    public Map<String, Object> boatEdit(Boat boat)
+    {
+        if (boatMapper.boatEdit(boat))
+            return MapUtil.requestMap(null, true);
+        return MapUtil.requestMap(null, false);
+    }
+
+    public Map<String, Object> boatDel(Boat boat)
+    {
+        if (boatMapper.boatDel(boat))
+            return MapUtil.requestMap(null, true);
+        return MapUtil.requestMap(null, false);
+    }
+
 }

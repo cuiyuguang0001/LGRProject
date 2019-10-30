@@ -5,7 +5,7 @@ public class Plan {
     private int id;
     private String type;
     private String dataline;
-    private String perople;
+    private String people;
     private String boat;
     private String oil;
     private String status;
@@ -55,12 +55,12 @@ public class Plan {
         this.dataline = dataline;
     }
 
-    public String getPerople() {
-        return perople;
+    public String getPeople() {
+        return people;
     }
 
-    public void setPerople(String perople) {
-        this.perople = perople;
+    public void setPeople(String people) {
+        this.people = people;
     }
 
     public String getBoat() {

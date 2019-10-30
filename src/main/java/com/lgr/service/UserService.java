@@ -1,5 +1,6 @@
 package com.lgr.service;
 
+import com.lgr.commitUtil.CommitUtil;
 import com.lgr.commitUtil.MapUtil;
 import com.lgr.constant.Constant;
 import com.lgr.mapper.UserMapper;
@@ -19,10 +20,10 @@ public class UserService {
 
     public Map<String ,Object> userList(User user)
     {
-        System.out.println(user.getName());
-        System.out.println(user.getPage());
-        System.out.println(user.getLimit());
-        return MapUtil.requestMap(userMapper.userList(user),
+        List<User> users = userMapper.userList(user);
+        for(User u : users)
+            u.setDataline(CommitUtil.timestampToStr(Long.valueOf(u.getDataline())));
+        return MapUtil.requestMap(users,
                 userMapper.userListCount(user),
                 Constant.SUCCESS_REQUEST,
                 Constant.SUCCESS);
@@ -32,8 +33,36 @@ public class UserService {
     {
         int login = userMapper.login(user);
         if(login > 0)
-            return MapUtil.requestMap(null, Constant.SUCCESS_REQUEST, Constant.SUCCESS);
-        return MapUtil.requestMap(null,Constant.NOT_SUCCESS_REQUEST, Constant.NOT_SUCCESS);
+            return MapUtil.requestMap(null, true);
+        return MapUtil.requestMap(null,false);
+    }
+
+    public Map<String, Object> userAdd(User user)
+    {
+        user.setDataline(CommitUtil.getTineLine());
+        user.setList(userMapper.findPostNumForName(user.getPost()) + "");
+        if(userMapper.userAdd(user))
+            return MapUtil.requestMap(null, true);
+        return MapUtil.requestMap(null, false);
+    }
+
+    public Map<String, Object> userEdit(User user)
+    {
+        user.setList(userMapper.findPostNumForName(user.getPost()) + "");
+        if(userMapper.userEdit(user))
+            return MapUtil.requestMap(null, true);
+        return MapUtil.requestMap(null, false);
+    }
+
+    public Map<String ,Object> userDel(User user)
+    {
+        if(userMapper.uerDel(user))
+            return MapUtil.requestMap(null, true);
+        return MapUtil.requestMap(null, false);
+    }
+
+    public Map<String ,Object> userListName(){
+        return MapUtil.requestMap(userMapper.userListName(), true);
     }
 
 }
