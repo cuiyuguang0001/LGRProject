@@ -25,8 +25,10 @@ public class UserService {
         Map<String ,Object> map = new HashMap<>();
         PageUtil p = new PageUtil(user.getPage(), user.getLimit());
         map.put("page", p);
+        map.put("data", user);
 //        List<User> users = userMapper.userList(user, new RowBounds(user.getPage(), user.getLimit()));
         List<User> users = userMapper.userList(map);
+        System.out.println(users);
         for(User u : users)
             u.setDataline(CommitUtil.timestampToStr(Long.valueOf(u.getDataline())));
         return MapUtil.requestMap(users,

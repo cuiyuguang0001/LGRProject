@@ -146,7 +146,6 @@
 			    ]],
                 done: function(res, curr, count){
 				    console.log(res);
-                    console.log(res.data[0].status);
                 },
                 id: 'testReload',
 				page: true,
@@ -155,6 +154,7 @@
 			});
             var $ = layui.$, active = {
                 reload: function(){
+                	console.log(111)
                     var demoReload = $('#demoReload');
                     //执行重载
                     table.reload('testReload', {

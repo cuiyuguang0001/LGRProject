@@ -2,6 +2,7 @@ package com.lgr.service;
 
 import com.lgr.commitUtil.CommitUtil;
 import com.lgr.commitUtil.MapUtil;
+import com.lgr.confog.PageUtil;
 import com.lgr.constant.Constant;
 import com.lgr.mapper.DingDanMapper;
 import com.lgr.mapper.KuCunMapper;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,11 +27,15 @@ public class DingDanService {
 
     public Map<String ,Object> dingDanList(DingDan dingDan)
     {
-        List<DingDan> dingDans = dingDanMapper.dingDanList(dingDan);
+        Map<String ,Object> map = new HashMap<>();
+        PageUtil p = new PageUtil(dingDan.getPage(), dingDan.getLimit());
+        map.put("page", p);
+        map.put("data", dingDan);
+        List<DingDan> dingDans = dingDanMapper.dingDanList(map);
         for(DingDan d : dingDans)
             d.setDataline(CommitUtil.timestampToStr(Long.valueOf(d.getDataline())));
         return MapUtil.requestMap(dingDans,
-                dingDanMapper.dingDanCount(dingDan),
+                p.getCount(),
                 Constant.SUCCESS_REQUEST,
                 Constant.SUCCESS);
     }

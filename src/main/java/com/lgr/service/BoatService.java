@@ -2,12 +2,14 @@ package com.lgr.service;
 
 import com.lgr.commitUtil.CommitUtil;
 import com.lgr.commitUtil.MapUtil;
+import com.lgr.confog.PageUtil;
 import com.lgr.constant.Constant;
 import com.lgr.mapper.BoatMapper;
 import com.lgr.pojo.Boat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +22,13 @@ public class BoatService {
     public Map<String ,Object> boatList(Boat boat)
     {
 
+        Map<String ,Object> map = new HashMap<>();
+        PageUtil p = new PageUtil(boat.getPage(), boat.getLimit());
+        map.put("page", p);
+        map.put("data", boat);
+
         //处理时间戳
-        List<Boat> boats = boatMapper.boatList(boat);
+        List<Boat> boats = boatMapper.boatList(map);
         for(Boat b : boats)
         {
             b.setDataline(CommitUtil.timestampToStr(Long.valueOf(b.getDataline())));
@@ -29,7 +36,7 @@ public class BoatService {
         }
 
         return MapUtil.requestMap(boats,
-                boatMapper.boatListCount(boat),
+                p.getCount(),
                 Constant.SUCCESS_REQUEST,
                 Constant.SUCCESS);
     }

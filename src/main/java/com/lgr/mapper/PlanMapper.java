@@ -4,15 +4,13 @@ import com.lgr.pojo.Plan;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface PlanMapper {
 
-    @Select("select id, type, dataline, people, boat, oil, status from ship_plan " +
-            "limit #{page}, #{limit}")
-    List<Plan> planList(Plan plan);
-    @Select("select count(0) from ship_plan")
-    int planListCount(Plan plan);
+    @Select("select id, type, dataline, people, boat, oil, status from ship_plan where status = #{status}")
+    List<Plan> planList(Map<String ,Object> map);
     @Select("select id, type, dataline, people, boat, oil, status from ship_plan where id = #{id}")
     Plan planModel(String id);
 

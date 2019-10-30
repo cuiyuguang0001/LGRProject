@@ -2,6 +2,7 @@ package com.lgr.service;
 
 import com.lgr.commitUtil.CommitUtil;
 import com.lgr.commitUtil.MapUtil;
+import com.lgr.confog.PageUtil;
 import com.lgr.constant.Constant;
 import com.lgr.mapper.BoatMapper;
 import com.lgr.mapper.PlanMapper;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,11 +28,15 @@ public class PlanService {
     UserMapper userMapper;
 
     public Map<String ,Object> planList(Plan plan){
-        List<Plan> plans = planMapper.planList(plan);
-        for(Plan p : plans)
-            p.setDataline(CommitUtil.timestampToStr(Long.valueOf(p.getDataline())));
+        Map<String ,Object> map = new HashMap<>();
+        PageUtil p = new PageUtil(plan.getPage(), plan.getLimit());
+        map.put("page", p);
+        map.put("data", plan);
+        List<Plan> plans = planMapper.planList(map);
+        for(Plan p1 : plans)
+            p1.setDataline(CommitUtil.timestampToStr(Long.valueOf(p1.getDataline())));
         return MapUtil.requestMap(plans,
-                planMapper.planListCount(plan),
+                p.getCount(),
                 Constant.SUCCESS_REQUEST,
                 Constant.SUCCESS);
     }

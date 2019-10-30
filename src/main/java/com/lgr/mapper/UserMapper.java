@@ -15,9 +15,6 @@ public interface UserMapper {
             "order by list asc,dataline desc")
     List<User> userList(Map<String ,Object> map);
 
-    @Select("select count(0) from ship_user where name like concat(ifNull(#{name}, ''), '%')")
-    int userListCount(User user);
-
     @Select("select name from ship_user order by list asc")
     List<String> userListName();
 

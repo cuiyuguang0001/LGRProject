@@ -4,16 +4,14 @@ import com.lgr.pojo.Boat;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface BoatMapper {
 
     @Select("select id, name, money, people, dataline, updatedata, num, status " +
-            "from ship_boat limit #{page}, #{limit}")
-    List<Boat> boatList(Boat boat);
-
-    @Select("select count(0) from ship_boat")
-    int boatListCount(Boat boat);
+            "from ship_boat")
+    List<Boat> boatList(Map<String ,Object> map);
 
     @Insert("insert into ship_boat(name, money, people, dataline, updatedata, num, status) " +
             "values(#{name}, #{money}, #{people}, #{dataline}, 0, 0, 0)")

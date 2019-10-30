@@ -44,7 +44,6 @@ public class MyPagePlugin implements Interceptor {
         MetaObject metaObject = MetaObject.forObject(
                 statementHandler, SystemMetaObject.DEFAULT_OBJECT_FACTORY,SystemMetaObject.DEFAULT_OBJECT_WRAPPER_FACTORY,new DefaultReflectorFactory());
         String sqlId = (String)metaObject.getValue("delegate.mappedStatement.id");
-        System.out.println(sqlId.matches(pageSqlId));
         //判断一下是否是分页
 //        <!--第一步 执行一条couunt语句-->
         //1.1拿到连接
@@ -60,14 +59,12 @@ public class MyPagePlugin implements Interceptor {
             ParameterHandler parameterHandler = statementHandler.getParameterHandler();
             //原来应该执行的sql
             String sql = statementHandler.getBoundSql().getSql();
-            System.out.println(sql);
             //sql= select * from  product    select count(0) from (select * from  product) as a
             //select * from luban_product where name = #{name}
             //执行一条count语句
             //拿到数据库连接对象
             Connection connection = (Connection) invocation.getArgs()[0];
             String countSql = "select count(0) from ("+sql+") a";
-            System.out.println(countSql);
             //渲染参数
             PreparedStatement preparedStatement = connection.prepareStatement(countSql);
             //条件交给mybatis
@@ -89,7 +86,6 @@ public class MyPagePlugin implements Interceptor {
             //拼接分页语句(limit) 并且修改mysql本该执行的语句
             String pageSql = getPageSql(sql, pageUtil);
             metaObject.setValue("delegate.boundSql.sql",pageSql);
-            System.out.println(pageSql);
         }
         //推进拦截器调用链
         return invocation.proceed();

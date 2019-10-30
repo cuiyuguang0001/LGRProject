@@ -16,7 +16,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping("userList")
-    public Map<String,Object> userList(User user){
+    public Map<String,Object> userList(@RequestBody User user){
         return userService.userList(user);
     }
 

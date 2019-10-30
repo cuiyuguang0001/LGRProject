@@ -7,14 +7,14 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface KuCunMapper {
 
-    @Select("select id, name, num, util from ship_kucun")
-    List<KuCun> kucunList(KuCun kuCun);
-    @Select("select count(0) from ship_kucun")
-    int kucunListCount(KuCun kuCun);
+    @Select("select id, name, num, util from ship_kucun where status = #{status}")
+    List<KuCun> kucunList(Map<String, Object> map);
+
     @Select("select num from ship_kucun where name = #{name}")
     KuCun kucunModel(String name);
 

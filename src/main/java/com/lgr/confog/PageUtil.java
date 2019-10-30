@@ -1,7 +1,6 @@
 package com.lgr.confog;
 
 public class PageUtil {
-    private int page;
 
     private  int limit;
 
@@ -13,18 +12,10 @@ public class PageUtil {
     }
 
     public  PageUtil(int page,int limit){
-        this.page = page;
         this.limit = limit;
-        this.start = (page-1)*limit;
+        this.start = page;
     }
 
-    public int getPage() {
-        return page;
-    }
-
-    public void setPage(int page) {
-        this.page = page;
-    }
 
     public int getLimit() {
         return limit;
