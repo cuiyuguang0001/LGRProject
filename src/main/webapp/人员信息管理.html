@@ -6,8 +6,9 @@
 		<title>layout 后台大布局 - Layui</title>
 		<link rel="stylesheet" href="static/layui/css/layui.css">
 		<script src="static/jQuery/jquery-3.4.1.min.js"></script>
-		<script src="static/layui/layui.js"></script>
+		<script src="static/layui/layui.all.js"></script>
 		<script src="js/httpReq.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/人员信息管理.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
@@ -85,7 +86,7 @@
 				<!-- 数据表格 -->
                 <div class="demoTable">
 					<script type="text/html" id="barDemo">
-						<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+						<a class="layui-btn layui-btn-xs" lay-event="edit" onclick="update()">编辑</a>
 						<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 					</script>
                 </div>
@@ -94,6 +95,75 @@
             </div>
 <!--==========================================================================================-->
 		</div>
+		<div class="update" style="display: none;">
+			<div style="border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
+				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+					<legend>部门信息</legend>
+				</fieldset>
+				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="formm">
+					<div class="layui-form-item">
+						<label class="layui-form-label">ID</label>
+						<div class="layui-input-inline ">
+							<input type="text" id="id" name="id" value="" disabled="" lay-verify="required" autocomplete="off"
+								   class="layui-input layui-btn-disabled">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">姓名</label>
+						<div class="layui-input-inline">
+							<input type="text" id="name" name="name" disabled="" lay-verify="required" placeholder="请输入部门名称"
+								   autocomplete="off" class="layui-input layui-btn-disabled">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">年龄</label>
+						<div class="layui-input-inline">
+							<input type="text" id="age" name="age" lay-verify="required" placeholder="请输入部门人数"
+								   autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">性别</label>
+						<div class="layui-input-inline">
+							<input type="text" id="sex" name="sex" lay-verify="required" placeholder="请输入部门人数"
+								   autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">工资</label>
+						<div class="layui-input-inline">
+							<input type="text" id="sal" name="sal" lay-verify="required" placeholder="部门负责人"
+								   autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">状态</label>
+						<div class="layui-input-inline">
+							<input type="text" id="dataline" name="dataline" lay-verify="required" placeholder="部门负责人"
+								   autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">入职时间</label>
+						<div class="layui-input-inline">
+							<input type="text" id="dataline" name="dataline" lay-verify="required" placeholder="部门负责人"
+								   autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">职业</label>
+						<div class="layui-input-inline">
+							<input type="text" id="post" name="post" lay-verify="required" placeholder="部门负责人"
+								   autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<button style="position: absolute; margin-left:80px; margin-bottom: 15px;" class="layui-btn" lay-submit=""
+							lay-filter="demo1" onclick="update_bumen()">立即修改</button>
+					<button style="position: absolute; margin-left:360px; margin-bottom: 15px; background:red" class="layui-btn" onclick="endinsert()">取消</button>
+				</form>
+			</div>
+		</div>
+		<!--==========================================================================================-->
 		<script>
 			//JavaScript代码区域
 			layui.use('element', function() {
@@ -134,21 +204,20 @@
 				size: 'lg',
 			    cols: [[
 			      {field:'id', width:'8%', title: 'ID', sort: true, align: 'center', fixed: true}
-			      ,{field:'name', width:'8%', title: '姓名'}
+			      ,{field:'name', width:'10%', title: '姓名', align: 'center'}
 			      ,{field:'age', width:'8%', title: '年龄', sort: true, align: 'center'}
-			      ,{field:'sex', width:'8%', title: '性别'}
+			      ,{field:'sex', width:'8%', title: '性别', align: 'center'}
 			      ,{field:'sal', title: '工资', width: '10%', minWidth: 100, align: 'center'}
-			      ,{field:'dataline',width: '15%', title: '入职时间', sort: true, align: 'center'}
-			      ,{field:'status',width: '10%', title: '状态', sort: true, align: 'center'}
+			      ,{field:'dataline',width: '20%', title: '入职时间', sort: true, align: 'center'}
+			      ,{field:'status',width: '15%', title: '状态', sort: true, align: 'center', templet:'#manager_status'}
 			      ,{field:'post', title: '职业', align: 'center'}
-			      ,{field:'list', width:137, title: '职位优先级', sort: true, align: 'center'}
 			      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
 			    ]],
                 done: function(res, curr, count){
 				    console.log(res);
                     console.log(res.data[0].status);
                 },
-                id: 'testReload',
+                id: 'test',
 				page: true,
 				limit: 15,
 				limits: [5, 10, 15],
@@ -161,22 +230,31 @@
 					layer.confirm('真的删除行么', function(index){
 						alert(data.id)
 						req.post(myurl.userDel, {id: data.id} , false)
-						// obj.del();
 						layer.close(index);
+						table.reload('test');
 					});
 				} else if(obj.event === 'edit'){
-					layer.prompt({
-						formType: 2
-						,value: data.email
-					}, function(value, index){
-						obj.update({
-							email: value
-						});
-						layer.close(index);
+					form = layui.form
+					form.val('example', {
+						"id": data.id,
+						'name': data.name,
+						'age': data.age,
+						'sex': data.sex,
+						'sal': data.sal,
+						'post': data.post,
+						'list': data.list,
 					});
+					update();
 				}
-			});
+			})
 		});
+		</script>
+		<script type="text/html" id="manager_status">
+			{{#  if(d.status ==1 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: orangered; width: 50%">工作中</span>
+			{{#  } else { }}
+			<span class="layui-btn layui-btn-xs" style="background: lawngreen; width: 50%">无工作</span>
+			{{#  } }}
 		</script>
 	</body>
 </html>
