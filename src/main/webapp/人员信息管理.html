@@ -84,14 +84,13 @@
 				<!-- 内容主体区域 -->
 				<!-- 数据表格 -->
                 <div class="demoTable">
-                    搜索ID：
-                    <div class="layui-inline">
-                        <input class="layui-input" name="id" id="demoReload" autocomplete="off">
-                    </div>
-                    <button class="layui-btn" data-type="reload">搜索</button>
+					<script type="text/html" id="barDemo">
+						<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+						<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+					</script>
                 </div>
 
-                <table class="layui-hide" id="LAY_table_user" lay-filter="user"></table>
+                <<table class="layui-hide" id="test" lay-filter="test"></table>
             </div>
 <!--==========================================================================================-->
 		</div>
@@ -113,7 +112,7 @@
 			//方法级渲染
 			table.render({
 				method: 'post',
-				elem: '#LAY_table_user',
+				elem: '#test',
 				contentType: 'application/json',
 				dataType: 'json',
                 where:{'status': 0},
@@ -134,44 +133,49 @@
 				// even: false,
 				size: 'lg',
 			    cols: [[
-			      {field:'id', width:'10%', title: 'ID', sort: true, align: 'center', fixed: true}
-			      ,{field:'name', width:'10%', title: '姓名'}
-			      ,{field:'age', width:'10%', title: '年龄', sort: true, align: 'center'}
-			      ,{field:'sex', width:'10%', title: '性别'}
-			      ,{field:'sal', title: '工资', width: '15%', minWidth: 100, align: 'center'}
+			      {field:'id', width:'8%', title: 'ID', sort: true, align: 'center', fixed: true}
+			      ,{field:'name', width:'8%', title: '姓名'}
+			      ,{field:'age', width:'8%', title: '年龄', sort: true, align: 'center'}
+			      ,{field:'sex', width:'8%', title: '性别'}
+			      ,{field:'sal', title: '工资', width: '10%', minWidth: 100, align: 'center'}
 			      ,{field:'dataline',width: '15%', title: '入职时间', sort: true, align: 'center'}
-			      ,{field:'status',width: '15%', title: '状态', sort: true, align: 'center'}
+			      ,{field:'status',width: '10%', title: '状态', sort: true, align: 'center'}
 			      ,{field:'post', title: '职业', align: 'center'}
 			      ,{field:'list', width:137, title: '职位优先级', sort: true, align: 'center'}
+			      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
 			    ]],
                 done: function(res, curr, count){
 				    console.log(res);
+                    console.log(res.data[0].status);
                 },
                 id: 'testReload',
 				page: true,
 				limit: 15,
 				limits: [5, 10, 15],
 			});
-            var $ = layui.$, active = {
-                reload: function(){
-                	console.log(111)
-                    var demoReload = $('#demoReload');
-                    //执行重载
-                    table.reload('testReload', {
-                        page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        ,where: {
-                            id: demoReload.val()
-                        }
-                    });
-                }
-            };
-
-            $('.demoTable .layui-btn').on('click', function(){
-                var type = $(this).data('type');
-                active[type] ? active[type].call(this) : '';
-            });
+			//监听行工具事件
+			table.on('tool(test)', function(obj){
+				var data = obj.data;
+				//console.log(obj)
+				if(obj.event === 'del'){
+					layer.confirm('真的删除行么', function(index){
+						alert(data.id)
+						req.post(myurl.userDel, {id: data.id} , false)
+						// obj.del();
+						layer.close(index);
+					});
+				} else if(obj.event === 'edit'){
+					layer.prompt({
+						formType: 2
+						,value: data.email
+					}, function(value, index){
+						obj.update({
+							email: value
+						});
+						layer.close(index);
+					});
+				}
+			});
 		});
 		</script>
 	</body>

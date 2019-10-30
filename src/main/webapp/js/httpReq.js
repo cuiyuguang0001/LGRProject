@@ -39,6 +39,8 @@ var req = {
             url: user.defaultUrl + url,
             type: 'POST',
             data: data,
+            dataType: 'json',
+            contentType: 'application/json',
             async: async == null ? false : async,
             success: function(data){
                 r = data;
