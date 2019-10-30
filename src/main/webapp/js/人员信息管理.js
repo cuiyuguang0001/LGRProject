@@ -16,3 +16,14 @@ function update(){
         id: "alertcenterdiv",
     });
 }
+function updateTrue(){
+    var id = $("#id").val();
+    var name = $("#name").val();
+    var age = $("#age").val();
+    var sex = $("#sex").val();
+    var sal = $("#sal").val();
+    var post = $("#post").val();
+    alert(name)
+    req.post(myurl.userEdit, {name: name, age: age, sex: sex, sal: sal, post: post, id: id}, false)
+
+}
