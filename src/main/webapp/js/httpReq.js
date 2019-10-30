@@ -38,7 +38,7 @@ var req = {
         $.ajax({
             url: user.defaultUrl + url,
             type: 'POST',
-            data: data,
+            data: JSON.stringify(data),
             dataType: 'json',
             contentType: 'application/json',
             async: async == null ? false : async,

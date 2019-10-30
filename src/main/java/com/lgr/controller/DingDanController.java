@@ -16,8 +16,8 @@ public class DingDanController {
     DingDanService dingDanService;
 
     @PostMapping("dingdanList")
-    public Map<String ,Object> dingDanList(@RequestBody DingDan dingDan)
-    {
+    public Map<String ,Object> dingDanList(@RequestBody DingDan dingDan) {
+        System.out.println("状态为type：" + dingDan.getType());
         return dingDanService.dingDanList(dingDan);
     }
 

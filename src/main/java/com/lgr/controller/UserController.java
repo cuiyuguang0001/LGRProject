@@ -32,6 +32,7 @@ public class UserController {
 
     @PostMapping("userEdit")
     public Map<String,Object> userEdit(@RequestBody User user){
+        System.out.println(user.getName());
         return userService.userEdit(user);
     }
 
