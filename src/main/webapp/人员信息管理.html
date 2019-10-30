@@ -112,7 +112,7 @@
 						<label class="layui-form-label">姓名</label>
 						<div class="layui-input-inline">
 							<input type="text" id="name" name="name"  lay-verify="required" placeholder="请输入部门名称"
-								   autocomplete="off" class="layui-input ">
+								   autocomplete="off" class="layui-input layui-btn-disabled">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -139,8 +139,8 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">状态</label>
 						<div class="layui-input-inline">
-							<input type="text" id="status" name="status" disabled="" lay-verify="required" placeholder="部门负责人"
-								   autocomplete="off" class="layui-input layui-btn-disabled">
+							<input type="text" id="status" name="status" lay-verify="required" placeholder="部门负责人"
+								   autocomplete="off" class="layui-input">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -158,8 +158,8 @@
 						</div>
 					</div>
 					<button style="position: absolute; margin-left:80px; margin-bottom: 15px;" class="layui-btn" lay-submit=""
-							lay-filter="demo1" onclick="updateTrue()">立即修改</button>
-					<button style="position: absolute; margin-left:360px; margin-bottom: 15px; background:red" class="layui-btn" onclick="noUpdate()">取消</button>
+							lay-filter="demo1" onclick="update_bumen()">立即修改</button>
+					<button style="position: absolute; margin-left:360px; margin-bottom: 15px; background:red" class="layui-btn" onclick="endinsert()">取消</button>
 				</form>
 			</div>
 		</div>
@@ -235,14 +235,13 @@
 					});
 				} else if(obj.event === 'edit'){
 					form = layui.form
-					var ii = (data.status == 0 ? "无工作": "工作中")
 					form.val('example', {
 						"id": data.id,
 						'name': data.name,
 						'age': data.age,
 						'sex': data.sex,
 						'sal': data.sal,
-						'status': ii,
+						'status': data.status,
 						'dataline': data.dataline,
 						'post': data.post,
 					});

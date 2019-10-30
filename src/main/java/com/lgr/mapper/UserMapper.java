@@ -9,7 +9,6 @@ import java.util.Map;
 
 @Mapper
 public interface UserMapper {
-    // limit #{page},#{limit}
     @Select("select id, name, age, sex, sal, status, dataline, post, list " +
             "from ship_user where name like concat(ifNull(#{name}, ''), '%') " +
             "order by list asc,dataline desc")

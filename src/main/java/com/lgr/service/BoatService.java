@@ -2,7 +2,7 @@ package com.lgr.service;
 
 import com.lgr.commitUtil.CommitUtil;
 import com.lgr.commitUtil.MapUtil;
-import com.lgr.confog.PageUtil;
+import com.lgr.commitUtil.PageUtil;
 import com.lgr.constant.Constant;
 import com.lgr.mapper.BoatMapper;
 import com.lgr.pojo.Boat;
