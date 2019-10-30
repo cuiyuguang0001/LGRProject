@@ -58,7 +58,7 @@ public class PlanService {
                     return MapUtil.requestMap(null,false);
             }
         }else {
-            //出港
+            //入港
             if(plan.getStatus().equals("1"))
             {
                 Plan planModel = planMapper.planModel(plan.getId() + "");

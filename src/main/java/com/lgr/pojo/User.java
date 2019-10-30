@@ -35,7 +35,8 @@ public class User {
     }
 
     public int getPage() {
-        return (page - 1) * limit;
+//        return (page - 1) * limit;
+        return page;
     }
 
     public void setPage(int page) {

@@ -2,6 +2,7 @@ package com.lgr.service;
 
 import com.lgr.commitUtil.CommitUtil;
 import com.lgr.commitUtil.MapUtil;
+import com.lgr.confog.PageUtil;
 import com.lgr.constant.Constant;
 import com.lgr.mapper.UserMapper;
 import com.lgr.pojo.User;
@@ -9,6 +10,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,11 +22,15 @@ public class UserService {
 
     public Map<String ,Object> userList(User user)
     {
-        List<User> users = userMapper.userList(user);
+        Map<String ,Object> map = new HashMap<>();
+        PageUtil p = new PageUtil(user.getPage(), user.getLimit());
+        map.put("page", p);
+//        List<User> users = userMapper.userList(user, new RowBounds(user.getPage(), user.getLimit()));
+        List<User> users = userMapper.userList(map);
         for(User u : users)
             u.setDataline(CommitUtil.timestampToStr(Long.valueOf(u.getDataline())));
         return MapUtil.requestMap(users,
-                userMapper.userListCount(user),
+                p.getCount(),
                 Constant.SUCCESS_REQUEST,
                 Constant.SUCCESS);
     }

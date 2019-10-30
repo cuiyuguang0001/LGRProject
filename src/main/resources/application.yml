@@ -6,3 +6,5 @@ spring:
     password: x5
 server:
   port: 9010
+mybatis:
+  config-location: classpath:mybatis-config.xml
