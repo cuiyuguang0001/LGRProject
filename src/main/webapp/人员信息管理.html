@@ -101,17 +101,17 @@
 					<legend>部门信息</legend>
 				</fieldset>
 				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="formm">
-					<div class="layui-form-item">
+					<div class="layui-form-item" style="display: none">
 						<label class="layui-form-label">ID</label>
 						<div class="layui-input-inline ">
 							<input type="text" id="id" name="id" value="" disabled="" lay-verify="required" autocomplete="off"
-								   class="layui-input layui-btn-disabled">
+								   class="layui-input ">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">姓名</label>
 						<div class="layui-input-inline">
-							<input type="text" id="name" name="name" disabled="" lay-verify="required" placeholder="请输入部门名称"
+							<input type="text" id="name" name="name"  lay-verify="required" placeholder="请输入部门名称"
 								   autocomplete="off" class="layui-input layui-btn-disabled">
 						</div>
 					</div>
@@ -139,15 +139,15 @@
 					<div class="layui-form-item">
 						<label class="layui-form-label">状态</label>
 						<div class="layui-input-inline">
-							<input type="text" id="dataline" name="dataline" lay-verify="required" placeholder="部门负责人"
+							<input type="text" id="status" name="status" lay-verify="required" placeholder="部门负责人"
 								   autocomplete="off" class="layui-input">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">入职时间</label>
 						<div class="layui-input-inline">
-							<input type="text" id="dataline" name="dataline" lay-verify="required" placeholder="部门负责人"
-								   autocomplete="off" class="layui-input">
+							<input type="text" id="dataline" name="dataline"disabled="" lay-verify="required" placeholder="部门负责人"
+								   autocomplete="off" class="layui-input layui-btn-disabled">
 						</div>
 					</div>
 					<div class="layui-form-item">
@@ -241,8 +241,9 @@
 						'age': data.age,
 						'sex': data.sex,
 						'sal': data.sal,
+						'status': data.status,
+						'dataline': data.dataline,
 						'post': data.post,
-						'list': data.list,
 					});
 					update();
 				}
