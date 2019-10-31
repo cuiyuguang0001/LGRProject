@@ -26,7 +26,6 @@ public class UserService {
         map.put("page", p);
         map.put("name", user.getName());
         List<User> users = userMapper.userList(map);
-        System.out.println(users);
         for(User u : users)
             u.setDataline(CommitUtil.timestampToStr(Long.valueOf(u.getDataline())));
         return MapUtil.requestMap(users,

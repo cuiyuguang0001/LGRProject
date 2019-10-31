@@ -30,6 +30,8 @@ var myurl = {
     planAdd: '/plan/planAdd',//添加 参数 type people(int) boat(int) oil
     planEditStatus: '/plan/planEditStatus',//修改状态 参数 status id
     planDel: '/plan/planDel'//删除 参数 id
+    //weixiu表操作
+    weixiuList:'weixiu/weixiuList',
 }
 
 var req = {
