@@ -72,6 +72,15 @@ var common = {
     //      value:[]数组，与radioTitle一一对应
     //      radioTitle:[]数组，与value一一对应
     // }
+
+    //select语法
+    //id(id标识名):{
+    //      title:该行的名字,
+    //      type:select
+    //      data:{}json key(显示的行)-value(option中value的值)
+    //      radioTitle:[]数组，与value一一对应
+    //      verify:lay-verify的值，如果是required就是必填项
+    // }
     form: data => {
         for(let key in data)
         {
@@ -98,6 +107,15 @@ var common = {
                     break;
                 }
                 case 'select':{
+                    $('#myForm').append("<div class='layui-form-item'>\n" +
+                        "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
+                        "<div class='layui-input-inline '>\n" +
+                        "<select id='" +  key + "' name='" + key + "' lay-verify='" + data[key].verify + "'></select>" +
+                        "</div>\n" + "</div>\n")
+                    for(let key2 in data[key].data)
+                    {
+                        $('#' + key).append("<option value='" + data[key].data[key2] + "'>" + data[key].data[key2] + "</option>")
+                    }
                     break;
                 }
             }
