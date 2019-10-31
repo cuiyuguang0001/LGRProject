@@ -21,4 +21,22 @@ public class TuoLunController {
         return tuoLunService.tuolunList(tuoLun);
     }
 
+    @PostMapping("tuolunDel")
+    public Map<String, Object> tuolunDel(@RequestBody TuoLun tuoLun)
+    {
+        return tuoLunService.tuolunDel(tuoLun);
+    }
+
+    @PostMapping("tuolunEditStatus")
+    public Map<String, Object> tuolunEditStatus(@RequestBody TuoLun tuoLun)
+    {
+        return tuoLunService.tuolunEditStatus(tuoLun);
+    }
+
+    @PostMapping("tuolunAdd")
+    public Map<String, Object> tuolunAdd(@RequestBody TuoLun tuoLun)
+    {
+        return tuoLunService.tuolunAdd(tuoLun);
+    }
+
 }

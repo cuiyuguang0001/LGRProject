@@ -39,10 +39,14 @@ public class WeiXiuService {
 
     public Map<String ,Object> weixiuAdd(WeiXiu weiXiu)
     {
-        if(!userMapper.userEditStatus("1", weiXiu.getPeople()))
-            return MapUtil.requestMap(null,false);
-        if(!boatMapper.boatEditUpdateStatus("2", "0", weiXiu.getBoat()))
-            return MapUtil.requestMap(null,false);
+        if(weiXiu.getStatus().equals("1"))
+        {
+            if(!userMapper.userEditStatus("1", weiXiu.getPeople()))
+                return MapUtil.requestMap(null,false);
+            if(!boatMapper.boatEditUpdateStatus("2", "0", weiXiu.getBoat()))
+                return MapUtil.requestMap(null,false);
+        }
+
 
         weiXiu.setDataline(CommitUtil.getTineLine());
         if (!weiXiuMapper.weixiuAdd(weiXiu))
