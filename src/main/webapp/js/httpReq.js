@@ -38,8 +38,8 @@ var req = {
         $.ajax({
             url: user.defaultUrl + url,
             type: 'POST',
-            // data: JSON.stringify(data),
-            data: data,
+            data: JSON.stringify(data),
+            // data: data,
             dataType: 'json',
             contentType: 'application/json',
             async: async == null ? false : async,

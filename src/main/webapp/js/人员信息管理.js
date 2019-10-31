@@ -17,14 +17,14 @@ function update(){
     });
 }
 function updateTrue(){
-    var idd = $("#id").val();
-    alert(idd);
+    var id = $("#id").val();
+    alert(id);
     var name = $("#name").val();
     var age = $("#age").val();
     var sex = $("#sex").val();
     var sal = $("#sal").val();
     var post = $("#post").val();
-    req.post(myurl.userEdit, {name: name, age: age, sex: sex, sal: sal, post: post, id: idd, list: 0}, false)
+    req.post(myurl.userEdit, {name: name, age: age, sex: sex, sal: sal, post: post, id: id}, false)
 }
 
 function insert(){
@@ -51,5 +51,5 @@ function insertTrue(){
     var sex = $("#insert_sex").val();
     var sal = $("#insert_sal").val();
     var post = $("#insert_post").val();
-    req.post(myurl.userAdd, {name: name, age: age, sex: sex, sal: sal, dataline: 1, post: post, list: 0}, false)
+    req.post(myurl.userAdd, {name: name, age: age, sex: sex, sal: sal, dataline: 1, post: post}, false)
 }
