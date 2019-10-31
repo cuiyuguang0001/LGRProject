@@ -84,6 +84,7 @@ var common = {
     form: data => {
         for(let key in data)
         {
+            console.log(data[key].type)
             switch (data[key].type) {
                 case 'text':{
                     $('#' + data.form).append("<div class='layui-form-item'>\n" +
@@ -96,6 +97,7 @@ var common = {
                     break;
                 }
                 case 'radio':{
+                    console.log("111")
                     $('#' + data.form).append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
                         "<div class='layui-input-block' id='myRadio-"+ key +"'>\n" +
