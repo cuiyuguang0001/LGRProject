@@ -30,9 +30,8 @@ public class DingDanService {
         Map<String ,Object> map = new HashMap<>();
         PageUtil p = new PageUtil(dingDan.getPage(), dingDan.getLimit());
         map.put("page", p);
-        map.put("data", dingDan);
+        map.put("type", dingDan.getType());
         List<DingDan> dingDans = dingDanMapper.dingDanList(map);
-        System.out.println(dingDans.size());
         for(DingDan d : dingDans)
             d.setDataline(CommitUtil.timestampToStr(Long.valueOf(d.getDataline())));
         return MapUtil.requestMap(dingDans,

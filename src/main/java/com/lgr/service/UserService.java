@@ -24,8 +24,7 @@ public class UserService {
         Map<String ,Object> map = new HashMap<>();
         PageUtil p = new PageUtil(user.getPage(), user.getLimit());
         map.put("page", p);
-        map.put("data", user);
-//        List<User> users = userMapper.userList(user, new RowBounds(user.getPage(), user.getLimit()));
+        map.put("name", user.getName());
         List<User> users = userMapper.userList(map);
         System.out.println(users);
         for(User u : users)
@@ -47,6 +46,7 @@ public class UserService {
     public Map<String, Object> userAdd(User user)
     {
         user.setDataline(CommitUtil.getTineLine());
+        System.out.println(user.getPost());
         user.setList(userMapper.findPostNumForName(user.getPost()) + "");
         if(userMapper.userAdd(user))
             return MapUtil.requestMap(null, true);

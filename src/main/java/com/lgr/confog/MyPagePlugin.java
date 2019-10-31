@@ -73,7 +73,11 @@ public class MyPagePlugin implements Interceptor {
 
             //拼接分页语句(limit) 并且修改mysql本该执行的语句
             String pageSql = getPageSql(sql, pageUtil);
+
+            preparedStatement = connection.prepareStatement(pageSql);
+            parameterHandler.setParameters(preparedStatement);
             metaObject.setValue("delegate.boundSql.sql",pageSql);
+            System.out.println(pageSql);
         }
         //推进拦截器调用链
         return invocation.proceed();

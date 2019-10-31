@@ -12,6 +12,9 @@ public interface DingDanMapper {
     @Select("select id, type, name, num, util, dataline from ship_dingdan where type = #{type}")
     List<DingDan> dingDanList(Map<String, Object> map);
 
+//    @Select("select id, type, name, num, util, dataline from ship_dingdan where type = #{type}")
+//    List<DingDan> dingDan(DingDan dingDan);
+
     @Insert("insert into ship_dingdan(type, name, num, util, dataline) " +
             "values(#{type}, #{name}, #{num}, #{util}, #{dataline})")
     boolean dingdanAdd(DingDan dingDan);

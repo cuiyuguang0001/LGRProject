@@ -22,7 +22,6 @@ public class KuCunService {
         Map<String ,Object> map = new HashMap<>();
         PageUtil p = new PageUtil(kuCun.getPage(), kuCun.getLimit());
         map.put("page", p);
-        map.put("data", kuCun);
         return MapUtil.requestMap(kuCunMapper.kucunList(map),
                 p.getCount(),
                 Constant.SUCCESS_REQUEST,

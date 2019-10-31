@@ -3,7 +3,7 @@ package com.lgr.pojo;
 public class DingDan {
 
     private int id;
-    private String type = "0";
+    private String type;
     private String name;
     private String num;
     private String util;
