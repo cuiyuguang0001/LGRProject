@@ -134,8 +134,8 @@ var common = {
 
         $('#' + data.form).append("<div class='layui-form-item'>\n" +
             "<button id='Yes' style='position: absolute; margin-left:80px; margin-bottom: 15px;' class='layui-btn' lay-submit \n" +
-            "lay-filter='btnsubmit' onclick=''>" + data.button.submit + "</button>\n" +
-            "<button id='No' type='button' style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='endinsert()'>" + data.button.back + "</button>\n" +
+            "lay-filter='" + data.button.submitFilter + "' onclick='" + data.button.submitClick + "'>" + data.button.submit + "</button>\n" +
+            "<button id='No' type='button' style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='" + data.button.backClick + "'>" + data.button.back + "</button>\n" +
             "</div>")
         form.render()
     }
