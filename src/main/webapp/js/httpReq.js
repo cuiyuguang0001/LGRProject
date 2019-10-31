@@ -86,7 +86,7 @@ var common = {
         {
             switch (data[key].type) {
                 case 'text':{
-                    $('#myForm').append("<div class='layui-form-item'>\n" +
+                    $('#' + data.form).append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
                         "<div class='layui-input-inline '>\n" +
                         "<input type='"+ data[key].type +"' id='"+  key +"' name='" + key + "' " +
@@ -96,7 +96,7 @@ var common = {
                     break;
                 }
                 case 'radio':{
-                    $('#myForm').append("<div class='layui-form-item'>\n" +
+                    $('#' + data.form).append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
                         "<div class='layui-input-block' id='myRadio-"+ key +"'>\n" +
                         "</div>\n" + "</div>\n")
@@ -107,7 +107,7 @@ var common = {
                     break;
                 }
                 case 'select':{
-                    $('#myForm').append("<div class='layui-form-item'>\n" +
+                    $('#' + data.form).append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
                         "<div class='layui-input-inline '>\n" +
                         "<select id='" +  key + "' name='" + key + "' lay-verify='" + data[key].verify + "'></select>" +
@@ -123,7 +123,7 @@ var common = {
         }
 
 
-        $('#myForm').append("<div class='layui-form-item'>\n" +
+        $('#' + data.form).append("<div class='layui-form-item'>\n" +
             "<button style='position: absolute; margin-left:80px; margin-bottom: 15px;' class='layui-btn' lay-submit=''\n" +
             "lay-filter='demo1' onclick='update_bumen()'>" + data.button.submit + "</button>\n" +
             "<button type='button' style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='endinsert()'>" + data.button.back + "</button>\n" +
