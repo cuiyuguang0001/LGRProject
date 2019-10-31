@@ -119,13 +119,14 @@ var common = {
                     break;
                 }
             }
+            $('#' + key).addClass(data[key].class)
         }
 
 
         $('#myForm').append("<div class='layui-form-item'>\n" +
             "<button style='position: absolute; margin-left:80px; margin-bottom: 15px;' class='layui-btn' lay-submit=''\n" +
-            "lay-filter='demo1' onclick='update_bumen()'>立即修改</button>\n" +
-            "<button style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='endinsert()'>取消</button>\n" +
+            "lay-filter='demo1' onclick='update_bumen()'>" + data.button.submit + "</button>\n" +
+            "<button type='button' style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='endinsert()'>" + data.button.back + "</button>\n" +
             "</div>")
         form.render()
     }
