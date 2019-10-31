@@ -91,7 +91,7 @@ var common = {
                         "<div class='layui-input-inline '>\n" +
                         "<input type='"+ data[key].type +"' id='"+  key +"' name='" + key + "' " +
                         "lay-verify='"+ data[key].verify +"' autocomplete='off' "+ (data[key].verify == "required" ? "required" : "") +"\n" +
-                        "class='layui-input layui-btn-disabled'/>" +
+                        "class='layui-input'/>" +
                         "</div>\n" + "</div>\n")
                     break;
                 }
