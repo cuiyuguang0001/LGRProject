@@ -27,6 +27,7 @@ public class UserController {
 
     @PostMapping("userAdd")
     public Map<String,Object> userAdd(@RequestBody User user){
+        System.out.println(user.getId());
         return userService.userAdd(user);
     }
 

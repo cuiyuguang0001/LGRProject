@@ -1,23 +1,6 @@
 
 
-// function update(){
-//     layer.open({
-//         type: 1,
-//         title: '人员信息',
-//         closeBtn: false,
-//         shade: 0.5,
-//         id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
-//         btnAlign: 'c',
-//         area: ['600px', '600px'],
-//         cancel: function(index, layero) {
-//             layer.close(index);
-//             $(".update").css("display", "none");
-//             return false;
-//         },
-//         content: $(".update").append(),
-//         id: "alertcenterdiv",
-//     });
-// }
+
 // function updateTrue(){
 //     var id = $("#id").val();
 //     alert(id);
@@ -38,6 +21,10 @@
 //     var post = $("#insert_post").val();
 //     req.post(myurl.userAdd, {name: name, age: age, sex: sex, sal: sal, dataline: 1, post: post}, false)
 // }
+
+
+
+//Layui数据表格
 layui.use('table', function() {
     var table = layui.table;
     form = layui.form
@@ -77,7 +64,9 @@ layui.use('table', function() {
         ]],
         done: function(res, curr, count){
             console.log(res);
-            console.log(res.data[0].status);
+            /**
+             * 添加信息
+             */
             common.form({
                 form: 'insert',
                 insert_id:{
@@ -111,10 +100,58 @@ layui.use('table', function() {
                     }
                 },button:{
                     submit:'立即添加',
-                    submitFilter:'btnsubmit',
-                    submitClick:'insertData()',
+                    submitFilter:'insert',
                     back:'取消',
-                    backClick:'insertNo'
+                    backClick:'insertNo()'
+                }
+            })
+            /**
+             * 修改信息
+             */
+            common.form({
+                form: 'update',
+                update_id:{
+                    title:'ID',
+                    type:'text',
+                    key:'id',
+                    verify:'required'
+                }, update_name:{
+                    title:'姓名',
+                    type:'text',
+                    verify:'required'
+                }, update_age:{
+                    title:'年龄',
+                    type:'text',
+                    verify:'required'
+                }, update_sex:{
+                    title:'性别',
+                    type:'radio',
+                    value:[0,1],
+                    radioTitle:['男','女']
+                },update_sal:{
+                    title:'工资',
+                    type:'text',
+                    verify:'required'
+                },update_status:{
+                    title:'状态',
+                    type:'text',
+                    verify:'required'
+                },update_dataline:{
+                    title:'日期',
+                    type:'text',
+                    verify:'required'
+                }, update_post:{
+                    title:'职位',
+                    type:'select',
+                    data:{
+                        0:'员工',
+                        1:'经理'
+                    }
+                },button:{
+                    submit:'确认修改',
+                    submitFilter:'update',
+                    back:'取消',
+                    backClick:'updateNo()'
                 }
             })
         },
@@ -135,20 +172,36 @@ layui.use('table', function() {
                 table.reload('test');
             });
         } else if(obj.event === 'edit'){
-            alert("待修改")
-            // form.val('example', {
-            //     "id": data.id,
-            //     'name': data.name,
-            //     'age': data.age,
-            //     'sex': data.sex,
-            //     'sal': data.sal,
-            //     'status': data.status,
-            //     'dataline': data.dataline,
-            //     'post': data.post,
-            // });
+            alert(data.sex);
+            form.val('update', {
+                update_id : data.id,
+                update_name: data.name,
+                update_age: data.age,
+                update_sal: data.sal,
+                update_status: (data.stauts == 1 ? "工作中" : "未工作"),
+                update_dataline: data.dataline,
+            });
         }
     })
-
+    form.on('radio(update)', function(data){
+        alert(99)
+        console.log(data.elem); //得到radio原始DOM对象
+        console.log(data.value); //被点击的radio的value值
+        alert(88)
+    });
+    //获取添加窗口中的信息
+    form.on('submit(insert)', function(data){
+        //表单数据formdata
+        var formData = (data.field);
+        var id = formData.insert_id;
+        var name = formData.insert_name;
+        var age = formData.insert_age;
+        var sex = formData.insert_sex;
+        var sal = formData.insert_sal;
+        var post = formData.insert_post;
+        console.log(formData.insert_id);
+        req.post(myurl.userAdd, {id: id, name: name, age: age, sex: sex, sal: sal, post: post}, false)
+    });
 });
 //添加员工信息
 function insert(){
@@ -162,20 +215,38 @@ function insert(){
         area: ['600px', '600px'],
         cancel: function(index, layero) {
             layer.close(index);
-            $(".insert").css("display", "none");
             return false;
         },
         content: $(".insert").append(),
         id: "alertcenterdiv",
     });
 }
-//获取添加窗口中的信息
-function insertData(){
-    form.on('submit(btnsubmit)', function(data){
-        //表单数据formdata
-        var formData = data.field;
-        console.log(formData);
-        alert("在这停顿")
+
+/**
+ * 取消添加
+ */
+
+/**
+ * 修改弹窗
+ */
+function update(){
+    layer.open({
+        type: 1,
+        title: '人员信息',
+        closeBtn: false,
+        shade: 0.5,
+        id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
+        btnAlign: 'c',
+        area: ['600px', '630px'],
+        cancel: function(index, layero) {
+            layer.close(index);
+            $(".update").css("display", "none");
+            return false;
+        },
+        content: $(".update").append(),
+        id: "alertcenterdiv",
     });
 }
+
+
 
