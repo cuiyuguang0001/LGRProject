@@ -76,6 +76,7 @@
 								<dd><a href="材料采购计费.html">材料采购计费</a></dd>
 							</dl>
 						</li>
+<!--==========================================================================================-->						
 					</ul>
 				</div>
 			</div>
@@ -94,20 +95,82 @@
 						<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 					</script>
                 </div>
+
                 <table class="layui-hide" id="test" lay-filter="test"></table>
+
             </div>
 		</div>
 <!--==========================================================================================-->
-		<div class="insert" style="display: none;">
+		<div class="update" style="display: none;">
 			<div style="border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
 				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
 					<legend>信息操作</legend>
 				</fieldset>
-				<form id="myForm" class="layui-form layui-form-pane"lay-filter="example" action="">
-
+				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="myForm">
+<!--					<div class="layui-form-item" style="display: none">-->
+<!--						<label class="layui-form-label">ID</label>-->
+<!--						<div class="layui-input-inline ">-->
+<!--							<input type="text" id="id" name="id" value="" disabled="" lay-verify="required" autocomplete="off"-->
+<!--								   class="layui-input ">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">姓名</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="name" name="name"  lay-verify="required" placeholder="请输入部门名称"-->
+<!--								   autocomplete="off" class="layui-input layui-btn-disabled">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">年龄</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="age" name="age" lay-verify="required" placeholder="请输入部门人数"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">性别</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="sex" name="sex" lay-verify="required" placeholder="请输入部门人数"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">工资</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="sal" name="sal" lay-verify="required" placeholder="部门负责人"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">状态</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="status" name="status" lay-verify="required" placeholder="部门负责人"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">入职时间</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="dataline" name="dataline"disabled="" lay-verify="required" placeholder="部门负责人"-->
+<!--								   autocomplete="off" class="layui-input layui-btn-disabled">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="layui-form-item">-->
+<!--						<label class="layui-form-label">职业</label>-->
+<!--						<div class="layui-input-inline">-->
+<!--							<input type="text" id="post" name="post" lay-verify="required" placeholder="部门负责人"-->
+<!--								   autocomplete="off" class="layui-input">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<button style="position: absolute; margin-left:80px; margin-bottom: 15px;" class="layui-btn" lay-submit=""-->
+<!--							lay-filter="demo1" onclick="updateTrue()">立即修改</button>-->
+<!--					<button style="position: absolute; margin-left:360px; margin-bottom: 15px; background:red" class="layui-btn" onclick="endinsert()">取消</button>-->
 				</form>
 			</div>
 		</div>
+		<!--==========================================================================================-->
+
 		<!--==========================================================================================-->
 		<script>
 			//JavaScript代码区域
@@ -159,12 +222,17 @@
 				    console.log(res);
                     console.log(res.data[0].status);
                     common.form({
-                        id:   {title: 'ID',  type :'text',  verify: 'required'},
-						name: {title: '姓名', type :'text',  verify: 'required'},
-						age:  {title: '年龄', type :'text',  verify: 'required'},
-						type: {title: '性别', type :'radio', value:[0,1], radioTitle:['男','女']},
-						sal:  {title: '工资', type :'text',  verify: 'required'},
-						post: {title: '职业', type :'text',  verify: 'required'},
+						type:{
+							title:'性别',
+							type:'radio',
+							value:[0,1],
+							radioTitle:['男','女']
+						},
+						id:{
+							title:'ID',
+							type:'text',
+							verify:'required'
+						}
 					})
                 },
                 id: 'test',
