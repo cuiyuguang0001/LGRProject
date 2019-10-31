@@ -29,7 +29,7 @@ var myurl = {
     planList: '/plan/planList',
     planAdd: '/plan/planAdd',//添加 参数 type people(int) boat(int) oil
     planEditStatus: '/plan/planEditStatus',//修改状态 参数 status id
-    planDel: '/plan/planDel'//删除 参数 id
+    planDel: '/plan/planDel',//删除 参数 id
     //weixiu表操作
     weixiuList:'weixiu/weixiuList',
 }
@@ -89,12 +89,15 @@ var common = {
                 case 'radio':{
                     $('#myForm').append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
-                        "<div class='layui-input-block' id='myRadio'>\n" +
+                        "<div class='layui-input-block' id='myRadio-"+ key +"'>\n" +
                         "</div>\n" + "</div>\n")
                     for(let i = 0; i < data[key].value.length; i++)
                     {
-                        $('#myRadio').append("<input type='"+ data[key].type +"' name='" + key + "' value='"+ data[key].value[i] +"' id='"+  key +"' title='" + data[key].radioTitle[i] + "'/>\n")
+                        $('#myRadio-'+key).append("<input type='"+ data[key].type +"' name='" + key + "' value='"+ data[key].value[i] +"' id='"+  key +"' title='" + data[key].radioTitle[i] + "'/>\n")
                     }
+                    break;
+                }
+                case 'select':{
                     break;
                 }
             }
@@ -106,6 +109,6 @@ var common = {
             "lay-filter='demo1' onclick='update_bumen()'>立即修改</button>\n" +
             "<button style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='endinsert()'>取消</button>\n" +
             "</div>")
-
+        form.render()
     }
 }
