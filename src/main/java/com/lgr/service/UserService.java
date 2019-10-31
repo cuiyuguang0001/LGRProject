@@ -46,7 +46,6 @@ public class UserService {
     public Map<String, Object> userAdd(User user)
     {
         user.setDataline(CommitUtil.getTineLine());
-        System.out.println(user.getPost());
         user.setList(userMapper.findPostNumForName(user.getPost()) + "");
         if(userMapper.userAdd(user))
             return MapUtil.requestMap(null, true);

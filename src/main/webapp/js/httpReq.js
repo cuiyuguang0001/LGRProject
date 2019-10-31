@@ -38,8 +38,8 @@ var req = {
         $.ajax({
             url: user.defaultUrl + url,
             type: 'POST',
-            // data: JSON.stringify(data),
-            data: data,
+            data: JSON.stringify(data),
+            // data: data,
             dataType: 'json',
             contentType: 'application/json',
             async: async == null ? false : async,
@@ -56,24 +56,49 @@ var req = {
 }
 
 var common = {
-    myForm: data => {
+    //text语法
+    //id(id标识名):{
+    //      title:该行的名字
+    //      type:text，
+    //      verify:lay-verify的值，如果是required就是必填项
+    // }
+
+    //radio语法
+    //id(id标识名):{
+    //      title:该行的名字,
+    //      type:radio
+    //      value:[]数组，与radioTitle一一对应
+    //      radioTitle:[]数组，与value一一对应
+    // }
+    form: data => {
         for(let key in data)
         {
+            console.log(data[key].type)
+            $('#myForm').append("<div class='layui-form-item'>\n" +
+                "<label class='layui-form-label'>"+ data[key].title +"</label>\n")
             switch (data[key].type) {
                 case 'text':{
-                    $('#myForm').append("<div class='layui-form-item'>\n" +
-                        "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
-                        "<div class='layui-input-inline '>\n" +
-                        "<input type='"+ data[key].type +"' id='"+  key +"' name='" + data[key].type + "' " +
+                    console.log(1)
+                    $('#myForm').append("<div class='layui-input-inline '>\n" +
+                        "<input type='"+ data[key].type +"' id='"+  key +"' name='" + key + "' " +
                         "lay-verify='"+ data[key].verify +"' autocomplete='off' "+ (data[key].verify == "required" ? "required" : "") +"\n" +
-                        "class='layui-input layui-btn-disabled'>" +
-                        "</div>\n" +
-                        "</div>\n")
+                        "class='layui-input layui-btn-disabled'/>")
+                    break;
                 }
-
+                case 'radio':{
+                    console.log(2)
+                    $('#myForm').append("<div class='layui-input-block '>\n")
+                    for(let i = 0; i < data[key].value.length; i++)
+                    {
+                        $('#myForm').append("<input type='"+ data[key].type +"' name='" + key + "' value='"+ data[key].value[i] +"' id='"+  key +"' title='" + data[key].radioTitle[i] + "' checked />\n")
+                    }
+                    break;
+                }
             }
-
+            $('#myForm').append("</div>\n" + "</div>\n")
         }
+
+
         $('#myForm').append("<div class='layui-form-item'>\n" +
             "<button style='position: absolute; margin-left:80px; margin-bottom: 15px;' class='layui-btn' lay-submit=''\n" +
             "lay-filter='demo1' onclick='update_bumen()'>立即修改</button>\n" +

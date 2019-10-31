@@ -106,7 +106,7 @@
 				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
 					<legend>部门信息</legend>
 				</fieldset>
-				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="formm">
+				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="myForm">
 					<div class="layui-form-item" style="display: none">
 						<label class="layui-form-label">ID</label>
 						<div class="layui-input-inline ">
@@ -175,52 +175,8 @@
 				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
 					<legend>添加信息</legend>
 				</fieldset>
-				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="formm">
-					<div class="layui-form-item">
-						<label class="layui-form-label">姓名</label>
-						<div class="layui-input-inline">
-							<input type="text" id="insert_name" name="name"  lay-verify="required" placeholder="员工姓名"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">年龄</label>
-						<div class="layui-input-inline">
-							<input type="text" id="insert_age" name="age" lay-verify="required" placeholder="年龄"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">性别</label>
-						<div class="layui-input-inline">
-							<input type="text" id="insert_sex" name="sex" lay-verify="required" placeholder="性别"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">工资</label>
-						<div class="layui-input-inline">
-							<input type="text" id="insert_sal" name="sal" lay-verify="required" placeholder="员工工资"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">状态</label>
-						<div class="layui-input-inline">
-							<input type="text" id="insert_status" name="status" lay-verify="required" placeholder="员工状态"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">职业</label>
-						<div class="layui-input-inline">
-							<input type="text" id="insert_post" name="post" lay-verify="required" placeholder="职业"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<button style="position: absolute; margin-left:80px; margin-bottom: 15px;" class="layui-btn" lay-submit=""
-							lay-filter="demo1" onclick="insertTrue()">立即添加</button>
-					<button style="position: absolute; margin-left:360px; margin-bottom: 15px; background:red" class="layui-btn" onclick="endinsert()">取消</button>
+				<form class="layui-form layui-form-pane" lay-filter="example" id="myForm">
+
 				</form>
 			</div>
 		</div>
@@ -277,6 +233,20 @@
                 done: function(res, curr, count){
 				    console.log(res);
                     console.log(res.data[0].status);
+                    // common.form({
+					// 	type:{
+					// 		title:'性别',
+					// 		type:'radio',
+					// 		value:[0,1],
+					// 		radioTitle:['男','女']
+					// 	},
+					// 	id:{
+					// 		title:'ID',
+					// 		type:'text',
+					// 		verify:'required'
+					// 	}
+					// })
+					// form.render()
                 },
                 id: 'test',
 				page: true,
