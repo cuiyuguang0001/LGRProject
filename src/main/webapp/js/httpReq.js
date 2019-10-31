@@ -58,18 +58,25 @@ var common = {
     myForm: data => {
         for(let key in data)
         {
-            $('#myForm').append("<div class=\"layui-form-item\">\n" +
-            "<label class=\"layui-form-label\">"+ data[key].title +"</label>\n" +
-            "<div class=\"layui-input-inline \">\n" +
-            "<input type=\""+ data[key].type +"\" id=\""+  key +"\" name=\"" + data[key].type + "\" lay-verify=\""+ data[key].verify +"\" autocomplete=\"off\" "+ (data[key].verify == "required" ? "required" : "") +"\n" +
-            "class=\"layui-input layui-btn-disabled\">" +
-            "</div>\n" +
-            "</div>\n")
+            switch (data[key].type) {
+                case 'text':{
+                    $('#myForm').append("<div class='layui-form-item'>\n" +
+                        "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
+                        "<div class='layui-input-inline '>\n" +
+                        "<input type='"+ data[key].type +"' id='"+  key +"' name='" + data[key].type + "' " +
+                        "lay-verify='"+ data[key].verify +"' autocomplete='off' "+ (data[key].verify == "required" ? "required" : "") +"\n" +
+                        "class='layui-input layui-btn-disabled'>" +
+                        "</div>\n" +
+                        "</div>\n")
+                }
+
+            }
+
         }
-        $('#myForm').append("<div class=\"layui-form-item\">\n" +
-            "<button style=\"position: absolute; margin-left:80px; margin-bottom: 15px;\" class=\"layui-btn\" lay-submit=\"\"\n" +
-            "lay-filter=\"demo1\" onclick=\"update_bumen()\">立即修改</button>\n" +
-            "<button style=\"position: absolute; margin-left:360px; margin-bottom: 15px; background:red\" class=\"layui-btn\" onclick=\"endinsert()\">取消</button>\n" +
+        $('#myForm').append("<div class='layui-form-item'>\n" +
+            "<button style='position: absolute; margin-left:80px; margin-bottom: 15px;' class='layui-btn' lay-submit=''\n" +
+            "lay-filter='demo1' onclick='update_bumen()'>立即修改</button>\n" +
+            "<button style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='endinsert()'>取消</button>\n" +
             "</div>")
 
     }

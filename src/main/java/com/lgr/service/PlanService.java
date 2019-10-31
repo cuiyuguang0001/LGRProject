@@ -31,7 +31,7 @@ public class PlanService {
         Map<String ,Object> map = new HashMap<>();
         PageUtil p = new PageUtil(plan.getPage(), plan.getLimit());
         map.put("page", p);
-        map.put("data", plan);
+        map.put("status", plan.getStatus());
         List<Plan> plans = planMapper.planList(map);
         for(Plan p1 : plans)
             p1.setDataline(CommitUtil.timestampToStr(Long.valueOf(p1.getDataline())));
