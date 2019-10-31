@@ -41,7 +41,7 @@ function insert(){
             $(".insert").css("display", "none");
             return false;
         },
-        content: $(".update").append(),
+        content: $(".insert").append(),
         id: "alertcenterdiv",
     });
 }
