@@ -111,7 +111,10 @@ layui.use('table', function() {
                     }
                 },button:{
                     submit:'立即添加',
-                    back:'取消'
+                    submitFilter:'btnsubmit',
+                    submitClick:'insertData()',
+                    back:'取消',
+                    backClick:'insertNo'
                 }
             })
         },
@@ -132,28 +135,20 @@ layui.use('table', function() {
                 table.reload('test');
             });
         } else if(obj.event === 'edit'){
-            form.val('example', {
-                "id": data.id,
-                'name': data.name,
-                'age': data.age,
-                'sex': data.sex,
-                'sal': data.sal,
-                'status': data.status,
-                'dataline': data.dataline,
-                'post': data.post,
-            });
-            update();
+            alert("待修改")
+            // form.val('example', {
+            //     "id": data.id,
+            //     'name': data.name,
+            //     'age': data.age,
+            //     'sex': data.sex,
+            //     'sal': data.sal,
+            //     'status': data.status,
+            //     'dataline': data.dataline,
+            //     'post': data.post,
+            // });
         }
     })
-    form.on('submit(btnsubmit)'), function(data){
-        alert("48512")
-        //表单数据formdata
-        var formData = data.field;
-        console.log("==========================================")
-        console.log(formData);
-        alert(formData)
-        tiJiao()
-    }
+
 });
 //添加员工信息
 function insert(){
@@ -175,9 +170,12 @@ function insert(){
     });
 }
 //获取添加窗口中的信息
-function tiJiao(){
-    if($("#Yes").text() == "立即添加"){
-        alert("没走方法...")
-    }
+function insertData(){
+    form.on('submit(btnsubmit)', function(data){
+        //表单数据formdata
+        var formData = data.field;
+        console.log(formData);
+        alert("在这停顿")
+    });
 }
 
