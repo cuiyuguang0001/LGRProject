@@ -21,4 +21,22 @@ public class WeiXiuController {
         return weiXiuService.weixiuList(weiXiu);
     }
 
+    @PostMapping("weixiuAdd")
+    public Map<String ,Object> weixiuAdd(@RequestBody WeiXiu weiXiu)
+    {
+        return weiXiuService.weixiuAdd(weiXiu);
+    }
+
+    @PostMapping("weixiuDel")
+    public Map<String ,Object> weixiuDel(@RequestBody WeiXiu weiXiu)
+    {
+        return weiXiuService.weixiuDel(weiXiu);
+    }
+
+    @PostMapping("weixiuEditStatus")
+    public Map<String ,Object> weixiuEditStatus(@RequestBody WeiXiu weiXiu)
+    {
+        return weiXiuService.weixiuEditStatus(weiXiu);
+    }
+
 }

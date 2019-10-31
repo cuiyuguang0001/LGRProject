@@ -32,6 +32,14 @@ var myurl = {
     planDel: '/plan/planDel',//删除 参数 id
     //weixiu表操作
     weixiuList:'weixiu/weixiuList',
+    weixiuAdd:'weixiu/weixiuAdd',
+    weixiuEditStatus:'weixiu/weixiuEditStatus',
+    weixiuDel:'weixiu/weixiuDel',
+    //tuolun表操作
+    tuolunList:'tuolunList',
+    tuolunAdd:'tuolunAdd',
+    tuolunEditStatus:'tuolunEditStatus',
+    tuolunDel:'tuolunDel'
 }
 
 var req = {
