@@ -73,29 +73,29 @@ var common = {
     form: data => {
         for(let key in data)
         {
-            console.log(data[key].type)
-            $('#myForm').append("<div class='layui-form-item'>\n" +
-                "<label class='layui-form-label'>"+ data[key].title +"</label>\n")
             switch (data[key].type) {
                 case 'text':{
-                    console.log(1)
-                    $('#myForm').append("<div class='layui-input-inline '>\n" +
+                    $('#myForm').append("<div class='layui-form-item'>\n" +
+                        "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
+                        "<div class='layui-input-inline '>\n" +
                         "<input type='"+ data[key].type +"' id='"+  key +"' name='" + key + "' " +
                         "lay-verify='"+ data[key].verify +"' autocomplete='off' "+ (data[key].verify == "required" ? "required" : "") +"\n" +
-                        "class='layui-input layui-btn-disabled'/>")
+                        "class='layui-input layui-btn-disabled'/>" +
+                        "</div>\n" + "</div>\n")
                     break;
                 }
                 case 'radio':{
-                    console.log(2)
-                    $('#myForm').append("<div class='layui-input-block '>\n")
+                    $('#myForm').append("<div class='layui-form-item'>\n" +
+                        "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
+                        "<div class='layui-input-block' id='myRadio'>\n" +
+                        "</div>\n" + "</div>\n")
                     for(let i = 0; i < data[key].value.length; i++)
                     {
-                        $('#myForm').append("<input type='"+ data[key].type +"' name='" + key + "' value='"+ data[key].value[i] +"' id='"+  key +"' title='" + data[key].radioTitle[i] + "' checked />\n")
+                        $('#myRadio').append("<input type='"+ data[key].type +"' name='" + key + "' value='"+ data[key].value[i] +"' id='"+  key +"' title='" + data[key].radioTitle[i] + "'/>\n")
                     }
                     break;
                 }
             }
-            $('#myForm').append("</div>\n" + "</div>\n")
         }
 
 
