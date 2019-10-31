@@ -72,21 +72,12 @@ var common = {
     //      value:[]数组，与radioTitle一一对应
     //      radioTitle:[]数组，与value一一对应
     // }
-
-    //select语法
-    //id(id标识名):{
-    //      title:该行的名字,
-    //      type:select
-    //      data:{}json key(显示的行)-value(option中value的值)
-    //      radioTitle:[]数组，与value一一对应
-    //      verify:lay-verify的值，如果是required就是必填项
-    // }
     form: data => {
         for(let key in data)
         {
             switch (data[key].type) {
                 case 'text':{
-                    $('#' + data.form).append("<div class='layui-form-item'>\n" +
+                    $('#myForm').append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
                         "<div class='layui-input-inline '>\n" +
                         "<input type='"+ data[key].type +"' id='"+  key +"' name='" + key + "' " +
@@ -96,7 +87,7 @@ var common = {
                     break;
                 }
                 case 'radio':{
-                    $('#' + data.form).append("<div class='layui-form-item'>\n" +
+                    $('#myForm').append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
                         "<div class='layui-input-block' id='myRadio-"+ key +"'>\n" +
                         "</div>\n" + "</div>\n")
@@ -107,26 +98,16 @@ var common = {
                     break;
                 }
                 case 'select':{
-                    $('#' + data.form).append("<div class='layui-form-item'>\n" +
-                        "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
-                        "<div class='layui-input-inline '>\n" +
-                        "<select id='" +  key + "' name='" + key + "' lay-verify='" + data[key].verify + "'></select>" +
-                        "</div>\n" + "</div>\n")
-                    for(let key2 in data[key].data)
-                    {
-                        $('#' + key).append("<option value='" + data[key].data[key2] + "'>" + data[key].data[key2] + "</option>")
-                    }
                     break;
                 }
             }
-            $('#' + key).addClass(data[key].class)
         }
 
 
-        $('#' + data.form).append("<div class='layui-form-item'>\n" +
+        $('#myForm').append("<div class='layui-form-item'>\n" +
             "<button style='position: absolute; margin-left:80px; margin-bottom: 15px;' class='layui-btn' lay-submit=''\n" +
-            "lay-filter='demo1' onclick='update_bumen()'>" + data.button.submit + "</button>\n" +
-            "<button type='button' style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='endinsert()'>" + data.button.back + "</button>\n" +
+            "lay-filter='demo1' onclick='update_bumen()'>立即修改</button>\n" +
+            "<button style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='endinsert()'>取消</button>\n" +
             "</div>")
         form.render()
     }

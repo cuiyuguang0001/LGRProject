@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="static/layui/css/layui.css">
 		<script src="static/jQuery/jquery-3.4.1.min.js"></script>
 		<script src="static/layui/layui.all.js"></script>
-		<script src="js/httpReq.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/httpReq_old.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/人员信息管理.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body class="layui-layout-body">
@@ -101,12 +101,12 @@
             </div>
 		</div>
 <!--==========================================================================================-->
-		<div class="update" style="display: none;">
+		<div class="insert" style="display: none;">
 			<div style="border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
 				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
 					<legend>信息操作</legend>
 				</fieldset>
-				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="myForm">
+				<form id="myForm" class="layui-form layui-form-pane"lay-filter="example" action="">
 <!--					<div class="layui-form-item" style="display: none">-->
 <!--						<label class="layui-form-label">ID</label>-->
 <!--						<div class="layui-input-inline ">-->
@@ -222,18 +222,29 @@
 				    console.log(res);
                     console.log(res.data[0].status);
                     common.form({
-						type:{
+                        form: 'insert',
+                        id:{
+                            title:'ID',
+                            type:'text',
+                            verify:'required'
+                        }, name:{
+                            title:'姓名',
+                            type:'text',
+                            verify:'required'
+                        }, age:{
+                            title:'年龄',
+                            type:'text',
+                            verify:'required'
+                        }, type:{
 							title:'性别',
 							type:'radio',
 							value:[0,1],
 							radioTitle:['男','女']
-						},
-						id:{
-							title:'ID',
-							type:'text',
-							verify:'required'
-						},
-						post:{
+						},type:{
+                            title:'工资',
+                            type:'text',
+                            verify:'required'
+                        },post:{
 							title:'职位',
 							type:'select',
 							data:{

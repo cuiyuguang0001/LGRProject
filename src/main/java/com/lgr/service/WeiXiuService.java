@@ -20,7 +20,7 @@ public class WeiXiuService {
     public Map<String ,Object> weixiuList(WeiXiu weiXiu)
     {
         Map<String, Object> map = new HashMap<>();
-        PageUtil p = new PageUtil(weiXiu.getPage(), weiXiu.getLimit())
+        PageUtil p = new PageUtil(weiXiu.getPage(), weiXiu.getLimit());
         map.put("page", p);
         return MapUtil.requestMap(weiXiuMapper.weixiuList(map),
                 p.getCount(),
