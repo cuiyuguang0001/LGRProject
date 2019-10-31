@@ -27,7 +27,7 @@ public interface UserMapper {
     @Select("select id from ship_post where post = #{name}")
     int findPostNumForName(String name);
 
-    @Update("update from ship_user set name = #{name}, age = #{age}, sex = #{sex}, sal = #{sal}, " +
+    @Update("update ship_user set name = #{name}, age = #{age}, sex = #{sex}, sal = #{sal}, " +
             "post = #{post}, list = #{list} where id = #{id}")
     boolean userEdit(User user);
 
