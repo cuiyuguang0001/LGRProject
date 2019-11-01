@@ -25,7 +25,7 @@ public interface UserMapper {
     boolean userAdd(User user);
 
     @Select("select id from ship_post where post = #{name}")
-    int findPostNumForName(String name);
+    String findPostNumForName(String name);
 
     @Update("update ship_user set name = #{name}, age = #{age}, sex = #{sex}, sal = #{sal}, " +
             "post = #{post}, list = #{list} where id = #{id}")

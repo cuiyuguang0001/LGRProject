@@ -45,7 +45,7 @@ public class UserService {
     public Map<String, Object> userAdd(User user)
     {
         user.setDataline(CommitUtil.getTineLine());
-        user.setList(userMapper.findPostNumForName(user.getPost()) + "");
+        user.setList(userMapper.findPostNumForName(user.getPost()));
         if(userMapper.userAdd(user))
             return MapUtil.requestMap(null, true);
         return MapUtil.requestMap(null, false);
@@ -53,7 +53,7 @@ public class UserService {
 
     public Map<String, Object> userEdit(User user)
     {
-        user.setList(userMapper.findPostNumForName(user.getPost()) + "");
+        user.setList(userMapper.findPostNumForName(user.getPost()));
         if(userMapper.userEdit(user))
             return MapUtil.requestMap(null, true);
         return MapUtil.requestMap(null, false);

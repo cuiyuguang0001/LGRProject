@@ -90,6 +90,7 @@ var common = {
     //      verify:lay-verify的值，如果是required就是必填项
     // }
     form: data => {
+        $('#' + data.form).empty()
         for(let key in data)
         {
             switch (data[key].type) {
@@ -104,14 +105,13 @@ var common = {
                     break;
                 }
                 case 'radio':{
-                    console.log("111")
                     $('#' + data.form).append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
-                        "<div class='layui-input-block' id='myRadio-"+ key +"'>\n" +
+                        "<div class='layui-input-block' id='myRadio-"+  data.form + "_" + key +"'>\n" +
                         "</div>\n" + "</div>\n")
                     for(let i = 0; i < data[key].value.length; i++)
                     {
-                        $('#myRadio-'+key).append("<input type='"+ data[key].type +"' name='" + key + "' value='"+ data[key].value[i] +"' id='"+  data.form + "_" + key +"' title='" + data[key].radioTitle[i] + "'/>\n")
+                        $('#myRadio-'+  data.form + "_" +key).append("<input type='"+ data[key].type +"' name='" + key + "' value='"+ data[key].value[i] +"' id='"+  data.form + "_" + key +"' title='" + data[key].radioTitle[i] + "'/>\n")
                     }
                     break;
                 }
@@ -123,7 +123,7 @@ var common = {
                         "</div>\n" + "</div>\n")
                     for(let key2 in data[key].data)
                     {
-                        $('#' + key).append("<option value='" + key2 + "'>" + data[key].data[key2] + "</option>")
+                        $('#' + data.form + "_" +  key).append("<option value='" + key2 + "'>" + data[key].data[key2] + "</option>")
 
                     }
                     break;
