@@ -17,7 +17,7 @@ public interface BoatMapper {
             "values(#{name}, #{money}, #{people}, #{dataline}, 0, 0, 0)")
     boolean boatAdd(Boat boat);
 
-    @Delete("delete form ship_boat where id = #{id}")
+    @Delete("delete from ship_boat where id = #{id}")
     boolean boatDel(Boat boat);
 
     @Update("update ship_boat set name = #{name}, money = #{money}, people = #{people} where id = #{id}")

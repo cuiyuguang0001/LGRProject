@@ -3,23 +3,35 @@
  */
 layui.use('table', function() {
     var table = layui.table;
-        layer = layui.layer,
         form = layui.form
+    /**
+     * 方法级渲染
+     */
     table.render({
         method: 'post',
         elem: '#test',
         contentType: 'application/json',
         dataType: 'json',
-        url: user.defaultUrl + myurl.boatList,
+        loading: 'true',
+        url: user.defaultUrl + myurl.boatList ,
         toolbar: '#toolbarDemo',
         title: '用户数据表',
         totalRow: true,
-        initSort: {field: 'id', type: 'asc'},
-        text: {none: '小小数据去哪了？'},
+        initSort: {
+            field: 'id' //排序字段，对应 cols 设定的各字段名
+            ,type: 'asc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
+        },
+        text: {
+            none: '小小数据去哪了？'
+        },
+        autoSort: 'true',
+        // skin: 'nob',//是否显示行列渲染
+        even: true,
         size: 'lg',
+        id: 'test',
         page: true,
         limit: 8,
-        limits: [8, 10, 15],
+        limits: [7, 10, 15],
         cols: [[
             {field: 'id', width: '8%', title: 'ID', sort: true, align: 'center', fixed: true}
             , {field: 'name', width: '10%', title: '船名', align: 'center'}
@@ -33,29 +45,95 @@ layui.use('table', function() {
         ]],
         done: function (res, curr, count) {
             console.log(res);
+            /**
+             * 添加信息
+             */
             common.form({
-               form: 'insert',
+                form: 'insert',
                 name:{
                     title:'船名',
                     type:'text',
                     verify:'required'
-                }, money:{
+                },money:{
                     title:'价格',
                     type:'text',
                     verify:'required'
-                }, people:{
+                },people:{
                     title:'管理者',
                     type:'select',
                     data:{
-                        黎明:'黎明',
-                        白居易:'白居易',
-                        涛哥:'涛哥',
+                        山东大舞台:'山东大舞台',
+                        有病你就来:'有病你就来',
+                        高音哥:'高音哥',
+                        蔡徐坤:'蔡徐坤',
+                        巨魔:'巨魔',
                     }
-                },num:{
-                    title:'出航次数',
+                },button:{
+                    submit:'立即添加',
+                    submitFilter:'insert',
+                    back:'取消',
+                    backClick:'insertNo()'
+                }
+            });
+            /**
+             * 修改信息
+             */
+            common.form({
+                form: 'update',
+                id:{
+                    title:'ID',
+                    type:'text',
+                    class:'layui-btn-disabled',
+                    disable :true,
+                    verify:'required'
+                },name:{
+                    title:'船名',
                     type:'text',
                     verify:'required'
-                },
+                },money:{
+                    title:'价格',
+                    type:'text',
+                    verify:'required'
+                },people:{
+                    title:'管理者',
+                    type:'select',
+                    data:{
+                        山东大舞台:'山东大舞台',
+                        有病你就来:'有病你就来',
+                        高音哥:'高音哥',
+                        蔡徐坤:'蔡徐坤',
+                        巨魔:'巨魔',
+                    }
+                },dataline: {
+                    title: '购买时间',
+                    type:'text',
+                    class:'layui-btn-disabled',
+                    disable :true,
+                    verify:'required'
+                },updatedata: {
+                    title: '维修时间',
+                    type:'text',
+                    class:'layui-btn-disabled',
+                    disable :true,
+                    verify:'required'
+                },num:{
+                    title: '出航次数',
+                    type:'text',
+                    class:'layui-btn-disabled',
+                    disable :true,
+                    verify:'required'
+                }, status:{
+                    title: '处航状态',
+                    type:'text',
+                    class:'layui-btn-disabled',
+                    disable :true,
+                    verify:'required'
+                }, button:{
+                    submit:'立即添加',
+                    submitFilter:'update',
+                    back:'取消',
+                    backClick:'updateNo()'
+                }
             });
         },
     });
@@ -64,65 +142,42 @@ layui.use('table', function() {
      */
     table.on('tool(test)', function(obj){
         var data = obj.data;
-        //console.log(obj)
         if(obj.event === 'del'){
             layer.confirm('真的删除行么', function(index){
-                alert(data.id)
-                req.post(myurl.boatDel, {id: data.id} , false)
+                req.post(myurl.boatDel, {id: data.id}, false)
                 layer.close(index);
                 table.reload('test');
             });
         } else if(obj.event === 'edit'){
             form = layui.form
             console.log(data.status)
-            form.val('example', {
-                "id": data.id,
-                'name': data.name,
-                'money': data.money,
-                'people': data.people,
-                'dataline': data.dataline,
-                'updatedata': data.updatedata,
-                'num': data.num,
-                'status': (data.status == 1 ? '出航': '待出航'),
+            form.val('update', {
+                id: data.id,
+                name: data.name,
+                money: data.money,
+                people: data.people,
+                dataline: data.dataline,
+                updatedata: data.updatedata,
+                num: data.num,
+                status: (data.status == 1 ? '已出航': '待出航'),
             });
-            update();
         }
     })
+    /**
+     * 一键添加
+     */
+    form.on('submit(insert)', function (data) {
+        alert(data.field.num)
+        req.post(myurl.boatAdd, data.field, false);
+    });
+    /**
+     * 一键修改
+     //  */
+    form.on('submit(update)', function(data){
+        alert(data.field.people)
+        req.post(myurl.boatEdit, data.field, false)
+    });
 });
-
-// function update(){
-//     layer.open({
-//         type: 1,
-//         title: '部门信息',
-//         closeBtn: false,
-//         shade: 0.5,
-//         id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
-//         btnAlign: 'c',
-//         offset: '80px',
-//         anim: 5,
-//         area: ['600px', '600px'],
-//         cancel: function(index, layero) {
-//             layer.close(index);
-//             $(".update").css("display", "none");
-//             return false;
-//         },
-//         content: $(".update").append(),
-//         id: "alertcenterdiv",
-//     });
-// }
-// function updateTrue(){
-//     var id = $("#update_id").val();
-//     console.log(id)
-//     var name = $("#update_name").val();
-//     console.log(name)
-//     var money = $("#update_money").val();
-//     console.log(money)
-//     var people = $("#update_people").val();
-//     console.log(people)
-//     req.post(myurl.boatEdit, {name: name, money: money, people: people, id: id}, false)
-//     alert("点击刷新页面")
-// }
-//
 /**
  * 添加信息弹窗
  */
@@ -134,7 +189,7 @@ function insert(){
         shade: 0.5,
         id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
         btnAlign: 'c',
-        area: ['600px', '600px'],
+        area: ['600px', '400px'],
         cancel: function(index, layero) {
             layer.close(index);
             $(".insert").css("display", "none");
@@ -164,4 +219,13 @@ function update(){
         content: $(".update").append(),
         id: "alertcenterdiv",
     });
+}
+/**
+ * 取消——刷新页面
+ */
+function insertNo() {
+    location.reload();
+}
+function updateNo() {
+    location.reload();
 }

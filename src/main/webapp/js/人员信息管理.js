@@ -180,7 +180,6 @@ layui.use('table', function() {
      * 一键修改
     //  */
     form.on('submit(update)', function(data){
-
        req.post(myurl.userEdit, data.field, false)
     });
 });
