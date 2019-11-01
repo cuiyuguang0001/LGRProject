@@ -97,7 +97,7 @@ var common = {
                     $('#' + data.form).append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
                         "<div class='layui-input-inline '>\n" +
-                        "<input type='"+ data[key].type +"' id='"+  key +"' name='" + key + "' " +
+                        "<input type='"+ data[key].type +"' id='"+  data.form + "_" + key +"' name='" + key + "' " +
                         "lay-verify='"+ data[key].verify +"' autocomplete='off' "+ (data[key].verify == "required" ? "required" : "") +"\n" +
                         "class='layui-input'/>" +
                         "</div>\n" + "</div>\n")
@@ -111,7 +111,7 @@ var common = {
                         "</div>\n" + "</div>\n")
                     for(let i = 0; i < data[key].value.length; i++)
                     {
-                        $('#myRadio-'+key).append("<input type='"+ data[key].type +"' name='" + key + "' value='"+ data[key].value[i] +"' id='"+  key +"' title='" + data[key].radioTitle[i] + "'/>\n")
+                        $('#myRadio-'+key).append("<input type='"+ data[key].type +"' name='" + key + "' value='"+ data[key].value[i] +"' id='"+  data.form + "_" + key +"' title='" + data[key].radioTitle[i] + "'/>\n")
                     }
                     break;
                 }
@@ -119,7 +119,7 @@ var common = {
                     $('#' + data.form).append("<div class='layui-form-item'>\n" +
                         "<label class='layui-form-label'>"+ data[key].title +"</label>\n" +
                         "<div class='layui-input-inline '>\n" +
-                        "<select id='" +  key + "' name='" + key + "' lay-verify='" + data[key].verify + "'></select>" +
+                        "<select id='"+  data.form + "_" + key +"' name='" + key + "' lay-verify='" + data[key].verify + "'></select>" +
                         "</div>\n" + "</div>\n")
                     for(let key2 in data[key].data)
                     {
