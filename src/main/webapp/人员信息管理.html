@@ -81,10 +81,10 @@
 				</div>
 			</div>
 <!--==========================================================================================-->
-			<div class="layui-body">
+			<div class="layui-body" style="margin-top: -1%;">
 				<script type="text/html" id="toolbarDemo">
 					<div class="layui-btn-container">
-						<button type="button" class="layui-btn" onclick="insert()">添加信息</button>
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="insert()">添加信息</button>
 					</div>
 				</script>
 				<!-- 内容主体区域 -->
@@ -99,21 +99,17 @@
             </div>
 		</div>
 <!--==========================================================================================-->
-		<div class="insert" style="display: none;">
-			<div style="border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
-				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-					<legend>添加信息</legend>
-				</fieldset>
-				<form id="insert" class="layui-form layui-form-pane"lay-filter="insert" action=""></form>
-			</div>
+		<div class="insert" style="display: none; border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+				<legend>添加信息</legend>
+			</fieldset>
+			<form id="insert" class="layui-form layui-form-pane"lay-filter="insert" action=""></form>
 		</div>
-		<div class="update" style="display: none;">
-			<div style="border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
-				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-					<legend>修改信息</legend>
-				</fieldset>
-				<form id="update" class="layui-form layui-form-pane" lay-filter="update" action=""></form>
-			</div>
+		<div class="update" style="display: none; border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+				<legend>修改信息</legend>
+			</fieldset>
+			<form id="update" class="layui-form layui-form-pane" lay-filter="update" action=""></form>
 		</div>
 	</body>
 	<script type="text/html" id="manager_status">

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -5,9 +6,9 @@
 		<title>layout 后台大布局 - Layui</title>
 		<link rel="stylesheet" href="static/layui/css/layui.css">
 		<script src="static/jQuery/jquery-3.4.1.min.js"></script>
-		<script src="static/layui/layui.all.js"></script>
-		<script src="js/httpReq_old.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/船舶维修.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/layui/layui.js"></script>
+		<script src="js/httpReq.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/人员信息管理.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
@@ -19,14 +20,14 @@
 						<a href="javascript:void(0);">欢迎您 贤心</a>
 					</li>
 					<li class="layui-nav-item"><a href="Login.html">注销</a></li>
-<!--========================================《用户名》===================================================-->
+<!--========================================《用户名》===================================================-->				
 				</ul>
 			</div>
 			<div class="layui-side layui-bg-black">
 				<div class="layui-side-scroll">
 					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 					<ul class="layui-nav layui-nav-tree" lay-filter="test">
-<!--==========================================================================================-->
+<!--==========================================================================================-->						
 						<li class="layui-nav-item layui-nav-itemed">
 							<a class="" href="javascript:void(0);">船舶管理</a>
 							<dl class="layui-nav-child">
@@ -34,15 +35,15 @@
 								<dd><a href="进出航审查.html">进出港审查</a></dd>
 							</dl>
 						</li>
-<!--==========================================================================================-->
-						<li class="layui-nav-item">
+<!--==========================================================================================-->						
+						<li class="layui-nav-item layui-nav-itemed">
 							<a href="javascript:void(0);">船员管理</a>
 							<dl class="layui-nav-child">
 								<dd><a href="部门管理.html">部门管理</a></dd>
 								<dd><a href="人员信息管理.html">人员信息管理</a></dd>
 							</dl>
 						</li>
-<!--==========================================================================================-->
+<!--==========================================================================================-->						
 						<li class="layui-nav-item">
 							<a href="javascript:void(0);">拖轮信息</a>
 							<dl class="layui-nav-child">
@@ -50,7 +51,7 @@
 								<dd><a href="保养管理.html">保养管理</a></dd>
 							</dl>
 						</li>
-<!--==========================================================================================-->
+<!--==========================================================================================-->						
 						<li class="layui-nav-item">
 							<a href="javascript:void(0);">材料库存</a>
 							<dl class="layui-nav-child">
@@ -58,15 +59,15 @@
 								<dd><a href="入库与出库.html">入库与出库</a></dd>
 							</dl>
 						</li>
-<!--==========================================================================================-->
+<!--==========================================================================================-->						
 						<li class="layui-nav-item">
 							<a href="拖轮调度.html">拖轮调度</a>
 						</li>
-<!--==========================================================================================-->
+<!--==========================================================================================-->						
 						<li class="layui-nav-item">
 							<a href="船舶维修.html">船舶维修</a>
 						</li>
-<!--==========================================================================================-->
+<!--==========================================================================================-->						
 						<li class="layui-nav-item">
 							<a href="javascript:void(0);">计费</a>
 							<dl class="layui-nav-child">
@@ -75,214 +76,47 @@
 								<dd><a href="材料采购计费.html">材料采购计费</a></dd>
 							</dl>
 						</li>
-<!--==========================================================================================-->
+<!--==========================================================================================-->						
 					</ul>
 				</div>
 			</div>
-<!--==========================================================================================-->				
-			<div class="layui-body">
+<!--==========================================================================================-->
+			<div class="layui-body" style="margin-top: -1%;">
 				<script type="text/html" id="toolbarDemo">
 					<div class="layui-btn-container">
-						<button type="button" class="layui-btn" onclick="insert()">添加信息</button>
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="insert()">添加信息</button>
 					</div>
 				</script>
 				<!-- 内容主体区域 -->
 				<!-- 数据表格 -->
-				<div class="demoTable">
+                <div class="demoTable">
 					<script type="text/html" id="barDemo">
-						<a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="edit" onclick="update()">编辑</a>
+						<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit" onclick="update()">编辑</a>
 						<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 					</script>
-				</div>
-
-				<table class="layui-hide" id="test" lay-filter="test"></table>
-			</div>
+                </div>
+                <table class="layui-hide" id="test" lay-filter="test"></table>
+            </div>
 		</div>
 <!--==========================================================================================-->
-		<div class="update" style="display: none;">
-			<div style="border-radius:15px; padding:10px; padding-left:40px; padding-right:40px;">
-				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-					<legend>部门信息</legend>
-				</fieldset>
-				<form class="layui-form layui-form-pane"lay-filter="example" action="" id="formm">
-					<div class="layui-form-item" style="display: none">
-						<label class="layui-form-label">ID</label>
-						<div class="layui-input-inline ">
-							<input type="text" id="update_id" name="id" value="" disabled="" lay-verify="required" autocomplete="off"
-								   class="layui-input ">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">船名</label>
-						<div class="layui-input-inline">
-							<input type="text" id="update_name" name="name"  lay-verify="required" placeholder="擦船名"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">价格</label>
-						<div class="layui-input-inline">
-							<input type="text" id="update_money" name="money" lay-verify="required" placeholder="价格"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">管理者</label>
-						<div class="layui-input-inline">
-							<input type="text" id="update_people" name="people" lay-verify="required" placeholder="管理者"
-								   autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">购买时间</label>
-						<div class="layui-input-inline">
-							<input type="text" id="update_dataline" name="dataline" disabled="" lay-verify="required" placeholder="购买时间"
-								   autocomplete="off" class="layui-input layui-btn-disabled">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">修改时间</label>
-						<div class="layui-input-inline">
-							<input type="text" id="update_updatedata" name="updatedata" disabled="" lay-verify="required" placeholder="最后修改时间"
-								   autocomplete="off" class="layui-input layui-btn-disabled">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">出航次数</label>
-						<div class="layui-input-inline">
-							<input type="text" id="update_num" name="num" lay-verify="required" placeholder="出航次数"
-								   autocomplete="off" class="layui-input ">
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">状态</label>
-						<div class="layui-input-inline">
-							<input type="text" id="update_status" name="status" disabled="" lay-verify="required" placeholder="状态"
-								   autocomplete="off" class="layui-input layui-btn-disabled">
-						</div>
-					</div>
-					<button style="position: absolute; margin-left:80px; margin-bottom: 15px;" class="layui-btn" lay-submit=""
-							lay-filter="demo1" onclick="updateTrue()">立即修改</button>
-					<button style="position: absolute; margin-left:360px; margin-bottom: 15px; background:red" class="layui-btn" onclick="endinsert()">取消</button>
-				</form>
-			</div>
+		<div class="insert" style="display: none; border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+				<legend>添加信息</legend>
+			</fieldset>
+			<form id="insert" class="layui-form layui-form-pane"lay-filter="insert" action=""></form>
 		</div>
-		<!--==========================================================================================-->
-		<form id="myForm">
-		</form>
-		<script>
-			//JavaScript代码区域
-			layui.use('element', function() {
-				var element = layui.element;
-
-			});
-		</script>
-		<script type="text/javascript">
-			//人员信息
-			var table = layui.table,
-				layer = layui.layer,
-				form = layui.form
-			layui.use('table', function() {
-				var table = layui.table;
-				table.render({
-					method: 'post',
-					elem: '#test',
-					contentType: 'application/json',
-					dataType: 'json',
-					url: user.defaultUrl + myurl.boatList ,
-					toolbar: '#toolbarDemo',
-					title: '用户数据表',
-					totalRow: true,
-					initSort: {field: 'id',type: 'asc'},
-					text: {none: '小小数据去哪了？'},
-					size: 'lg',
-					cols: [[
-					  {field:'id', width:'8%', title: 'ID', sort: true, align: 'center', fixed: true}
-					  ,{field:'name', width:'10%', title: '船名', align: 'center'}
-					  ,{field:'money', width:'8%', title: '价格', sort: true, align: 'center'}
-					  ,{field:'people', width:'10%', title: '管理者', align: 'center'}
-					  ,{field:'dataline', width:'18%', title: '购买时间', align: 'center'}
-					  ,{field:'updatedata', width:'18%', title: '最后维修时间', align: 'center'}
-					  ,{field:'num', width: '8%', title: '出航次数', align: 'center'}
-					  ,{field:'status', width: '10%', title: '出航状态', align: 'center', templet:'#manager_status'}
-					  ,{fixed: 'right', title:'操作', toolbar: '#barDemo', align: 'center'}
-					]],
-					done: function(res, curr, count){
-						console.log(res);
-						console.log("状态码为：" + res.data[1].status);
-						common.myForm({
-							id: {
-								type: 'text',
-								verify: 'required',
-								title: 'ID'
-							},
-							name: {
-								type: 'text',
-								verify: 'required',
-								title: 'ID'
-							},
-							money: {
-								type: 'text',
-								verify: 'required',
-								title: 'ID'
-							},
-							people: {
-								type: 'text',
-								verify: 'required',
-								title: 'ID'
-							},
-							num: {
-								type: 'text',
-								verify: 'required',
-								title: 'ID'
-							},
-							status: {
-								type: 'text',
-								verify: 'required',
-								title: 'ID'
-							}
-
-						})
-					},
-					page: true,
-					limit: 15,
-					limits: [5, 10, 15],
-				  });
-				//监听行工具事件
-				table.on('tool(test)', function(obj){
-					var data = obj.data;
-					//console.log(obj)
-					if(obj.event === 'del'){
-						layer.confirm('真的删除行么', function(index){
-							alert(data.id)
-							req.post(myurl.boatDel, {id: data.id} , false)
-							layer.close(index);
-							table.reload('test');
-						});
-					} else if(obj.event === 'edit'){
-						form = layui.form
-						console.log(data.status)
-						form.val('example', {
-							"id": data.id,
-							'name': data.name,
-							'money': data.money,
-							'people': data.people,
-							'dataline': data.dataline,
-							'updatedata': data.updatedata,
-							'num': data.num,
-							'status': (data.status == 1 ? '出航': '待出航'),
-						});
-						update();
-					}
-				})
-			});
-		</script>
-		<script type="text/html" id="manager_status">
-			{{#  if(d.status ==1 ){ }}
-			<span class="layui-btn layui-btn-xs" style="background: orangered;margin-top: 8%; height: auto; width: 50%">出航</span>
-			{{#  } else { }}
-			<span class="layui-btn layui-btn-xs" style="background: lawngreen;margin-top: 8%; height: auto; width: 50%">待出航</span>
-			{{#  } }}
-		</script>
+		<div class="update" style="display: none; border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+				<legend>修改信息</legend>
+			</fieldset>
+			<form id="update" class="layui-form layui-form-pane" lay-filter="update" action=""></form>
+		</div>
 	</body>
+	<script type="text/html" id="manager_status">
+		{{#  if(d.status ==1 ){ }}
+		<span class="layui-btn layui-btn-xs" style="background: orangered; width: 50%">工作中</span>
+		{{#  } else { }}
+		<span class="layui-btn layui-btn-xs" style="background: lawngreen; width: 50%">无工作</span>
+		{{#  } }}
+	</script>
 </html>

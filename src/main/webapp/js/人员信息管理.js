@@ -1,40 +1,17 @@
-
-
-
-// function updateTrue(){
-//     var id = $("#id").val();
-//     alert(id);
-//     var name = $("#name").val();
-//     var age = $("#age").val();
-//     var sex = $("#sex").val();
-//     var sal = $("#sal").val();
-//     var post = $("#post").val();
-//     req.post(myurl.userEdit, {name: name, age: age, sex: sex, sal: sal, post: post, id: id}, false)
-// }
-//
-
-// function insertTrue(){
-//     var name = $("#insert_name").val();
-//     var age = $("#insert_age").val();
-//     var sex = $("#insert_sex").val();
-//     var sal = $("#insert_sal").val();
-//     var post = $("#insert_post").val();
-//     req.post(myurl.userAdd, {name: name, age: age, sex: sex, sal: sal, dataline: 1, post: post}, false)
-// }
-
-
-
-//Layui数据表格
+/**
+ * layui数据表格
+ */
 layui.use('table', function() {
     var table = layui.table;
     form = layui.form
-    //方法级渲染
+    /**
+     * 方法级渲染
+     */
     table.render({
         method: 'post',
         elem: '#test',
         contentType: 'application/json',
         dataType: 'json',
-        where:{'status': 0},
         loading: 'true',
         url: user.defaultUrl + myurl.userList ,
         toolbar: '#toolbarDemo',
@@ -48,9 +25,13 @@ layui.use('table', function() {
             none: '小小数据去哪了？'
         },
         autoSort: 'true',
-        // skin: 'row',
-        // even: false,
+        // skin: 'nob',//是否显示行列渲染
+        even: true,
         size: 'lg',
+        id: 'test',
+        page: true,
+        limit: 8,
+        limits: [7, 10, 15],
         cols: [[
             {field:'id', width:'8%', title: 'ID', sort: true, align: 'center', fixed: true}
             ,{field:'name', width:'10%', title: '姓名', align: 'center'}
@@ -62,6 +43,12 @@ layui.use('table', function() {
             ,{field:'post', title: '职业', align: 'center'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
         ]],
+        /**
+         * 回调函数
+         * @param res
+         * @param curr
+         * @param count
+         */
         done: function(res, curr, count){
             console.log(res);
             /**
@@ -69,11 +56,7 @@ layui.use('table', function() {
              */
             common.form({
                 form: 'insert',
-                id:{
-                    title:'ID',
-                    type:'text',
-                    verify:'required'
-                }, name:{
+                name:{
                     title:'姓名',
                     type:'text',
                     verify:'required'
@@ -84,7 +67,7 @@ layui.use('table', function() {
                 }, sex:{
                     title:'性别',
                     type:'radio',
-                    value:[0,1],
+                    value:['男','女'],
                     name:'sex',
                     radioTitle:['男','女']
                 },sal:{
@@ -127,7 +110,7 @@ layui.use('table', function() {
                 }, sex:{
                     title:'性别',
                     type:'radio',
-                    value:[0,1],
+                    value:['男','女'],
                     radioTitle:['男','女']
                 },sal:{
                     title:'工资',
@@ -145,7 +128,7 @@ layui.use('table', function() {
                     disable:true,
                     type:'text',
                     verify:'required'
-                },post:{
+                }, post:{
                     title:'职位',
                     type:'select',
                     data:{
@@ -160,12 +143,11 @@ layui.use('table', function() {
                 }
             })
         },
-        id: 'test',
-        page: true,
-        limit: 15,
-        limits: [5, 10, 15],
+
     });
-    //监听行工具事件
+    /**
+     * 监听行工具事件
+     */
     table.on('tool(test)', function(obj){
         var data = obj.data;
         //console.log(obj)
@@ -177,14 +159,14 @@ layui.use('table', function() {
             });
         } else if(obj.event === 'edit'){
             form.val('update', {
-                update_id : data.id,
-                update_name: data.name,
-                update_age: data.age,
-                update_sex: data.sex == '男' ? 0 : 1,
-                update_sal: data.sal,
-                update_status: data.stauts == 1 ? '工作中' : '未工作',
-                update_dataline: data.dataline,
-                update_post: Number(data.post - 1),
+                id : data.id,
+                name: data.name,
+                age: data.age,
+                sex: data.sex == '男' ? '男' : '女',
+                sal: data.sal,
+                status: data.stauts == 1 ? '工作中' : '未工作',
+                dataline: data.dataline,
+                post: data.post,
             });
         }
     })
@@ -198,6 +180,7 @@ layui.use('table', function() {
      * 一键修改
     //  */
     form.on('submit(update)', function(data){
+
        req.post(myurl.userEdit, data.field, false)
     });
 });
@@ -212,7 +195,7 @@ function insert(){
         shade: 0.5,
         id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
         btnAlign: 'c',
-        area: ['600px', '600px'],
+        area: ['600px', '500px'],
         cancel: function(index, layero) {
             layer.close(index);
             return false;
@@ -221,13 +204,8 @@ function insert(){
         id: "alertcenterdiv",
     });
 }
-
 /**
- * 取消添加
- */
-
-/**
- * 修改弹窗
+ * 修改信息弹窗
  */
 function update(){
     layer.open({
@@ -246,6 +224,16 @@ function update(){
         content: $(".update").append(),
         id: "alertcenterdiv",
     });
+}
+
+/**
+ * 取消——刷新页面
+ */
+function insertNo() {
+    location.reload();
+}
+function updateNo() {
+    location.reload();
 }
 
 
