@@ -123,13 +123,14 @@ var common = {
                         "</div>\n" + "</div>\n")
                     for(let key2 in data[key].data)
                     {
-                        $('#' + key).append("<option value='" + data[key].data[key2] + "'>" + data[key].data[key2] + "</option>")
+                        $('#' + key).append("<option value='" + key2 + "'>" + data[key].data[key2] + "</option>")
+
                     }
                     break;
                 }
             }
             $('#' + key).addClass(data[key].class)
-            if(data[key].disable = true)
+            if(data[key].disable == true)
                 $('#' + key).attr('disabled', "")
         }
 

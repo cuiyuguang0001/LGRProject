@@ -113,7 +113,8 @@ layui.use('table', function() {
                 update_id:{
                     title:'ID',
                     type:'text',
-                    key:'id',
+                    class:'layui-btn-disabled',
+                    disable:true,
                     verify:'required'
                 }, update_name:{
                     title:'姓名',
@@ -134,19 +135,22 @@ layui.use('table', function() {
                     verify:'required'
                 },update_status:{
                     title:'状态',
-                    type:'select',
+                    type:'text',
+                    class:'layui-btn-disabled',
+                    disable:true,
                     verify:'required'
                 },update_dataline:{
                     title:'日期',
                     class:'layui-btn-disabled',
+                    disable:true,
                     type:'text',
                     verify:'required'
                 }, update_post:{
                     title:'职位',
                     type:'select',
                     data:{
-                        0:'员工',
-                        1:'经理'
+                        0: '员工',
+                        1: '经理',
                     }
                 },button:{
                     submit:'确认修改',
@@ -180,7 +184,7 @@ layui.use('table', function() {
                 update_sal: data.sal,
                 update_status: data.stauts == 1 ? '工作中' : '未工作',
                 update_dataline: data.dataline,
-                update_post: data.post == 0 ? '员工' : '经理',
+                update_post: Number(data.post - 1),
             });
         }
     })
@@ -193,15 +197,16 @@ layui.use('table', function() {
         var id = formData.insert_id;
         var name = formData.insert_name;
         var age = formData.insert_age;
-        var sex = formData.insert_sex;
+        var sex = formData.insert_sex == 0 ? '男' : '女';
         var sal = formData.insert_sal;
         var post = formData.insert_post;
         console.log(formData.insert_id);
+        alert(id)
         req.post(myurl.userAdd, {id: id, name: name, age: age, sex: sex, sal: sal, post: post}, false)
     });
     /**
      * 一键修改
-     */
+    //  */
     form.on('submit(update)', function(data){
        var formData = (data.field);
        var id = formData.insert_id;
