@@ -6,8 +6,9 @@
 		<title>layout 后台大布局 - Layui</title>
 		<link rel="stylesheet" href="static/layui/css/layui.css">
 		<script src="static/jQuery/jquery-3.4.1.min.js"></script>
-		<script src="static/layui/layui.js"></script>
-		<script src="js/httpReq_old.js" type="text/javascript" charset="utf-8"></script>
+<!--		<script src="static/layui/layui.js"></script>-->
+		<script src="js/httpReq.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/进出港审查.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
@@ -78,12 +79,25 @@
 <!--==========================================================================================-->						
 					</ul>
 				</div>
+
 			</div>
-<!--==========================================================================================-->				
-			<div class="layui-body">
+<!--==========================================================================================-->
+			<div class="layui-body" style="margin-top: -1%;">
+				<script type="text/html" id="toolbarDemo">
+					<div class="layui-btn-container">
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="insert()">添加信息</button>
+
+					</div>
+				</script>
 				<!-- 内容主体区域 -->
 				<!-- 数据表格 -->
-				<table class="layui-hide" id="test"></table>
+				<div class="demoTable">
+					<script type="text/html" id="barDemo">
+						<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit" onclick="update()">编辑</a>
+						<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+					</script>
+				</div>
+				<table class="layui-hide" id="test" lay-filter="test"></table>
 			</div>
 <!--==========================================================================================-->			
 		</div>
@@ -94,36 +108,19 @@
 
 			});
 		</script>
-		<script type="text/javascript">
-		//人员信息
-		var table = layui.table,
-			layer = layui.layer,
-			form = layui.form
-		layui.use('table', function() {
-			var table = layui.table;
-			table.render({
-				// method: 'post',
-				elem: '#test',
-				url: user.defaultUrl + myurl.userList ,
-				toolbar: '#toolbarDemo',
-				title: '用户数据表',
-				totalRow: true,
-			    cols: [[
-			      {field:'id', width:80, title: 'ID', sort: true}
-			      ,{field:'name', width:80, title: '姓名'}
-			      ,{field:'age', width:80, title: '年龄', sort: true}
-			      ,{field:'sex', width:80, title: '性别'}
-			      ,{field:'sal', title: '工资', width: 80, minWidth: 100}
-			      ,{field:'status', title: '有无任务', sort: true}
-			      ,{field:'dataline', title: '入职时间', sort: true}
-			      ,{field:'post', title: '职业'}
-			      ,{field:'list', width:137, title: '职位优先级', sort: true}
-			    ]],
-				page: true,
-				limit: 15,
-				limits: [5, 10, 15],
-			  });
-			});
+		<script type="text/html" id="manager_status">
+			{{#  if(d.status ==1 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: orangered; width: 50%">已通过</span>
+			{{#  } else { }}
+			<span class="layui-btn layui-btn-xs" style="background: lawngreen; width: 50%">未通过</span>
+			{{#  } }}
+		</script>
+		<script type="text/html" id="manager_type">
+			{{#  if(d.type ==1 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: orange; width: 50%">入港</span>
+			{{#  } else { }}
+			<span class="layui-btn layui-btn-xs" style="background: #007DDB; width: 50%">出港</span>
+			{{#  } }}
 		</script>
 	</body>
 </html>
