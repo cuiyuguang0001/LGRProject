@@ -69,34 +69,34 @@ layui.use('table', function() {
              */
             common.form({
                 form: 'insert',
-                insert_id:{
+                id:{
                     title:'ID',
                     type:'text',
                     verify:'required'
-                }, insert_name:{
+                }, name:{
                     title:'姓名',
                     type:'text',
                     verify:'required'
-                }, insert_age:{
+                }, age:{
                     title:'年龄',
                     type:'text',
                     verify:'required'
-                }, insert_sex:{
+                }, sex:{
                     title:'性别',
                     type:'radio',
                     value:[0,1],
                     name:'sex',
                     radioTitle:['男','女']
-                },insert_sal:{
+                },sal:{
                     title:'工资',
                     type:'text',
                     verify:'required'
-                },insert_post:{
+                },post:{
                     title:'职位',
                     type:'select',
                     data:{
-                        0:'员工',
-                        1:'经理'
+                        员工:'员工',
+                        经理:'经理'
                     }
                 },button:{
                     submit:'立即添加',
@@ -110,47 +110,47 @@ layui.use('table', function() {
              */
             common.form({
                 form: 'update',
-                update_id:{
+                id:{
                     title:'ID',
                     type:'text',
                     class:'layui-btn-disabled',
                     disable:true,
                     verify:'required'
-                }, update_name:{
+                }, name:{
                     title:'姓名',
                     type:'text',
                     verify:'required'
-                }, update_age:{
+                }, age:{
                     title:'年龄',
                     type:'text',
                     verify:'required'
-                }, update_sex:{
+                }, sex:{
                     title:'性别',
                     type:'radio',
                     value:[0,1],
                     radioTitle:['男','女']
-                },update_sal:{
+                },sal:{
                     title:'工资',
                     type:'text',
                     verify:'required'
-                },update_status:{
+                },status:{
                     title:'状态',
                     type:'text',
                     class:'layui-btn-disabled',
                     disable:true,
                     verify:'required'
-                },update_dataline:{
+                },dataline:{
                     title:'日期',
                     class:'layui-btn-disabled',
                     disable:true,
                     type:'text',
                     verify:'required'
-                }, update_post:{
+                },post:{
                     title:'职位',
                     type:'select',
                     data:{
-                        0: '员工',
-                        1: '经理',
+                        员工: '员工',
+                        经理: '经理',
                     }
                 },button:{
                     submit:'确认修改',
@@ -192,30 +192,13 @@ layui.use('table', function() {
      * 一键添加
      */
     form.on('submit(insert)', function(data){
-        //表单数据formdata
-        var formData = (data.field);
-        var id = formData.insert_id;
-        var name = formData.insert_name;
-        var age = formData.insert_age;
-        var sex = formData.insert_sex == 0 ? '男' : '女';
-        var sal = formData.insert_sal;
-        var post = formData.insert_post;
-        console.log(formData.insert_id);
-        alert(id)
-        req.post(myurl.userAdd, {id: id, name: name, age: age, sex: sex, sal: sal, post: post}, false)
+        req.post(myurl.userAdd, data.field, false)
     });
     /**
      * 一键修改
     //  */
     form.on('submit(update)', function(data){
-       var formData = (data.field);
-       var id = formData.insert_id;
-       var name = formData.update_name;
-       var age = formData.update_age;
-       var sex = formData.update_sex;
-       var sal = formData.update_sal;
-       var post = formData.update_post;
-       req.post(myurl.userEdit, {id: id, name: name, age: age, sex: sex, sal: sal, post: post})
+       req.post(myurl.userEdit, data.field, false)
     });
 });
 /**
