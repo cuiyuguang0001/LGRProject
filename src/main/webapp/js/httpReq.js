@@ -129,6 +129,8 @@ var common = {
                 }
             }
             $('#' + key).addClass(data[key].class)
+            if(data[key].disable = true)
+                $('#' + key).attr('disabled')
         }
 
 
