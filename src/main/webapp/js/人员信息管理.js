@@ -134,10 +134,14 @@ layui.use('table', function() {
                     verify:'required'
                 },update_status:{
                     title:'状态',
-                    type:'text',
-                    verify:'required'
+                    type:'select',
+                    data:{
+                       0:'无工作',
+                       1:'工作中'
+                    },
                 },update_dataline:{
                     title:'日期',
+                    class:'layui-btn-disabled',
                     type:'text',
                     verify:'required'
                 }, update_post:{
@@ -166,30 +170,26 @@ layui.use('table', function() {
         //console.log(obj)
         if(obj.event === 'del'){
             layer.confirm('真的删除行么', function(index){
-                alert(data.id)
                 req.post(myurl.userDel, {id: data.id} , false)
                 layer.close(index);
                 table.reload('test');
             });
         } else if(obj.event === 'edit'){
-            alert(data.sex);
             form.val('update', {
                 update_id : data.id,
                 update_name: data.name,
                 update_age: data.age,
+                update_sex: data.sex == '男' ? 0 : 1,
                 update_sal: data.sal,
-                update_status: (data.stauts == 1 ? "工作中" : "未工作"),
+                update_status: data.stauts,
                 update_dataline: data.dataline,
+                update_post: data.post == 0 ? '员工' : '经理',
             });
         }
     })
-    form.on('radio(update)', function(data){
-        alert(99)
-        console.log(data.elem); //得到radio原始DOM对象
-        console.log(data.value); //被点击的radio的value值
-        alert(88)
-    });
-    //获取添加窗口中的信息
+    /**
+     * 一键添加
+     */
     form.on('submit(insert)', function(data){
         //表单数据formdata
         var formData = (data.field);
@@ -202,8 +202,20 @@ layui.use('table', function() {
         console.log(formData.insert_id);
         req.post(myurl.userAdd, {id: id, name: name, age: age, sex: sex, sal: sal, post: post}, false)
     });
+    /**
+     * 一键修改
+     */
+    form.on('submit(update)', function(data){
+       var formData = (data.field);
+       var id = formData.insert_id;
+       var name = formData.insert_name;
+       var age = formData.insert_age;
+       var sex = formData.insert_sex;
+    });
 });
-//添加员工信息
+/**
+ * 添加信息弹窗
+ */
 function insert(){
     layer.open({
         type: 1,
