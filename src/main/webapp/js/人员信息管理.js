@@ -135,10 +135,7 @@ layui.use('table', function() {
                 },update_status:{
                     title:'状态',
                     type:'select',
-                    data:{
-                       0:'无工作',
-                       1:'工作中'
-                    },
+                    verify:'required'
                 },update_dataline:{
                     title:'日期',
                     class:'layui-btn-disabled',
@@ -181,7 +178,7 @@ layui.use('table', function() {
                 update_age: data.age,
                 update_sex: data.sex == '男' ? 0 : 1,
                 update_sal: data.sal,
-                update_status: data.stauts,
+                update_status: data.stauts == 1 ? '工作中' : '未工作',
                 update_dataline: data.dataline,
                 update_post: data.post == 0 ? '员工' : '经理',
             });
@@ -208,9 +205,12 @@ layui.use('table', function() {
     form.on('submit(update)', function(data){
        var formData = (data.field);
        var id = formData.insert_id;
-       var name = formData.insert_name;
-       var age = formData.insert_age;
-       var sex = formData.insert_sex;
+       var name = formData.update_name;
+       var age = formData.update_age;
+       var sex = formData.update_sex;
+       var sal = formData.update_sal;
+       var post = formData.update_post;
+       req.post(myurl.userEdit, {id: id, name: name, age: age, sex: sex, sal: sal, post: post})
     });
 });
 /**
