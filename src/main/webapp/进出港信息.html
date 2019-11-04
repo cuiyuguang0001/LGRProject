@@ -87,8 +87,8 @@
 				<div class="demoTable">
 					<script type="text/html" id="barDemo">
 						{{# if (d.status == 0){}}
-							<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="getCheckData" >通过</a>
-							<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">拒绝</a>
+							<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="getCheckData" >确认通过</a>
+							<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="getCheckDataNo">拒绝</a>
 						{{# }}}
 					</script>
 				</div>
@@ -104,14 +104,14 @@
 			});
 		</script>
 		<script type="text/html" id="manager_status">
-			{{#  if(d.status ==1 ){ }}
+			{{#  if(d.status == 1 ){ }}
 			<span class="layui-btn layui-btn-xs" style="background: orangered; width: 50%">已通过</span>
 			{{#  } else { }}
 			<span class="layui-btn layui-btn-xs" style="background: lawngreen; width: 50%">未通过</span>
 			{{#  } }}
 		</script>
 		<script type="text/html" id="manager_type">
-			{{#  if(d.type ==1 ){ }}
+			{{#  if(d.type == 1 ){ }}
 			<span class="layui-btn layui-btn-xs" style="background: orange; width: 50%">入港</span>
 			{{#  } else { }}
 			<span class="layui-btn layui-btn-xs" style="background: #007DDB; width: 50%">出港</span>

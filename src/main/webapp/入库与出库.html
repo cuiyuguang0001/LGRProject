@@ -6,8 +6,9 @@
 		<title>layout 后台大布局 - Layui</title>
 		<link rel="stylesheet" href="static/layui/css/layui.css">
 		<script src="static/jQuery/jquery-3.4.1.min.js"></script>
-		<script src="static/layui/layui.all.js"></script>
+		<script src="static/layui/layui.js"></script>
 		<script src="js/httpReq.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/入库与出库.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
@@ -79,11 +80,30 @@
 					</ul>
 				</div>
 			</div>
-<!--==========================================================================================-->				
+<!--==========================================================================================-->
+			<div class="insert" style="display: none; border-radius:15px; padding:10px; padding-left:40px; padding-right:40px; ">
+				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+					<legend>添加信息</legend>
+				</fieldset>
+				<form id="insert" class="layui-form layui-form-pane"lay-filter="insert" action=""></form>
+			</div>
+
 			<div class="layui-body">
+				<div class="demoTable">
+					<script type="text/html" id="barDemo">
+						<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除订单</a>
+					</script>
+				</div>
+				<script type="text/html" id="toolbarDemo">
+					<div class="layui-btn-container">
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="insert()">添加信息</button>
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="common.reload('test', {type:0})">查看出库货物信息</button>
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="common.reload('test', {type:1})">查看入库货物信息</button>
+					</div>
+				</script>
 				<!-- 内容主体区域 -->
 				<!-- 数据表格 -->
-				<<table class="layui-hide" id="test" lay-filter="test"></table>
+				<table class="layui-hide" id="test" lay-filter="test"></table>
 			</div>
 <!--==========================================================================================-->			
 		</div>
@@ -94,72 +114,13 @@
 
 			});
 		</script>
-		<script type="text/javascript">
-			//货物订单
-			var table = layui.table,
-				layer = layui.layer,
-				form = layui.form
-			layui.use('table', function() {
-				var table = layui.table;
-				//方法级渲染
-				table.render({
-					method: 'post',
-					elem: '#test',
-					contentType: 'application/json',
-					dataType: 'json',
-					loading: 'true',
-					url: user.defaultUrl + myurl.dingdanList,
-					toolbar: '#toolbarDemo',
-					title: '订单表',
-					totalRow: true,
-					initSort: {
-						field: 'id' //排序字段，对应 cols 设定的各字段名
-						, type: 'asc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
-					},
-					text: {
-						none: '小小数据去哪了？'
-					},
-					autoSort: 'true',
-					// skin: 'row',
-					// even: false,
-					size: 'lg',
-					where: {
-						"type": 1
-					},
-					cols: [[
-						{field: 'id', width: '8%', title: 'ID', sort: true, align: 'center', fixed: true}
-						, {field: 'name', width: '8%', title: '货物名', sort: true, align: 'center'}
-						, {field: 'num', width: '8%', title: '数量', align: 'center'}
-						, {field: 'util', title: '单位', width: '10%', minWidth: 100, align: 'center'}
-						, {field: 'dataline', width: '20%', title: '时间', sort: true, align: 'center'}
-						, {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
-						]],
-					done: function (res, curr, count) {
-						res.data
-						console.log(res);
-						// console.log(res.data[0].name);
-					},
-					id: 'test1',
-					page: true,
-					limit: 15,
-					limits: [5, 10, 15],
-				});
-				// var $ = layui.$, active = {
-				// 	reload: function(){
-				// 		var demoReload = $('#demoReload');
-				// 		//执行重载
-				// 		table.reload('testReload', {
-				//
-				// 			page: {
-				// 				curr: 1 //重新从第 1 页开始
-				// 			}
-				// 			,where: {
-				// 				type: 0
-				// 			}
-				// 		});
-				// 	}
-				// };
-			});
+		<script type="text/html" id="manager_type">
+			{{#  if(d.type == 1 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: powderblue; width: 50%">入库</span>
+			{{#  } else { }}
+			<span class="layui-btn layui-btn-xs" style="background: palevioletred; width: 50%">出库</span>
+			{{#  } }}
 		</script>
+
 	</body>
 </html>

@@ -85,19 +85,13 @@
 			<div class="layui-body" style="margin-top: -1%;">
 				<script type="text/html" id="toolbarDemo">
 					<div class="layui-btn-container">
-						<button style="top: 1%;" type="button" class="layui-btn" onclick="common.reload('test', 0)">查看未通过信息</button>
-						<button style="top: 1%;" type="button" class="layui-btn" onclick="common.reload('test', 1)">查看已通过信息</button>
-
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="common.reload('test', {status: 0})">查看未通过信息</button>
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="common.reload('test', {status: 1})">查看已通过信息</button>
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="common.reload('test', {status: 2})">查看已拒绝信息</button>
 					</div>
 				</script>
 				<!-- 内容主体区域 -->
 				<!-- 数据表格 -->
-				<div class="demoTable">
-					<script type="text/html" id="barDemo">
-						<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit" onclick="update()">编辑</a>
-						<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-					</script>
-				</div>
 				<table class="layui-hide" id="test" lay-filter="test"></table>
 			</div>
 <!--==========================================================================================-->			
@@ -112,6 +106,8 @@
 		<script type="text/html" id="manager_status">
 			{{#  if(d.status ==1 ){ }}
 			<span class="layui-btn layui-btn-xs" style="background: orangered; width: 50%">已通过</span>
+			{{#  } else if(d.status ==2 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: rebeccapurple; width: 50%">已拒绝</span>
 			{{#  } else { }}
 			<span class="layui-btn layui-btn-xs" style="background: lawngreen; width: 50%">未通过</span>
 			{{#  } }}

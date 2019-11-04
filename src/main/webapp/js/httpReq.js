@@ -144,14 +144,12 @@ var common = {
         form.render()
     },
 
-    reload:(id, status) => {
+    reload:(id, data) => {
         table.reload(id, {
             page:{
                 curr:1
             },
-            where:{
-                status:status
-            }
+            where:data,
         })
     }
 }

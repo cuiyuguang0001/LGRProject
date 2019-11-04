@@ -57,22 +57,22 @@ layui.use('table', function() {
             console.log(res);
         },
     });
-    common.reload('test', 0)
+    common.reload('test', {status: 0})
     //工具栏事件
     table.on('tool(test)', function(obj){
         if(obj.event === 'getCheckData'){
             var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type}, false)
+            alert("\" " + obj.data.boat + "\" " +  "已确认通过审核");
             console.log(obj.data.id)
             console.log(obj.data.type)
 
             console.log(p)
             location.reload();
+        }else if(obj.event === "getCheckDataNo"){
+            var q = req.post(myurl.planEditStatus, {id: obj.data.id, status: 2, type: obj.data.type}, false)
+            alert("\" " + obj.data.boat + "\" " +  "已被拒绝通过");
+
+            location.reload();
         }
-        // switch(obj.event){
-        //     case 'getCheckData':
-        //         var data = checkStatus.data;
-        //         layer.alert(JSON.stringify(data));
-        //         break;
-        // }
     });
 });
