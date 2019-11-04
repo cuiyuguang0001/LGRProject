@@ -21,7 +21,7 @@ public interface KuCunMapper {
     @Insert("insert into ship_kucun(name, num, util) values(#{name}, #{num}, #{util})")
     boolean kucunAdd(String name, String num, String util);
 
-    @Update("update ship_kucun set num = num #{flag} #{num} where name = #{name}")
-    boolean updateKuCunForDingDan(String name, String num, char flag);
+    @Update("update ship_kucun set num = num + #{num} where name = #{name}")
+    boolean updateKuCunForDingDan(String name, String num);
 
 }

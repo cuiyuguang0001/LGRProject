@@ -49,7 +49,7 @@ public class DingDanService {
                 return MapUtil.requestMap(null,Constant.NOT_SUCCESS_KUCUN, Constant.NOT_SUCCESS);
             if(Integer.valueOf(kuCun.getNum()) - Integer.valueOf(dingDan.getNum()) < 0)
                 return MapUtil.requestMap(null,Constant.NOT_SUCCESS_KUCUN_NUM, Constant.NOT_SUCCESS);
-            if (!kuCunMapper.updateKuCunForDingDan(dingDan.getName(), dingDan.getNum(), '-'))
+            if (!kuCunMapper.updateKuCunForDingDan(dingDan.getName(), "-" + dingDan.getNum()))
                 return MapUtil.requestMap(null, false);
 
         }else
@@ -59,13 +59,13 @@ public class DingDanService {
                 if (!kuCunMapper.kucunAdd(dingDan.getName(), dingDan.getNum(), dingDan.getUtil()))
                     return MapUtil.requestMap(null,false);
             }else {
-                if (!kuCunMapper.updateKuCunForDingDan(dingDan.getName(), dingDan.getNum(), '+'))
+                if (!kuCunMapper.updateKuCunForDingDan(dingDan.getName(), "+" + dingDan.getNum()))
                     return MapUtil.requestMap(null,false);
             }
         }
 
         dingDan.setDataline(CommitUtil.getTineLine());
-        if (dingDanMapper.dingdanAdd(dingDan))
+        if (!dingDanMapper.dingdanAdd(dingDan))
             return MapUtil.requestMap(null, true);
         return MapUtil.requestMap(null, false);
     }
