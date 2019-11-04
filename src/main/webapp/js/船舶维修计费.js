@@ -49,7 +49,69 @@ layui.use('table', function() {
          */
         done: function(res, curr, count) {
             console.log(res);
+            /**
+             * 添加信息
+             */
+            common.form({
+                form: 'insert',
+                boat:{
+                    title:'机器名',
+                    type:'text',
+                    verify:'required'
+                }, people:{
+                    title:'负责人',
+                    type:'text',
+                    verify:'required'
+                },status:{
+                    title:'维修状态',
+                    type:'select',
+                    data:{
+                        已维修:'已维修',
+                        未维修:'未维修'
+                    }
+                },money:{
+                    title:'维修金额',
+                    type:'text',
+                    verify:'required'
+                },button:{
+                    submit:'立即添加',
+                    submitFilter:'insert',
+                    back:'取消',
+                    backClick:'insertNo()'
+                }
+            })
         }
+    });
+    /**
+     * 监听行工具事件
+     */
+    table.on('tool(test)', function(obj){
+        var data = obj.data;
+        //console.log(obj)
+        if(obj.event === 'del'){
+            layer.confirm('真的删除行么', function(index){
+                req.post(myurl.weixiuDel, {id: data.id} , false)
+                layer.close(index);
+                table.reload('test');
+            });
+        } else if(obj.event === 'edit'){
+            form.val('update', {
+                id : data.id,
+                name: data.name,
+                age: data.age,
+                sex: data.sex == '男' ? '男' : '女',
+                sal: data.sal,
+                status: data.stauts == 1 ? '工作中' : '未工作',
+                dataline: data.dataline,
+                post: data.post,
+            });
+        }
+    })
+    /**
+     * 一键添加
+     */
+    form.on('submit(insert)', function(data){
+        req.post(myurl.weixiuAdd, data.field, false)
     });
 });
 /**
@@ -69,6 +131,27 @@ function insert(){
             return false;
         },
         content: $(".insert").append(),
+        id: "alertcenterdiv",
+    });
+}
+/**
+ * 修改信息弹窗
+ */
+function update(){
+    layer.open({
+        type: 1,
+        title: '人员信息',
+        closeBtn: false,
+        shade: 0.5,
+        id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
+        btnAlign: 'c',
+        area: ['600px', '630px'],
+        cancel: function(index, layero) {
+            layer.close(index);
+            $(".update").css("display", "none");
+            return false;
+        },
+        content: $(".update").append(),
         id: "alertcenterdiv",
     });
 }
