@@ -60,8 +60,8 @@ layui.use('table', function() {
                     title:'货物状态',
                     type:'select',
                     data:{
-                        出库:0,
-                        入库:1
+                        0:'出库',
+                        1:'入库'
                     }
                 }, name:{
                     title:'货物名',
@@ -110,10 +110,6 @@ layui.use('table', function() {
      * 一键添加
      */
     form.on('submit(insert)', function(data){
-        // console.log(data.field.type)
-        console.log(data.field)
-        console.log(req.post(myurl.dingdanAdd, data.field, false))
-        alert(data.field)
         req.post(myurl.dingdanAdd, data.field, false)
     });
 });
