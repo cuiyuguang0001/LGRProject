@@ -9,11 +9,11 @@ import java.util.Map;
 @Mapper
 public interface TuoLunMapper {
 
-    @Select("select id, boat, people, dataline, money from ship_tuolun")
+    @Select("select id, boat, people, dataline, status from ship_tuolun")
     List<TuoLun> tuolunList(Map<String ,Object> map);
 
-    @Insert("insert into ship_tuolun(boat, people, dataline, money) " +
-            "values(#{boat}, #{people}, #{dataline}, #{money})")
+    @Insert("insert into ship_tuolun(boat, people, dataline) " +
+            "values(#{boat}, #{people}, #{dataline})")
     boolean tuolunAdd(TuoLun tuoLun);
 
     @Delete("delete from ship_tuolun where id = #{id}")

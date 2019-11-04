@@ -39,6 +39,7 @@ layui.use('table', function() {
             , {field: 'status', title: '是否已维修', align: 'center', templet:'#manager_status'}
             , {field: 'dataline', title: '维修时间', minWidth: 100, align: 'center'}
             , {field: 'money', title: '维修金额', sort: true, align: 'center'}
+            , {fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
         ]],
         /**
          * 回调函数
@@ -51,3 +52,32 @@ layui.use('table', function() {
         }
     });
 });
+/**
+ * 添加信息弹窗
+ */
+function insert(){
+    layer.open({
+        type: 1,
+        title: '添加信息',
+        closeBtn: false,
+        shade: 0.5,
+        id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
+        btnAlign: 'c',
+        area: ['600px', '500px'],
+        cancel: function(index, layero) {
+            layer.close(index);
+            return false;
+        },
+        content: $(".insert").append(),
+        id: "alertcenterdiv",
+    });
+}
+/**
+ * 取消——刷新页面
+ */
+function insertNo() {
+    location.reload();
+}
+function updateNo() {
+    location.reload();
+}

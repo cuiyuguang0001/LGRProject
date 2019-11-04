@@ -36,10 +36,10 @@ var myurl = {
     weixiuEditStatus:'/weixiu/weixiuEditStatus',
     weixiuDel:'/weixiu/weixiuDel',
     //tuolun表操作
-    tuolunList:'/tuolunList',
-    tuolunAdd:'/tuolunAdd',
-    tuolunEditStatus:'/tuolunEditStatus',
-    tuolunDel:'/tuolunDel'
+    tuolunList:'/tuolun/tuolunList',
+    tuolunAdd:'/tuolun/tuolunAdd',
+    tuolunEditStatus:'/tuolun/tuolunEditStatus',
+    tuolunDel:'/tuolun/tuolunDel'
 }
 
 var req = {

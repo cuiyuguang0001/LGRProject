@@ -95,7 +95,7 @@ layui.use('table', function() {
             })
         },
     });
-    common.reload('test', {type: 1})
+    common.reload('test', {type: 0})
     table.on('tool(test)', function(obj){
         var data = obj.data;
         if(obj.event === 'del'){
@@ -132,4 +132,10 @@ function insert(){
         content: $(".insert").append(),
         id: "alertcenterdiv",
     });
+}
+/**
+ * 取消——刷新页面
+ */
+function insertNo() {
+    location.reload();
 }

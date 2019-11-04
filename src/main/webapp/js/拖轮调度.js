@@ -39,7 +39,7 @@ layui.use('table', function() {
             ,{field:'people',title: '负责员工', align: 'center'}
             ,{field:'dataline', title: '时间', align: 'center'}
             ,{field:'status', title: '拖轮状态', align: 'center', templet:'#manager_status'}
-        ]],
+            ]],
         /**
          * 回调函数
          * @param res

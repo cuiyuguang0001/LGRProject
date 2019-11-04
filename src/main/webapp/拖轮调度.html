@@ -94,6 +94,12 @@
 
 			});
 		</script>
-
+		<script type="text/html" id="manager_status">
+			{{#  if(d.status ==1 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: lightslategray; width: 50%">YES</span>
+			{{#  } else { }}
+			<span class="layui-btn layui-btn-xs" style="background: #bce8f1; width: 50%">NO</span>
+			{{#  } }}
+		</script>
 	</body>
 </html>
