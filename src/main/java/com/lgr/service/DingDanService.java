@@ -65,7 +65,7 @@ public class DingDanService {
         }
 
         dingDan.setDataline(CommitUtil.getTineLine());
-        if (!dingDanMapper.dingdanAdd(dingDan))
+        if (dingDanMapper.dingdanAdd(dingDan))
             return MapUtil.requestMap(null, true);
         return MapUtil.requestMap(null, false);
     }
