@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -31,7 +32,10 @@ public class WeiXiuService {
         Map<String, Object> map = new HashMap<>();
         PageUtil p = new PageUtil(weiXiu.getPage(), weiXiu.getLimit());
         map.put("page", p);
-        return MapUtil.requestMap(weiXiuMapper.weixiuList(map),
+        List<WeiXiu> weiXius = weiXiuMapper.weixiuList(map);
+        for(WeiXiu w : weiXius)
+            w.setDataline(CommitUtil.timestampToStr(Long.valueOf(w.getDataline())));
+        return MapUtil.requestMap(weiXius,
                 p.getCount(),
                 Constant.SUCCESS_REQUEST,
                 Constant.SUCCESS);
