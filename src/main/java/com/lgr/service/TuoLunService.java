@@ -1,5 +1,6 @@
 package com.lgr.service;
 
+import com.lgr.commitUtil.CommitUtil;
 import com.lgr.commitUtil.MapUtil;
 import com.lgr.commitUtil.PageUtil;
 import com.lgr.constant.Constant;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -27,7 +29,10 @@ public class TuoLunService {
         Map<String, Object> map = new HashMap<>();
         PageUtil p = new PageUtil(tuoLun.getPage(), tuoLun.getLimit());
         map.put("page", p);
-        return MapUtil.requestMap(tuoLunMapper.tuolunList(map),
+        List<TuoLun> tuoLuns = tuoLunMapper.tuolunList(map);
+        for(TuoLun t : tuoLuns)
+            t.setDataline(CommitUtil.timestampToStr(Long.valueOf(t.getDataline())));
+        return MapUtil.requestMap(tuoLuns,
                 p.getCount(),
                 Constant.SUCCESS_REQUEST,
                 Constant.SUCCESS);
