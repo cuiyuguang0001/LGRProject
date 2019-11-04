@@ -46,5 +46,8 @@ layui.use('table', function() {
          * @param curr
          * @param count
          */
+        done: function(res, curr, count) {
+            console.log(res);
+        }
     });
 });
