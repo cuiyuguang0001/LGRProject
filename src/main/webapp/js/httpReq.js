@@ -31,15 +31,15 @@ var myurl = {
     planEditStatus: '/plan/planEditStatus',//修改状态 参数 status id
     planDel: '/plan/planDel',//删除 参数 id
     //weixiu表操作
-    weixiuList:'weixiu/weixiuList',
-    weixiuAdd:'weixiu/weixiuAdd',
-    weixiuEditStatus:'weixiu/weixiuEditStatus',
-    weixiuDel:'weixiu/weixiuDel',
+    weixiuList:'/weixiu/weixiuList',
+    weixiuAdd:'/weixiu/weixiuAdd',
+    weixiuEditStatus:'/weixiu/weixiuEditStatus',
+    weixiuDel:'/weixiu/weixiuDel',
     //tuolun表操作
-    tuolunList:'tuolunList',
-    tuolunAdd:'tuolunAdd',
-    tuolunEditStatus:'tuolunEditStatus',
-    tuolunDel:'tuolunDel'
+    tuolunList:'/tuolunList',
+    tuolunAdd:'/tuolunAdd',
+    tuolunEditStatus:'/tuolunEditStatus',
+    tuolunDel:'/tuolunDel'
 }
 
 var req = {

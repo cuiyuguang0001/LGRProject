@@ -94,5 +94,12 @@
 
 			});
 		</script>
+		<script type="text/html" id="manager_status">
+			{{#  if(d.status ==1 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: cornflowerblue; width: 50%">已维修</span>
+			{{#  } else { }}
+			<span class="layui-btn layui-btn-xs" style="background: brown; width: 50%">未维修</span>
+			{{#  } }}
+		</script>
 	</body>
 </html>
