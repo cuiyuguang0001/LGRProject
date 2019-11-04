@@ -34,7 +34,7 @@ public interface UserMapper {
     @Delete("delete from ship_user where id = #{id}")
     boolean uerDel(User user);
 
-    @Update("update ship_user set status = #{status} where id = #{id}")
-    boolean userEditStatus(String status, String id);
+    @Update("update ship_user set status = #{status} where name = #{name}")
+    boolean userEditStatus(String status, String name);
 
 }

@@ -26,7 +26,7 @@ public interface BoatMapper {
     @Update("update ship_boat set updatedata = #{data} where id = #{id}")
     boolean boatEditUpdatedata(String data, String id);
 
-    @Update("update ship_boat set num = num + #{num}, status = #{status} where id = #{id}")
-    boolean boatEditUpdateStatus(String status, String num,String id);
+    @Update("update ship_boat set num = num + #{num}, status = #{status} where name = #{name}")
+    boolean boatEditUpdateStatus(String status, String num,String name);
 
 }

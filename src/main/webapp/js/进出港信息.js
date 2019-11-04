@@ -37,6 +37,7 @@ layui.use('table', function() {
         limit: 8,
         limits: [7, 10, 15],
         cols: [[
+            // {type: 'checkbox', fixed: 'left'},
             {field: 'id', width: '8%', title: 'ID', sort: true, align: 'center', fixed: true}
             , {field: 'type', width: '10%', title: '出入状态', align: 'center', templet: '#manager_type'}
             , {field: 'dataline',title: '时间', width:'15%',align: 'center'}
@@ -44,7 +45,7 @@ layui.use('table', function() {
             , {field: 'boat', title: '申请船只', minWidth: 100, align: 'center'}
             , {field: 'oil',title: '所需燃油', sort: true, align: 'center'}
             , {field: 'status', title: '状态', sort: true, align: 'center', templet: '#manager_status'}
-            // , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
+            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150, align:'center'}
         ]],
         /**
          * 回调函数
@@ -52,5 +53,26 @@ layui.use('table', function() {
          * @param curr
          * @param count
          */
+        done: function(res, curr, count) {
+            console.log(res);
+        },
+    });
+    common.reload('test', 0)
+    //工具栏事件
+    table.on('tool(test)', function(obj){
+        if(obj.event === 'getCheckData'){
+            var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type}, false)
+            console.log(obj.data.id)
+            console.log(obj.data.type)
+
+            console.log(p)
+            location.reload();
+        }
+        // switch(obj.event){
+        //     case 'getCheckData':
+        //         var data = checkStatus.data;
+        //         layer.alert(JSON.stringify(data));
+        //         break;
+        // }
     });
 });

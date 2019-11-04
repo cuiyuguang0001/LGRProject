@@ -142,5 +142,16 @@ var common = {
             "<button id='No' type='button' style='position: absolute; margin-left:360px; margin-bottom: 15px; background:red' class='layui-btn' onclick='" + data.button.backClick + "'>" + data.button.back + "</button>\n" +
             "</div>")
         form.render()
+    },
+
+    reload:(id, status) => {
+        table.reload(id, {
+            page:{
+                curr:1
+            },
+            where:{
+                status:status
+            }
+        })
     }
 }

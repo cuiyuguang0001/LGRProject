@@ -52,6 +52,7 @@ public class PlanService {
 
     public Map<String ,Object> planEditStatus(Plan plan)
     {
+        System.out.println("111");
         if(plan.getType().equals("0"))
         {
             //出港

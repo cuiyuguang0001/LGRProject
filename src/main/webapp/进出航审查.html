@@ -31,8 +31,8 @@
 						<li class="layui-nav-item layui-nav-itemed">
 							<a class="" href="javascript:void(0);">船舶管理</a>
 							<dl class="layui-nav-child">
-								<dd><a href="进出港信息.html">进出港信息</a></dd>
-								<dd><a href="进出航审查.html">进出港审查</a></dd>
+								<dd><a href="进出港信息.html">进出港审查</a></dd>
+								<dd><a href="进出航审查.html">进出港信息</a></dd>
 							</dl>
 						</li>
 <!--==========================================================================================-->						
@@ -85,7 +85,8 @@
 			<div class="layui-body" style="margin-top: -1%;">
 				<script type="text/html" id="toolbarDemo">
 					<div class="layui-btn-container">
-						<button style="top: 1%;" type="button" class="layui-btn" onclick="insert()">添加信息</button>
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="common.reload('test', 0)">查看未通过信息</button>
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="common.reload('test', 1)">查看已通过信息</button>
 
 					</div>
 				</script>
