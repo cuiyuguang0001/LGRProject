@@ -41,7 +41,7 @@ layui.use('table', function() {
             ,{field:'num', title: '数量', align: 'center'}
             ,{field:'util', title: '单位', align: 'center'}
             ,{field:'dataline', title: '订单创建日期', align: 'center'}
-            ,{fixed: 'right', title:'操作',align: 'center', toolbar: '#barDemo', width:150}
+            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
         ]],
         /**
          * 回调函数
@@ -73,12 +73,8 @@ layui.use('table', function() {
                     }
                 },num:{
                     title:'数量',
-                    type:'select',
-                    data:{
-                        10:10,
-                        20:20,
-                        30:30
-                    }
+                    type:'text',
+                    verify:'required'
                 },util:{
                     title:'单位',
                     type:'select',
@@ -110,6 +106,9 @@ layui.use('table', function() {
      * 一键添加
      */
     form.on('submit(insert)', function(data){
+        alert(data.field.type)
+        console.log(data.field.type)
+        data.field
         req.post(myurl.dingdanAdd, data.field, false)
     });
 });
