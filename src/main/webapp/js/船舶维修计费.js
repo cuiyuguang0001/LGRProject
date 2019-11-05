@@ -149,7 +149,6 @@ layui.use('table', function() {
      * 一键添加
      */
     form.on('submit(insert)', function(data){
-        alert(data.field.status)
         req.post(myurl.weixiuAdd, data.field, false)
     });
     /**

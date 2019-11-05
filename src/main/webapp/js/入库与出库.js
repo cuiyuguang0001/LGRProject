@@ -106,7 +106,6 @@ layui.use('table', function() {
      * 一键添加
      */
     form.on('submit(insert)', function(data){
-        alert(data.field.type)
         console.log(data.field.type)
         data.field
         req.post(myurl.dingdanAdd, data.field, false)
