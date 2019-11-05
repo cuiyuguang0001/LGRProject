@@ -80,6 +80,46 @@ layui.use('table', function() {
                     backClick:'insertNo()'
                 }
             })
+            /**
+             * 修改信息
+             */
+            common.form({
+                form: 'update',
+                id:{
+                    title:'ID',
+                    type:'text',
+                    class:'layui-btn-disabled',
+                    disable:true,
+                    verify:'required'
+                }, boat:{
+                    title:'机器名',
+                    type:'text',
+                    verify:'required'
+                }, people:{
+                    title:'负责人',
+                    type:'text',
+                    verify:'required'
+                },status:{
+                    title:'维修状态',
+                    disable: true,
+                    class:'layui-btn-disabled',
+                    type:'text',
+                },dataline:{
+                    title:'维修时间',
+                    disable: true,
+                    class:'layui-btn-disabled',
+                    type:'text',
+                }, money:{
+                    title:'维修金额',
+                    type:'text',
+                    verify:'required'
+                },button:{
+                    submit:'立即添加',
+                    submitFilter:'insert',
+                    back:'取消',
+                    backClick:'insertNo()'
+                }
+            })
         }
     });
     /**
@@ -97,13 +137,11 @@ layui.use('table', function() {
         } else if(obj.event === 'edit'){
             form.val('update', {
                 id : data.id,
-                name: data.name,
-                age: data.age,
-                sex: data.sex == '男' ? '男' : '女',
-                sal: data.sal,
-                status: data.stauts == 1 ? '工作中' : '未工作',
+                boat: data.boat,
+                money: data.money,
+                people: data.people,
+                status: data.stauts == 1 ? '已维修' : '未维修',
                 dataline: data.dataline,
-                post: data.post,
             });
         }
     })
@@ -111,7 +149,14 @@ layui.use('table', function() {
      * 一键添加
      */
     form.on('submit(insert)', function(data){
+        alert(data.field.status)
         req.post(myurl.weixiuAdd, data.field, false)
+    });
+    /**
+     * 一键修改
+     //  */
+    form.on('submit(update)', function(data){
+        req.post(myurl.userEdit, data.field, false)
     });
 });
 /**
