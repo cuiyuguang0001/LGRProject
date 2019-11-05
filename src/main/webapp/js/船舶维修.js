@@ -167,14 +167,12 @@ layui.use('table', function() {
      * 一键添加
      */
     form.on('submit(insert)', function (data) {
-        alert(data.field.num)
         req.post(myurl.boatAdd, data.field, false);
     });
     /**
      * 一键修改
      //  */
     form.on('submit(update)', function(data){
-        alert(data.field.people)
         req.post(myurl.boatEdit, data.field, false)
     });
 });

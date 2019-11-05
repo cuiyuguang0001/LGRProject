@@ -154,7 +154,6 @@ layui.use('table', function() {
         if(obj.event === 'del'){
             layer.confirm('真的删除行么', function(index){
                 req.post(myurl.userDel, {id: data.id} , false)
-                layer.close(index);
                 table.reload('test');
             });
         } else if(obj.event === 'edit'){
