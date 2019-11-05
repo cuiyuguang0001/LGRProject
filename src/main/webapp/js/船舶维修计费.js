@@ -114,10 +114,10 @@ layui.use('table', function() {
                     type:'text',
                     verify:'required'
                 },button:{
-                    submit:'立即添加',
-                    submitFilter:'insert',
+                    submit:'立即修改',
+                    submitFilter:'update',
                     back:'取消',
-                    backClick:'insertNo()'
+                    backClick:'updateNo()'
                 }
             })
         }
