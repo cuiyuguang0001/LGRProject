@@ -26,6 +26,7 @@ public class BoatService {
         PageUtil p = new PageUtil(boat.getPage(), boat.getLimit());
         map.put("page", p);
         map.put("name", boat.getName());
+        map.put("type", boat.getType());
 
         //处理时间戳
         List<Boat> boats = boatMapper.boatList(map);

@@ -9,8 +9,8 @@ import java.util.Map;
 @Mapper
 public interface BoatMapper {
 
-    @Select("select id, name, money, people, dataline, updatedata, num, status " +
-            "from ship_boat where name like concat(ifNull(#{name}, ''), '%')")
+    @Select("select id, name, money, people, dataline, updatedata, num, status, type " +
+            "from ship_boat where name like concat(ifNull(#{name}, ''), '%') and type = #{type}")
     List<Boat> boatList(Map<String ,Object> map);
 
     @Insert("insert into ship_boat(name, money, people, dataline, updatedata, num, status) " +
