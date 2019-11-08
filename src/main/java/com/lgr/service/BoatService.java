@@ -25,7 +25,7 @@ public class BoatService {
         Map<String ,Object> map = new HashMap<>();
         PageUtil p = new PageUtil(boat.getPage(), boat.getLimit());
         map.put("page", p);
-        map.put("data", boat);
+        map.put("name", boat.getName());
 
         //处理时间戳
         List<Boat> boats = boatMapper.boatList(map);
