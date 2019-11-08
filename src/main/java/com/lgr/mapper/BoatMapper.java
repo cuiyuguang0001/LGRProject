@@ -10,7 +10,7 @@ import java.util.Map;
 public interface BoatMapper {
 
     @Select("select id, name, money, people, dataline, updatedata, num, status " +
-            "from ship_boat")
+            "from ship_boat where name like concat(ifNull(#{name}, ''), '%')")
     List<Boat> boatList(Map<String ,Object> map);
 
     @Insert("insert into ship_boat(name, money, people, dataline, updatedata, num, status) " +

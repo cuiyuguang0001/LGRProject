@@ -12,7 +12,7 @@ import java.util.Map;
 @Mapper
 public interface KuCunMapper {
 
-    @Select("select id, name, num, util from ship_kucun")
+    @Select("select id, name, num, util from ship_kucun where name like concat(ifNull(#{name}, ''), '%')")
     List<KuCun> kucunList(Map<String, Object> map);
 
     @Select("select num from ship_kucun where name = #{name}")
