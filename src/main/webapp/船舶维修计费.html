@@ -124,5 +124,12 @@
 			<span class="layui-btn layui-btn-xs" style="background: cornflowerblue; width: 50%">未维修</span>
 			{{#  } }}
 		</script>
+		<script type="text/html" id="manager_type">
+			{{#  if(d.type ==1 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: orchid; width: 50%">保养状态</span>
+			{{#  } else { }}
+			<span class="layui-btn layui-btn-xs" style="background: burlywood; width: 50%">维修状态</span>
+			{{#  } }}
+		</script>
 	</body>
 </html>
