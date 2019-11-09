@@ -1,9 +1,10 @@
 /**
  * 船舶信息
  */
+var table = null;
 layui.use('table', function() {
-    var table = layui.table;
-        form = layui.form
+    table = layui.table;
+    form = layui.form
     /**
      * 方法级渲染
      */
@@ -226,4 +227,12 @@ function insertNo() {
 }
 function updateNo() {
     location.reload();
+}
+
+/**
+ * 模糊查询
+ */
+function findBoat() {
+    var name = $("#find").val()
+    common.reload('test', {name: name})
 }

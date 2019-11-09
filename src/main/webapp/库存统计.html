@@ -80,8 +80,15 @@
 				</div>
 			</div>
 <!--==========================================================================================-->				
-			<div class="layui-body">
-				<!-- 内容主体区域 -->
+			<div class="layui-body" style="margin-top: 1%;">
+				<div class="demoTable">
+					&nbsp;&nbsp;&nbsp;&nbsp;搜索货物名：
+					<div class="layui-inline">
+						<input class="layui-input" name="id" id="find" autocomplete="off">
+					</div>
+					<button class="layui-btn" data-type="reload" onclick="findUserName()">搜索</button>
+				</div>
+					<!-- 内容主体区域 -->
 				<!-- 数据表格 -->
 				<table class="layui-hide" id="test"></table>
 			</div>

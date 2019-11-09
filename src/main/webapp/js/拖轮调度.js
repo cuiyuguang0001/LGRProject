@@ -1,5 +1,5 @@
 /**
- * 库存统计
+ * 拖轮调度
  * @type {((...tabularData: any[]) => void) | string | []}
  */
 layui.use('table', function() {
@@ -27,8 +27,6 @@ layui.use('table', function() {
             none: '小小数据去哪了？'
         },
         autoSort: 'true',
-        // skin: 'nob',//是否显示行列渲染
-        // even: true,
         size: 'lg',
         page: true,
         limit: 8,
@@ -36,9 +34,10 @@ layui.use('table', function() {
         cols: [[
             {field:'id', title: 'ID', width:'10%', sort: true, align: 'center', fixed: true}
             ,{field:'boat',title: '船只名', align: 'center'}
-            ,{field:'people',title: '负责员工', align: 'center'}
+            ,{field:'people', title: '负责人', align: 'center'}
             ,{field:'dataline', title: '时间', align: 'center'}
-            ,{field:'status', title: '拖轮状态', align: 'center', templet:'#manager_status'}
+            ,{field:'status', title: '状态', align: 'center', templet:'#manager_status'}
+            ,{field:'type', title: '船体大小', align: 'center', templet:'#manager_type'}
             ]],
         /**
          * 回调函数

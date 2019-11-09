@@ -80,7 +80,7 @@
 				</div>
 			</div>
 <!--==========================================================================================-->
-			<div class="layui-body" style="margin-top: -1%;">
+			<div class="layui-body" style="margin-top: 1%;">
 				<script type="text/html" id="toolbarDemo">
 					<div class="layui-btn-container">
 						<button style="top: 1%;" type="button" class="layui-btn" onclick="insert()">添加信息</button>
@@ -89,6 +89,11 @@
 				<!-- 内容主体区域 -->
 				<!-- 数据表格 -->
                 <div class="demoTable">
+					&nbsp;&nbsp;&nbsp;&nbsp;搜索员工姓名：
+					<div class="layui-inline">
+						<input class="layui-input" name="id" id="find" autocomplete="off">
+					</div>
+					<button class="layui-btn" data-type="reload" onclick="findUserName()">搜索</button>
 					<script type="text/html" id="barDemo">
 						<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit" onclick="update()">编辑</a>
 						<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>

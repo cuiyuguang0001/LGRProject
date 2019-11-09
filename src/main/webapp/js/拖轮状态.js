@@ -1,7 +1,7 @@
 /**
-* 库存统计
-* @type {((...tabularData: any[]) => void) | string | []}
-*/
+ * 拖轮状态
+ * @type {((...tabularData: any[]) => void) | string | []}
+ */
 var table = null;
 layui.use('table', function() {
     table = layui.table;
@@ -16,7 +16,7 @@ layui.use('table', function() {
         contentType: 'application/json',
         dataType: 'json',
         loading: 'true',
-        url: user.defaultUrl + myurl.kucunList ,
+        url: user.defaultUrl + myurl.tuolunList,
         toolbar: '#toolbarDemo',
         title: '用户数据表',
         totalRow: true,
@@ -36,10 +36,10 @@ layui.use('table', function() {
         limits: [7, 10, 15],
         cols: [[
             {field:'id', title: 'ID', width:'10%', sort: true, align: 'center', fixed: true}
-            ,{field:'name',title: '货物名', align: 'center'}
-            ,{field:'num',title: '剩余数量', align: 'center'}
-            ,{field:'util', title: '单位', align: 'center'}
-            ,{field:'status', title: '存货状态', align: 'center', templet:'#manager_status'}
+            ,{field:'boat',title: '船只名', align: 'center'}
+            ,{field:'people',title: '负责员工', align: 'center'}
+            ,{field:'dataline', title: '时间', align: 'center'}
+            ,{field:'status', title: '拖轮状态', align: 'center', templet:'#manager_status'}
         ]],
         /**
          * 回调函数
@@ -49,15 +49,7 @@ layui.use('table', function() {
          */
         done: function(res, curr, count) {
             console.log(res);
-
         },
     });
 });
 
-/**
- * 模糊查询
- */
-function findUserName() {
-    var name = $("#find").val();
-    common.reload('test', {name: name})
-}
