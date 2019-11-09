@@ -12,8 +12,8 @@ public interface WeiXiuMapper {
     @Select("select id, boat, people, status, dataline, money, type from ship_weixiu where type = #{type}")
     List<WeiXiu> weixiuList(Map<String, Object> map);
 
-    @Insert("insert into ship_weixiu(boat, people, status, dataline, money) " +
-            "values(#{boat}, #{people}, 0, #{dataline}, #{money})")
+    @Insert("insert into ship_weixiu(boat, people, status, dataline, money, type) " +
+            "values(#{boat}, #{people}, 0, #{dataline}, #{money}, #{type})")
     boolean weixiuAdd(WeiXiu weiXiu);
 
     @Delete("delete from ship_weixiu where id = #{id}")
