@@ -1,5 +1,6 @@
 /**
  * layui数据表格
+ * 进出港信息
  */
 var table = null;
 layui.use('table', function() {
@@ -29,7 +30,6 @@ layui.use('table', function() {
             none: '小小数据去哪了？'
         },
         autoSort: 'true',
-        // skin: 'nob',//是否显示行列渲染
         even: true,
         size: 'lg',
         id: 'test',
@@ -44,7 +44,6 @@ layui.use('table', function() {
             , {field: 'boat', title: '申请船只', minWidth: 100, align: 'center'}
             , {field: 'oil',title: '所需燃油', sort: true, align: 'center'}
             , {field: 'status', title: '状态', sort: true, align: 'center', templet: '#manager_status'}
-            // , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
         ]],
         /**
          * 回调函数

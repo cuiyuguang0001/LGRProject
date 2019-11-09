@@ -1,5 +1,5 @@
 /**
- * 船舶信息
+ * 船舶维修
  */
 var table = null;
 layui.use('table', function() {

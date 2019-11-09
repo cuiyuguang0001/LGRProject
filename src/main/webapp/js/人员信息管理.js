@@ -1,5 +1,6 @@
 /**
  * layui数据表格
+ * 人员信息管理
  */
 var table = null;
 layui.use('table', function() {

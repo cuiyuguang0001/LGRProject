@@ -28,8 +28,6 @@ layui.use('table', function() {
             none: '小小数据去哪了？'
         },
         autoSort: 'true',
-        // skin: 'nob',//是否显示行列渲染
-        // even: true,
         size: 'lg',
         page: true,
         limit: 8,

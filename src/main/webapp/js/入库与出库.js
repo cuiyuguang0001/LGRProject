@@ -1,5 +1,5 @@
 /**
- * 库存统计
+ * 入库出库统计
  * @type {((...tabularData: any[]) => void) | string | []}
  */
 var table = null;

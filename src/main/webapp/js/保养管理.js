@@ -1,5 +1,5 @@
 /**
- * 船舶维修计费
+ * 船舶保养管理
  */
 var table = null;
 layui.use('table', function() {
@@ -27,7 +27,6 @@ layui.use('table', function() {
             none: '小小数据去哪了？'
         },
         autoSort: 'true',
-        // skin: 'nob',//是否显示行列渲染
         even: true,
         size: 'lg',
         id: 'test',

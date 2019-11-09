@@ -1,5 +1,6 @@
 /**
  * layui数据表格
+ * 进出航审查
  */
 var table = null;
 layui.use('table', function() {
