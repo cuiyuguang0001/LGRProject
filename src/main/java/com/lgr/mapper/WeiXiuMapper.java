@@ -9,7 +9,7 @@ import java.util.Map;
 @Mapper
 public interface WeiXiuMapper {
 
-    @Select("select id, boat, people, status, dataline, money from ship_weixiu")
+    @Select("select id, boat, people, status, dataline, money, type from ship_weixiu where type = #{type}")
     List<WeiXiu> weixiuList(Map<String, Object> map);
 
     @Insert("insert into ship_weixiu(boat, people, status, dataline, money) " +

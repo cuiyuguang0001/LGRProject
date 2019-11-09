@@ -32,6 +32,7 @@ public class WeiXiuService {
         Map<String, Object> map = new HashMap<>();
         PageUtil p = new PageUtil(weiXiu.getPage(), weiXiu.getLimit());
         map.put("page", p);
+        map.put("type", weiXiu.getType());
         List<WeiXiu> weiXius = weiXiuMapper.weixiuList(map);
         for(WeiXiu w : weiXius)
             w.setDataline(CommitUtil.timestampToStr(Long.valueOf(w.getDataline())));

@@ -8,10 +8,19 @@ public class WeiXiu {
     private String status;
     private String dataline;
     private String money;
+    private String type;
 
     //分页
     private int page;
     private int limit;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getId() {
         return id;
