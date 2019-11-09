@@ -9,7 +9,7 @@ import java.util.Map;
 @Mapper
 public interface TuoLunMapper {
 
-    @Select("select id, boat, people, dataline, status, type from ship_tuolun where type = #{type}")
+    @Select("select id, boat, people, dataline, status, type from ship_tuolun")
     List<TuoLun> tuolunList(Map<String ,Object> map);
 
     @Insert("insert into ship_tuolun(boat, people, dataline) " +

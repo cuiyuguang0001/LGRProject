@@ -48,5 +48,7 @@ layui.use('table', function() {
         done: function(res, curr, count) {
             console.log(res);
         },
+
     });
 });
+common.reload('test', {type: 1}, false)

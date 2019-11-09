@@ -94,16 +94,22 @@ layui.use('table', function() {
                 }, boat:{
                     title:'机器名',
                     type:'text',
+                    class:'layui-btn-disabled',
+                    disable:true,
                     verify:'required'
                 }, people:{
                     title:'负责人',
                     type:'text',
+                    class:'layui-btn-disabled',
+                    disable:true,
                     verify:'required'
                 },status:{
                     title:'维修状态',
-                    disable: true,
-                    class:'layui-btn-disabled',
-                    type:'text',
+                    type:'select',
+                    data:{
+                        已维修:'已维修',
+                        未维修:'未维修'
+                    }
                 },dataline:{
                     title:'维修时间',
                     disable: true,
@@ -112,6 +118,8 @@ layui.use('table', function() {
                 }, money:{
                     title:'维修金额',
                     type:'text',
+                    class:'layui-btn-disabled',
+                    disable:true,
                     verify:'required'
                 },button:{
                     submit:'立即修改',
@@ -155,7 +163,8 @@ layui.use('table', function() {
      * 一键修改
      //  */
     form.on('submit(update)', function(data){
-        req.post(myurl.userEdit, data.field, false)
+        req.post(myurl.weixiuEditStatus, {status: data.field.status, id: data.field.id}, false)
+        alert(data.field.status)
     });
 });
 /**
