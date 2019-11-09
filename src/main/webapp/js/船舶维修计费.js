@@ -157,8 +157,6 @@ layui.use('table', function() {
             });
         }
     })
-    // common.reload('test', {type: 0})
-    // common.reload('test', {type: 1})
     /**
      * 一键添加
      */

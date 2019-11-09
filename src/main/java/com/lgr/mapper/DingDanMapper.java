@@ -9,7 +9,7 @@ import java.util.Map;
 @Mapper
 public interface DingDanMapper {
 
-    @Select("select id, type, name, num, util, dataline from ship_dingdan where type = #{type}")
+    @Select("select id, type, name, num, util, dataline, money from ship_dingdan where type = #{type}")
     List<DingDan> dingDanList(Map<String, Object> map);
 
 //    @Select("select id, type, name, num, util, dataline from ship_dingdan where type = #{type}")

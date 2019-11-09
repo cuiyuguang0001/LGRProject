@@ -142,6 +142,7 @@ layui.use('table', function() {
             });
         },
     });
+    common.reload('test', {status: 0})
     /**
      * 监听行工具事件
      */

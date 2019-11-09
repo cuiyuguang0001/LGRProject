@@ -8,6 +8,7 @@ public class DingDan {
     private String num;
     private String util;
     private String dataline;
+    private String money;
 
     //分页
     private int page;
@@ -75,5 +76,13 @@ public class DingDan {
 
     public void setDataline(String dataline) {
         this.dataline = dataline;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
     }
 }

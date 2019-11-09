@@ -1,5 +1,5 @@
 /**
- * 拖轮调度
+ * 拖轮引航计费
  * @type {((...tabularData: any[]) => void) | string | []}
  */
 layui.use('table', function() {
@@ -38,7 +38,8 @@ layui.use('table', function() {
             ,{field:'dataline', title: '时间', align: 'center'}
             ,{field:'status', title: '状态', align: 'center', templet:'#manager_status'}
             ,{field:'type', title: '船体大小', align: 'center', templet:'#manager_type'}
-            ]],
+            ,{field:'money', title: '调度金额', align: 'center'}
+        ]],
         /**
          * 回调函数
          * @param res

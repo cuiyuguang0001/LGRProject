@@ -7,7 +7,8 @@
 		<link rel="stylesheet" href="static/layui/css/layui.css">
 		<script src="static/jQuery/jquery-3.4.1.min.js"></script>
 		<script src="static/layui/layui.js"></script>
-		<script src="js/httpReq_old.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/httpReq.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/拖轮引航计费.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
@@ -71,7 +72,6 @@
 							<dl class="layui-nav-child">
 								<dd><a href="船舶维修计费.html">船舶维修计费</a></dd>
 								<dd><a href="拖轮引航计费.html">拖轮引航计费</a></dd>
-								<dd><a href="材料采购计费.html">材料采购计费</a></dd>
 							</dl>
 						</li>
 <!--==========================================================================================-->						
@@ -93,36 +93,19 @@
 
 			});
 		</script>
-		<script type="text/javascript">
-		//人员信息
-		var table = layui.table,
-			layer = layui.layer,
-			form = layui.form
-		layui.use('table', function() {
-			var table = layui.table;
-			table.render({
-				// method: 'post',
-				elem: '#test',
-				url: user.defaultUrl + myurl.userList ,
-				toolbar: '#toolbarDemo',
-				title: '用户数据表',
-				totalRow: true,
-			    cols: [[
-			      {field:'id', width:80, title: 'ID', sort: true}
-			      ,{field:'name', width:80, title: '姓名'}
-			      ,{field:'age', width:80, title: '年龄', sort: true}
-			      ,{field:'sex', width:80, title: '性别'}
-			      ,{field:'sal', title: '工资', width: 80, minWidth: 100}
-			      ,{field:'status', title: '有无任务', sort: true}
-			      ,{field:'dataline', title: '入职时间', sort: true}
-			      ,{field:'post', title: '职业'}
-			      ,{field:'list', width:137, title: '职位优先级', sort: true}
-			    ]],
-				page: true,
-				limit: 15,
-				limits: [5, 10, 15],
-			  });
-			});
+		<script type="text/html" id="manager_status">
+			{{#  if(d.status ==1 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: lightslategray; width: 50%">已拖带</span>
+			{{#  } else { }}
+			<span class="layui-btn layui-btn-xs" style="background: #bce8f1; width: 50%">未拖带</span>
+			{{#  } }}
+		</script>
+		<script type="text/html" id="manager_type">
+			{{#  if(d.type ==1 ){ }}
+			<span class="layui-btn layui-btn-xs" style="background: orchid; width: 50%">大船</span>
+			{{#  } else { }}
+			<span class="layui-btn layui-btn-xs" style="background: coral; width: 50%">小船</span>
+			{{#  } }}
 		</script>
 	</body>
 </html>

@@ -28,19 +28,18 @@ layui.use('table', function() {
             none: '小小数据去哪了？'
         },
         autoSort: 'true',
-        // skin: 'nob',//是否显示行列渲染
-        // even: true,
         size: 'lg',
         page: true,
         limit: 8,
         limits: [7, 10, 15],
         cols: [[
-            {field:'id', title: 'ID', width:'10%', sort: true, align: 'center', fixed: true}
-            , {field: 'type', title: '货物状态', align: 'center', templet: '#manager_type'}
-            ,{field:'name',title: '货物名', align: 'center'}
-            ,{field:'num', title: '数量', align: 'center'}
+            {field:'id', title: 'ID', width:'8%', sort: true, align: 'center', fixed: true}
+            , {field: 'type', width:'15%', title: '货物状态', align: 'center', templet: '#manager_type'}
+            ,{field:'name',width:'12%',title: '货物名', align: 'center'}
+            ,{field:'num', width:'8%',title: '数量', align: 'center'}
             ,{field:'util', title: '单位', align: 'center'}
             ,{field:'dataline', title: '订单创建日期', align: 'center'}
+            ,{field:'money', title: '材料购买金额', align: 'center'}
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
         ]],
         /**
@@ -80,8 +79,9 @@ layui.use('table', function() {
                     type:'select',
                     data:{
                         升:'升',
-                        顿:'顿'
-                    }
+                    },
+                    class:'layui-btn-disabled',
+                    disable:true,
                 },button:{
                     submit:'立即添加',
                     submitFilter:'insert',

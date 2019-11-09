@@ -8,6 +8,7 @@ public class TuoLun {
     private String dataline;
     private String status;
     private String type;
+    private String money;
 
     //分页
     private int page;
@@ -77,4 +78,11 @@ public class TuoLun {
         this.status = status;
     }
 
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
 }
