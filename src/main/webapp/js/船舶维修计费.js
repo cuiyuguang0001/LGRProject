@@ -163,8 +163,7 @@ layui.use('table', function() {
      * 一键修改
      //  */
     form.on('submit(update)', function(data){
-        req.post(myurl.weixiuEditStatus, {status: data.field.status, id: data.field.id}, false)
-        alert(data.field.status)
+        req.post(myurl.weixiuEditStatus, {status: data.field.status, id: data.field.id, people: data.field.people, boat: data.field.boat}, false)
     });
 });
 /**
