@@ -7,10 +7,19 @@ public class TuoLun {
     private String people;
     private String dataline;
     private String status;
+    private String type;
 
     //分页
     private int page;
     private int limit;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getPage() {
         return (page - 1) * limit;
