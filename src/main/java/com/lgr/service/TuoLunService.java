@@ -29,6 +29,7 @@ public class TuoLunService {
         Map<String, Object> map = new HashMap<>();
         PageUtil p = new PageUtil(tuoLun.getPage(), tuoLun.getLimit());
         map.put("page", p);
+        map.put("type", tuoLun.getType());
         List<TuoLun> tuoLuns = tuoLunMapper.tuolunList(map);
         for(TuoLun t : tuoLuns)
             t.setDataline(CommitUtil.timestampToStr(Long.valueOf(t.getDataline())));
