@@ -15,7 +15,7 @@ public interface PlanMapper {
     Plan planModel(String id);
 
     @Insert("insert into ship_plan(type, dataline, people, boat, oil, status, tuolun) " +
-            "values(#{type}, #{dataline}, #{people}, #{boat}, #{oil}, 0)")
+            "values(#{type}, #{dataline}, #{people}, #{boat}, #{oil}, 0, '')")
     boolean planAdd(Plan plan);
 
     @Update("update ship_plan set status = #{status}, tuolun = #{tuolun} where id = #{id}")
