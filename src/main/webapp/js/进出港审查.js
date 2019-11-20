@@ -44,6 +44,7 @@ layui.use('table', function() {
             , {field: 'boat', title: '申请船只', minWidth: 100, align: 'center'}
             , {field: 'oil',title: '所需燃油', sort: true, align: 'center'}
             , {field: 'status', title: '状态', sort: true, align: 'center', templet: '#manager_status'}
+            , {field: 'tuolun',title: '拖轮名称', sort: true, align: 'center'}
         ]],
         /**
          * 回调函数

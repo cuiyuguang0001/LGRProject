@@ -35,7 +35,7 @@ layui.use('table', function() {
         limits: [7, 10, 15],
         cols: [[
             {field: 'id', title: 'ID', sort: true, align: 'center', fixed: true}
-            , {field: 'boat', title: '机器名', align: 'center'}
+            , {field: 'boat', title: '船名', align: 'center'}
             , {field: 'people', title: '负责人', sort: true, align: 'center'}
             , {field: 'dataline', title: '维修时间', minWidth: 100, align: 'center'}
             , {field: 'money', title: '维修金额', sort: true, align: 'center'}

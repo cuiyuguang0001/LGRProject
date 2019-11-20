@@ -34,7 +34,7 @@ layui.use('table', function() {
         limits: [7, 10, 15],
         cols: [[
             {field:'id', title: 'ID', width:'10%', sort: true, align: 'center', fixed: true}
-            ,{field:'boat',title: '船只名', align: 'center'}
+            ,{field:'boat',title: '拖轮名称', align: 'center'}
             ,{field:'people',title: '负责员工', align: 'center'}
             ,{field:'dataline', title: '时间', align: 'center'}
             ,{field:'status', title: '拖轮状态', align: 'center', templet:'#manager_status'}

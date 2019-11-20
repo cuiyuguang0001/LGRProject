@@ -41,7 +41,7 @@ layui.use('table', function() {
             , {field: 'dataline', width: '18%', title: '购买时间', align: 'center'}
             , {field: 'updatedata', width: '18%', title: '最后维修时间', align: 'center'}
             , {field: 'num', width: '8%', title: '出航次数', align: 'center'}
-            , {field: 'status', width: '10%', title: '出航状态', align: 'center', templet: '#manager_status'}
+            , {field: 'status', width: '10%', title: '维修状态', align: 'center', templet: '#manager_status'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center'}
         ]],
         done: function (res, curr, count) {

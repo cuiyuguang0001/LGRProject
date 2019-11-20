@@ -46,6 +46,7 @@ layui.use('table', function() {
             , {field: 'people',title: '申请人', align: 'center'}
             , {field: 'boat', title: '申请船只', minWidth: 100, align: 'center'}
             , {field: 'oil',title: '所需燃油', sort: true, align: 'center'}
+            , {field: 'tuolun',title: '拖轮名称', sort: true, align: 'center'}
             , {field: 'status', title: '状态', sort: true, align: 'center', templet: '#manager_status'}
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150, align:'center'}
         ]],
@@ -77,22 +78,25 @@ layui.use('table', function() {
     table.on('tool(test)', function(obj){
         if(obj.event === 'getCheckData'){
             // 添加拖轮信息
-            index = layer.open({
-                type: 1,
-                title: '拖轮名称',
-                closeBtn: false,
-                shade: 0.5,
-                id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
-                btnAlign: 'c',
-                // btn:['取消'],
-                area: ['36%', '40%'],
-                cancel: function(index, layero) {
-                    layer.close(index);
-                    $(".tuolun").css("display", "none");
-                    return false;
-                },
-                content: $(".tuolun").append(),
-            });
+            // index = layer.open({
+            //     type: 1,
+            //     title: '拖轮名称',
+            //     closeBtn: false,
+            //     shade: 0.5,
+            //     id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
+            //     btnAlign: 'c',
+            //     // btn:['取消'],
+            //     area: ['36%', '40%'],
+            //     cancel: function(index, layero) {
+            //         layer.close(index);
+            //         $(".tuolun").css("display", "none");
+            //         return false;
+            //     },
+            //     content: $(".tuolun").append(),
+            // });
+            var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type, tuolun: obj.data.tuolun}, false)
+            console.log(p)
+            table.reload('test');
             // alert("\" " + obj.data.boat + "\" " +  "已确认通过审核");
             console.log(obj.data.id)
             console.log(obj.data.type)
@@ -106,9 +110,7 @@ layui.use('table', function() {
         }
     });
     form.on('submit(tuolun)', function(data) {
-        var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type}, false)
-        console.log(p)
-        req.post(myurl.planEditStatus, data.field, false);
+        // req.post(myurl.pl, data.field, false);
     })
 
 });
