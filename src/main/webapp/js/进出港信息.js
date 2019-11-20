@@ -181,11 +181,11 @@ layui.use('table', function() {
 
     })
     /**
-     * 修改拖轮信息并通过审核
+     * 啦啦啦
      */
     form.on('submit(tuolun)', function(data) {
         console.log(data.field)
-        var o = req.post(myurl.planEditStatus, data.field, false);
+        var o = req.post(myurl.planEditStatus, {id: data.field.id,type: data.field.type, status: 1, tuolun: data.field.tuolun }, false);
         console.log(o)
         return  false;
     })
