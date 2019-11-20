@@ -52,7 +52,6 @@ public class PlanService {
 
     public Map<String ,Object> planEditStatus(Plan plan)
     {
-        System.out.println("111");
         if(plan.getType().equals("0"))
         {
             //出港
@@ -76,7 +75,7 @@ public class PlanService {
             }
         }
 
-        if (!planMapper.planEditStatus(plan.getStatus(), plan.getId() + ""))
+        if (!planMapper.planEditStatus(plan.getStatus(), plan.getTuolun(), plan.getId() + ""))
             return MapUtil.requestMap(null,false);
         return MapUtil.requestMap(null,true);
     }

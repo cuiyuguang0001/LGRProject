@@ -19,7 +19,7 @@ public interface PlanMapper {
     boolean planAdd(Plan plan);
 
     @Update("update ship_plan set status = #{status}, tuolun = #{tuolun} where id = #{id}")
-    boolean planEditStatus(String status, String id);
+    boolean planEditStatus(String status, String tuolun, String id);
 
     @Delete("delete from plan where id = #{id} and status <> 0")
     boolean planDel(Plan plan);

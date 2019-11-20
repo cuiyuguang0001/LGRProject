@@ -94,12 +94,9 @@ layui.use('table', function() {
             //     },
             //     content: $(".tuolun").append(),
             // });
+            console.log(obj.data.tuolun)
             var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type, tuolun: obj.data.tuolun}, false)
-            console.log(p)
-            // table.reload('test');
-            // alert("\" " + obj.data.boat + "\" " +  "已确认通过审核");
-            console.log(obj.data.id)
-            console.log(obj.data.type)
+
 
             // table.reload('test');
         }else if(obj.event === "getCheckDataNo"){
@@ -110,7 +107,7 @@ layui.use('table', function() {
         }
     });
     form.on('submit(tuolun)', function(data) {
-        // req.post(myurl.pl, data.field, false);
+        req.post(myurl.pl, data.field, false);
     })
 
 });
