@@ -232,9 +232,8 @@ function update(){
 /**
  * 取消——刷新页面
  */
-function insertNo() {
-    location.reload();
-}
+
+
 function updateNo() {
     location.reload();
 }
