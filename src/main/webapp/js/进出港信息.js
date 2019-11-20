@@ -59,12 +59,31 @@ layui.use('table', function() {
             console.log(res);
             common.form({
                 form: 'tuolun',
-                name:{
+                id:{
+                    title:'id',
+                    type:'text',
+                    verify:'required',
+                    class:'layui-btn-disabled',
+                    disable:true,
+                },type:{
+                    title:'状态',
+                    type:'text',
+                    verify:'required',
+                    class:'layui-btn-disabled',
+                    disable:true,
+                },status:{
+                    title:'状态',
+                    type:'text',
+                    verify:'required',
+                    class:'layui-btn-disabled',
+                    disable:true,
+                },tuolun:{
                     title:'拖轮名称',
                     type:'text',
-                    verify:'required'
+                    // verify:'required',
+
                 },button:{
-                    submit:'立即添加',
+                    submit:'确认修改',
                     submitFilter:'tuolun',
                     back:'取消',
                     backClick:'insertNo()'
@@ -114,7 +133,7 @@ layui.use('table', function() {
                 id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
                 btnAlign: 'c',
                 // btn:['取消'],
-                area: ['36%', '40%'],
+                area: ['36%', '60%'],
                 cancel: function(index, layero) {
                     layer.close(index);
                     $(".tuolun").css("display", "none");
@@ -122,9 +141,15 @@ layui.use('table', function() {
                 },
                 content: $(".tuolun").append(),
             });
-            var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type, tuolun: obj.data.tuolun}, false)
+
+            form.val('tuolun', {
+                id : obj.data.id,
+                type: obj.data.type == 0 ? '出航' : '入航',
+                status: obj.data.status == 0 ? '未通过': '已处理',
+                tuolun: obj.data.tuolun,
+            });
             console.log(obj.data.tuolun)
-            table.reload('test');
+            // table.reload('test');
         }else if(obj.event === "getCheckDataNo"){
              var q = req.post(myurl.planEditStatus, {id: obj.data.id, status: 2, type: obj.data.type}, false)
             alert("\" " + obj.data.boat + "\" " +  "已被拒绝通过");
@@ -153,10 +178,16 @@ layui.use('table', function() {
     form.on('submit(insertsh)', function(data) {
         var a = req.post(myurl.planAdd, data.field, false);
         console.log(a)
-        return  false;
+
     })
+    /**
+     * 修改拖轮信息并通过审核
+     */
     form.on('submit(tuolun)', function(data) {
-        req.post(myurl.planEditStatus, data.field, false);
+        console.log(data.field)
+        var o = req.post(myurl.planEditStatus, data.field, false);
+        console.log(o)
+        return  false;
     })
 
 });
