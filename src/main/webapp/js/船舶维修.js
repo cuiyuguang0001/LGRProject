@@ -63,21 +63,8 @@ layui.use('table', function() {
                     title:'管理者',
                     type:'select',
                     data:{
-                        G1:'G1',
-                        G2:'G2',
-                        G3:'G3',
-                        G4:'G4',
-                        G5:'G5',
-                        G6:'G6',
-                        G7:'G7',
-                        G8:'G8',
-                        G9:'G9',
-                        G10:'G10',
-                        G11:'G11',
-                        G12:'G12',
-                        G13:'G13',
-                        G14:'G14',
-                        G15:'G15',
+                        MR1:'MR1',
+                        MR2:'MR2'
                     }
                 },button:{
                     submit:'立即添加',
@@ -109,21 +96,8 @@ layui.use('table', function() {
                     title:'管理者',
                     type:'select',
                     data:{
-                        G1:'G1',
-                        G2:'G2',
-                        G3:'G3',
-                        G4:'G4',
-                        G5:'G5',
-                        G6:'G6',
-                        G7:'G7',
-                        G8:'G8',
-                        G9:'G9',
-                        G10:'G10',
-                        G11:'G11',
-                        G12:'G12',
-                        G13:'G13',
-                        G14:'G14',
-                        G15:'G15',
+                        MR1:'MR1',
+                        MR2:'MR2'
                     }
                 },dataline: {
                     title: '购买时间',

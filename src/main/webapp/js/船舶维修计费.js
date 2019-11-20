@@ -13,6 +13,7 @@ layui.use('table', function() {
         contentType: 'application/json',
         dataType: 'json',
         loading: 'true',
+        where:{'type': 1},
         url: user.defaultUrl + myurl.weixiuList,
         toolbar: '#toolbarDemo',
         title: '用户数据表',
@@ -66,8 +67,8 @@ layui.use('table', function() {
                     title:'维修状态',
                     type:'select',
                     data:{
-                        已维修:'已维修',
-                        未维修:'未维修'
+                        1:'已维修',
+                        0:'未维修'
                     }
                 },money:{
                     title:'维修金额',
@@ -107,8 +108,8 @@ layui.use('table', function() {
                     title:'维修状态',
                     type:'select',
                     data:{
-                        已维修:'已维修',
-                        未维修:'未维修'
+                        1:'已维修',
+                        0:'未维修'
                     }
                 },dataline:{
                     title:'维修时间',
@@ -148,7 +149,7 @@ layui.use('table', function() {
                 boat: data.boat,
                 money: data.money,
                 people: data.people,
-                status: data.stauts == 1 ? '已维修' : '未维修',
+                status: data.status,
                 dataline: data.dataline,
             });
         }
@@ -163,7 +164,9 @@ layui.use('table', function() {
      * 一键修改
      //  */
     form.on('submit(update)', function(data){
-        req.post(myurl.weixiuEditStatus, {status: data.field.status, id: data.field.id, people: data.field.people, boat: data.field.boat}, false)
+        var a = req.post(myurl.weixiuEditStatus, {status: data.field.status, id: data.field.id, people: data.field.people, boat: data.field.boat}, false)
+        console.log(a);
+        // return false;
     });
 });
 /**
