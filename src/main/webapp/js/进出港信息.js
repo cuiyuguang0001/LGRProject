@@ -47,7 +47,7 @@ layui.use('table', function() {
             , {field: 'boat', title: '申请船只', minWidth: 100, align: 'center'}
             , {field: 'oil',title: '所需燃油', sort: true, align: 'center'}
             , {field: 'status', title: '状态', sort: true, align: 'center', templet: '#manager_status'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 250, align:'center'}
+            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150, align:'center'}
         ]],
         /**
          * 回调函数
@@ -147,32 +147,15 @@ layui.use('table', function() {
                 type: obj.data.type == 0 ? '出航' : '入航',
                 status: obj.data.status == 0 ? '未通过': '已处理',
                 tuolun: obj.data.tuolun,
+
             });
             console.log(obj.data.tuolun)
             // table.reload('test');
         }else if(obj.event === "getCheckDataNo"){
-             var q = req.post(myurl.planEditStatus, {id: obj.data.id, status: 2, type: obj.data.type}, false)
+             var q = req.post(myurl.planEditStatus, {id: obj.data.id, status: 2, type: obj.data.type, tuolun: obj.data.tuolun}, false)
             alert("\" " + obj.data.boat + "\" " +  "已被拒绝通过");
 
             location.reload();
-        }else if(obj.event === "insertsh"){
-            index = layer.open({
-                    type: 1,
-                    title: '拖轮名称',
-                    closeBtn: false,
-                    shade: 0.5,
-                    id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
-                    btnAlign: 'c',
-                    // btn:['取消'],
-                    area: ['36%', '88%'],
-                    cancel: function(index, layero) {
-                        layer.close(index);
-                        $(".insertsh").css("display", "none");
-                        return false;
-                    },
-                    content: $(".insertsh").append(),
-            })
-
         }
     });
     form.on('submit(insertsh)', function(data) {
@@ -187,10 +170,36 @@ layui.use('table', function() {
         console.log(data.field)
         var o = req.post(myurl.planEditStatus, {id: data.field.id,type: data.field.type, status: 1, tuolun: data.field.tuolun }, false);
         console.log(o)
-        return  false;
+        alert("已通过审核");
+        table.reload('test');
+        layer.close(index);
     })
 
+
+
+
 });
+/**
+ * 添加信息弹窗
+ */
+function insert(){
+    index = layer.open({
+        type: 1,
+        title: '拖轮名称',
+        closeBtn: false,
+        shade: 0.5,
+        id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
+        btnAlign: 'c',
+        // btn:['取消'],
+        area: ['36%', '88%'],
+        cancel: function(index, layero) {
+            layer.close(index);
+            $(".insertsh").css("display", "none");
+            return false;
+        },
+        content: $(".insertsh").append(),
+    })
+}
 function insertNo() {
     layer.close(index)
     table.reload('test');

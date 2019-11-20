@@ -80,6 +80,11 @@
 			</div>
 <!--==========================================================================================-->				
 			<div class="layui-body" style="margin-top: -1%;">
+				<script type="text/html" id="toolbarDemo">
+					<div class="layui-btn-container">
+						<button style="top: 1%;" type="button" class="layui-btn" onclick="insert()">添加信息</button>
+					</div>
+				</script>
 				<!-- 内容主体区域 -->
 				<!-- 数据表格 -->
 				<div class="demoTable" >
@@ -87,7 +92,6 @@
 						{{# if (d.status == 0){}}
 							<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="getCheckData" >确认通过</a>
 							<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="getCheckDataNo">拒绝</a>
-							<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="insertsh">添加审核</a>
 						{{# }}}
 					</script>
 				</div>
