@@ -105,7 +105,7 @@ layui.use('table', function() {
             location.reload();
         }
     });
-    form.on('submit(tuolun)', function (data) {
+    form.on('submit(tuolun)', function(data) {
         var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type}, false)
         console.log(p)
         req.post(myurl., data.field, false);
