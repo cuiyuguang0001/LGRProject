@@ -176,7 +176,9 @@ layui.use('table', function() {
      * 一键添加
      */
     form.on('submit(insert)', function(data){
+        console.log("111")
         req.post(myurl.userAdd, data.field, false)
+        return false
     });
     /**
      * 一键修改

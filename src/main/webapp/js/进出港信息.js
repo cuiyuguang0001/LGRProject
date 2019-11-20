@@ -2,6 +2,7 @@
  * layui数据表格
  * 进出航审查
  */
+var index = 10;
 var table = null;
 layui.use('table', function() {
     table = layui.table;
@@ -56,19 +57,47 @@ layui.use('table', function() {
          */
         done: function(res, curr, count) {
             console.log(res);
+            common.form({
+                form: 'tuolun',
+                name:{
+                    title:'拖轮名称',
+                    type:'text',
+                    verify:'required'
+                },button:{
+                    submit:'立即添加',
+                    submitFilter:'tuolun',
+                    back:'取消',
+                    backClick:'insertNo()'
+                }
+            })
         },
     });
     common.reload('test', {status: 0})
     //工具栏事件
     table.on('tool(test)', function(obj){
         if(obj.event === 'getCheckData'){
-            var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type}, false)
-            alert("\" " + obj.data.boat + "\" " +  "已确认通过审核");
+            // 添加拖轮信息
+            index = layer.open({
+                type: 1,
+                title: '拖轮名称',
+                closeBtn: false,
+                shade: 0.5,
+                id: 'YuanGongUpdate', //设定一个id，防止重复弹出,
+                btnAlign: 'c',
+                // btn:['取消'],
+                area: ['36%', '40%'],
+                cancel: function(index, layero) {
+                    layer.close(index);
+                    $(".tuolun").css("display", "none");
+                    return false;
+                },
+                content: $(".tuolun").append(),
+            });
+            // alert("\" " + obj.data.boat + "\" " +  "已确认通过审核");
             console.log(obj.data.id)
             console.log(obj.data.type)
 
-            console.log(p)
-            location.reload();
+            // table.reload('test');
         }else if(obj.event === "getCheckDataNo"){
             var q = req.post(myurl.planEditStatus, {id: obj.data.id, status: 2, type: obj.data.type}, false)
             alert("\" " + obj.data.boat + "\" " +  "已被拒绝通过");
@@ -76,4 +105,14 @@ layui.use('table', function() {
             location.reload();
         }
     });
+    form.on('submit(tuolun)', function (data) {
+        var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type}, false)
+        console.log(p)
+        req.post(myurl., data.field, false);
+    })
+
 });
+function insertNo() {
+    layer.close(index)
+    table.reload('test');
+}

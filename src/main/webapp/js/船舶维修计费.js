@@ -1,9 +1,8 @@
 /**
  * 船舶维修计费
  */
-var table = null;
 layui.use('table', function() {
-    table = layui.table;
+    var table = layui.table;
     form = layui.form
     /**
      * 方法级渲染
@@ -14,7 +13,6 @@ layui.use('table', function() {
         contentType: 'application/json',
         dataType: 'json',
         loading: 'true',
-        where : {'type' : 0},
         url: user.defaultUrl + myurl.weixiuList,
         toolbar: '#toolbarDemo',
         title: '用户数据表',
@@ -35,14 +33,13 @@ layui.use('table', function() {
         limit: 8,
         limits: [7, 10, 15],
         cols: [[
-            {field: 'id',title: 'ID', width:'8%', sort: true, align: 'center', fixed: true}
-            , {field: 'boat', width:'10%', title: '机器名', align: 'center'}
-            , {field: 'people', width:'12%',title: '负责人', sort: true, align: 'center'}
+            {field: 'id',title: 'ID', sort: true, align: 'center', fixed: true}
+            , {field: 'boat', title: '机器名', align: 'center'}
+            , {field: 'people', title: '负责人', sort: true, align: 'center'}
             , {field: 'status', title: '是否已维修', align: 'center', templet:'#manager_status'}
             , {field: 'dataline', title: '维修时间', minWidth: 100, align: 'center'}
             , {field: 'money', title: '维修金额', sort: true, align: 'center'}
-            , {field: 'type', title: '船舶状态', sort: true, align: 'center', templet:'#manager_type'}
-            , {fixed: 'right', title:'操作', toolbar: '#barDemo', align: 'center',width:150}
+            , {fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
         ]],
         /**
          * 回调函数
@@ -69,8 +66,8 @@ layui.use('table', function() {
                     title:'维修状态',
                     type:'select',
                     data:{
-                        1:'已维修',
-                        0:'未维修'
+                        已维修:'已维修',
+                        未维修:'未维修'
                     }
                 },money:{
                     title:'维修金额',
@@ -110,8 +107,8 @@ layui.use('table', function() {
                     title:'维修状态',
                     type:'select',
                     data:{
-                        1:'已维修',
-                        0:'未维修'
+                        已维修:'已维修',
+                        未维修:'未维修'
                     }
                 },dataline:{
                     title:'维修时间',
@@ -133,7 +130,6 @@ layui.use('table', function() {
             })
         }
     });
-
     /**
      * 监听行工具事件
      */
@@ -152,7 +148,7 @@ layui.use('table', function() {
                 boat: data.boat,
                 money: data.money,
                 people: data.people,
-                status: data.status,
+                status: data.stauts == 1 ? '已维修' : '未维修',
                 dataline: data.dataline,
             });
         }
@@ -168,7 +164,6 @@ layui.use('table', function() {
      //  */
     form.on('submit(update)', function(data){
         req.post(myurl.weixiuEditStatus, {status: data.field.status, id: data.field.id, people: data.field.people, boat: data.field.boat}, false)
-
     });
 });
 /**
@@ -212,7 +207,6 @@ function update(){
         id: "alertcenterdiv",
     });
 }
-
 /**
  * 取消——刷新页面
  */

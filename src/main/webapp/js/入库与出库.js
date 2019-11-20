@@ -2,7 +2,6 @@
  * 入库出库统计
  * @type {((...tabularData: any[]) => void) | string | []}
  */
-var table = null;
 layui.use('table', function() {
     table = layui.table;
     form = layui.form
@@ -89,6 +88,7 @@ layui.use('table', function() {
                     backClick:'insertNo()'
                 }
             })
+
         },
     });
     common.reload('test', {type: 0})
@@ -107,7 +107,6 @@ layui.use('table', function() {
      */
     form.on('submit(insert)', function(data){
         console.log(data.field.type)
-        data.field
         req.post(myurl.dingdanAdd, data.field, false)
     });
 });
