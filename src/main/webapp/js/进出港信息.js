@@ -108,7 +108,7 @@ layui.use('table', function() {
     form.on('submit(tuolun)', function(data) {
         var p = req.post(myurl.planEditStatus, {id: obj.data.id, status: 1, type: obj.data.type}, false)
         console.log(p)
-        req.post(myurl., data.field, false);
+        req.post(myurl.planEditStatus, data.field, false);
     })
 
 });

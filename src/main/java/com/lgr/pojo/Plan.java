@@ -9,10 +9,19 @@ public class Plan {
     private String boat;
     private String oil;
     private String status;
+    private String tuolun;
 
     //分页
     private int page;
     private int limit;
+
+    public String getTuolun() {
+        return tuolun;
+    }
+
+    public void setTuolun(String tuolun) {
+        this.tuolun = tuolun;
+    }
 
     public int getPage() {
         return (page - 1) * limit;
